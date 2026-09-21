@@ -1,0 +1,166 @@
+.header {
+    width: 100%;
+    height: 90px;
+    background: linear-gradient(110deg,
+            #1c1c1c 0%,
+            #073f38 100%);
+    color: #ffffff;
+}
+
+.navbar {
+    width: min(1240px, calc(100% - 48px));
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Linke Seite */
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+/* EN / DE */
+
+.language-switch {
+    display: flex;
+    align-items: center;
+
+    border: 1px solid #35d6c0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.language-switch:hover {
+    border-color: #ffffff;
+}
+
+.language {
+    border: none;
+    background: transparent;
+
+    color: #35d6c0;
+
+    font-family: monospace;
+    font-size: 14px;
+
+    padding: 5px 12px;
+
+    cursor: pointer;
+}
+
+.language.active {
+    background: #35d6c0;
+    color: #ffffff;
+    border-radius: 20px;
+}
+
+/* Navigation */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    position: relative;
+
+    color: #ffffff;
+    text-decoration: none;
+
+    font-family: monospace;
+    font-size: 18px;
+
+    transition:
+        color 150ms ease,
+        transform 150ms ease;
+}
+
+.nav-links a:hover {
+    color: #35d6c0;
+    transform: translateY(-2px);
+}
+
+/* Aktiver Menüpunkt */
+
+.nav-links .active-link {
+    color: #35d6c0;
+}
+
+.active-dot {
+    position: absolute;
+
+    width: 6px;
+    height: 6px;
+
+    background: #35d6c0;
+    border-radius: 50%;
+
+    left: 50%;
+    bottom: -12px;
+
+    transform: translateX(-50%);
+}
+
+/* Logo */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.logo-m {
+    color: #35d6c0;
+
+    font-family: Arial, sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 0.8;
+}
+
+.logo-name {
+    display: flex;
+    flex-direction: column;
+
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 0.85;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+    .navbar {
+        width: calc(100% - 24px);
+    }
+
+    .nav-left {
+        gap: 14px;
+    }
+
+    .nav-links {
+        gap: 14px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .logo-m {
+        font-size: 38px;
+    }
+
+    .logo-name {
+        font-size: 17px;
+    }
+}

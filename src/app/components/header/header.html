@@ -1,0 +1,33 @@
+<header class="header">
+    <nav class="navbar">
+        <div class="nav-left">
+
+            <div class="language-switch">
+                <button class="language" [class.active]="language() === 'EN'" (click)="setLanguage('EN')">
+                    EN
+                </button>
+                <button class="language" [class.active]="language() === 'DE'" (click)="setLanguage('DE')">
+                    DE
+                </button>
+
+            </div>
+            <div class="nav-links">
+                <a href="#about">About me</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects" class="active-link">
+                    Projects
+                    <span class="active-dot"></span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#" class="logo">
+            <span class="logo-m">M</span>
+            <span class="logo-name">
+                <span>Lukas</span>
+                <span>Müller</span>
+            </span>
+        </a>
+
+    </nav>
+</header>
