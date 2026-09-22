@@ -1,0 +1,61 @@
+<section class="hero">
+    <div class="hero-content">
+        <img class="hero-eyebrow" src="assets/icons/Frontend Developer.png" alt="Frontend Developer">
+
+        <h1 class="hero-title">
+            <img src="assets/icons/Lukas Müller.png" alt="Lukas Müller">
+        </h1>
+
+        <div class="hero-actions">
+            <a href="#projects" class="btn">
+                <span class="btn-text">Check my work</span>
+            </a>
+            <a href="#contact" class="btn">
+                <span class="btn-text">Contact me</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="hero-scroll-wrap">
+        <span class="hero-scroll-line" aria-hidden="true"></span>
+        <a href="#about" class="hero-scroll" aria-label="Nach unten scrollen">
+            <img class="hero-scroll-default" src="assets/icons/Group 25.png" alt="">
+            <img class="hero-scroll-hover" src="assets/icons/Group 26.png" alt="">
+        </a>
+    </div>
+
+    <div class="hero-side">
+        <a class="hero-email" href="mailto:Lukmull@email.com">Lukmull@email.com</a>
+
+        <div class="hero-socials">
+            <a href="#" class="hero-social-link" aria-label="GitHub">
+                <img class="social-default" src="assets/icons/Property 1=GitHub.png" alt="">
+                <img class="social-hover" src="assets/icons/Property 1=GitHub Hover.png" alt="">
+            </a>
+            <a href="#" class="hero-social-link" aria-label="LinkedIn">
+                <img class="social-default" src="assets/icons/Property 1=Linkedin.png" alt="">
+                <img class="social-hover" src="assets/icons/Property 1=Linkedin Hovevr.png" alt="">
+            </a>
+        </div>
+    </div>
+
+    <div class="hero-marquee" role="marquee" aria-label="Available for remote work · Frontend Developer · Based in Munich · Open to work">
+        <div class="hero-marquee-band"></div>
+        <div class="marquee-viewport" #marqueeViewport>
+            <div class="marquee-track" #marqueeTrack>
+                @for (group of marqueeGroups(); track group) {
+                    <div class="marquee-group" [attr.aria-hidden]="group === 0 ? null : true">
+                        <span>Available for remote work</span>
+                        <span class="dot">•</span>
+                        <span>Frontend Developer</span>
+                        <span class="dot">•</span>
+                        <span>Based in Munich</span>
+                        <span class="dot">•</span>
+                        <span>Open to work</span>
+                        <span class="dot">•</span>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

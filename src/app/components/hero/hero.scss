@@ -1,0 +1,362 @@
+/* Frame "01_Hero" aus Figma: 1440 x 900, linearer Verlauf #1C1C1C -> #08463B.
+   Kein max-width mehr: der Hero füllt immer die volle Browserbreite (keine
+   weißen Seitenränder), das Figma-Seitenverhältnis (1440/900 = 8/5) bleibt
+   über aspect-ratio erhalten - auf breiteren Screens wird der Hero dadurch
+   proportional höher statt links/rechts leer zu bleiben. */
+.hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1440 / 900;
+    overflow: hidden;
+
+    background: linear-gradient(110deg,
+            #1c1c1c 0%,
+            #08463b 100%);
+    color: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 24px;
+}
+
+/* Eyebrow + Headline sind fertige Grafiken aus public/assets/icons
+   ("Frontend Developer.png" / "Lukas Müller.png") statt nachgebauter Texte. */
+.hero-eyebrow {
+    display: block;
+    width: clamp(220px, 28vw, 424px);
+    height: auto;
+    margin: 0 0 clamp(12px, 2vw, 24px);
+}
+
+.hero-title {
+    margin: 0 0 clamp(24px, 4vw, 48px);
+}
+
+.hero-title img {
+    display: block;
+    width: clamp(320px, 48vw, 742px);
+    height: auto;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* Beide Buttons sind transparente Outline-Buttons (kein gefüllter Zustand):
+   normal weiße Umrandung/Text, im Hover wechseln Rand + Text weich zu Teal. */
+.btn {
+    position: relative;
+    overflow: hidden;
+    font-family: 'Karla', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    text-decoration: none;
+    transition: color 200ms ease, border-color 200ms ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+    color: #35d6c0;
+    border-color: #35d6c0;
+}
+
+/* Text-Hover-Animation: Button-Größe/Border/Position/Border-Farbe bleiben
+   unverändert - nur der Text (eigener Wrapper ".btn-text") bewegt sich.
+   Ablauf (einmalig pro Hover, danach bleibt der Text stehen):
+   1. Text läuft nach links aus dem Button heraus (0.4s)
+   2. Button bleibt leer (Pause ca. 0.4s)
+   3. Text kommt von rechts wieder herein (0.8s), bleibt dann stehen. */
+.btn-text {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.btn:hover .btn-text {
+    animation-name: btn-text-cycle;
+    animation-duration: 1.6s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}
+
+@keyframes btn-text-cycle {
+    0% {
+        transform: translateX(0);
+        animation-timing-function: ease-in;
+    }
+
+    25% {
+        /* Text vollständig links herausgelaufen (0 -> 25% von 1.6s = 0.4s) */
+        transform: translateX(-130%);
+    }
+
+    50% {
+        /* Button bleibt leer (25% -> 50% von 1.6s = 0.4s Pause) */
+        transform: translateX(-130%);
+        animation-timing-function: ease-out;
+    }
+
+    50.01% {
+        /* unsichtbarer Sprung auf die rechte Seite, Button weiterhin leer */
+        transform: translateX(130%);
+    }
+
+    100% {
+        /* Text läuft von rechts wieder rein (50.01% -> 100% von 1.6s = 0.8s) */
+        transform: translateX(0);
+    }
+}
+
+/* Scroll-Indikator unten links: vertikale Linie + "Group 25.png" (Default,
+   Outline) / "Group 26.png" (Hover, gefüllt), wie beim Logo im Header per
+   Opacity-Wechsel getauscht. */
+.hero-scroll-wrap {
+    position: absolute;
+    left: clamp(16px, 4vw, 56px);
+    bottom: clamp(40px, 8vw, 88px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.hero-scroll-line {
+    width: 1px;
+    height: clamp(32px, 6vw, 64px);
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.hero-scroll {
+    position: relative;
+    display: block;
+    width: clamp(28px, 3vw, 40px);
+    aspect-ratio: 30 / 48;
+}
+
+.hero-scroll-default,
+.hero-scroll-hover {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 150ms ease;
+}
+
+.hero-scroll-hover {
+    opacity: 0;
+}
+
+.hero-scroll:hover .hero-scroll-default {
+    opacity: 0;
+}
+
+.hero-scroll:hover .hero-scroll-hover {
+    opacity: 1;
+}
+
+/* Email + Social Icons rechts, vertikal zentriert */
+
+.hero-side {
+    position: absolute;
+    right: clamp(16px, 3vw, 40px);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.hero-email {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.hero-socials {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Die Hover-Icons ("... Hover.png") sind breiter exportiert (44x32 statt
+   32x32) als die Default-Icons - beide werden daher in einer gemeinsamen,
+   auf die Hover-Größe bemessenen Box zentriert übereinandergelegt. */
+.hero-social-link {
+    position: relative;
+    display: block;
+    width: 44px;
+    height: 32px;
+}
+
+.social-default,
+.social-hover {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 150ms ease;
+}
+
+.social-hover {
+    opacity: 0;
+}
+
+.hero-social-link:hover .social-default {
+    opacity: 0;
+}
+
+.hero-social-link:hover .social-hover {
+    opacity: 1;
+}
+
+/* Laufband unten: Die Vorlagen "11. Marquee.png" / "Property 1=Variant3.png"
+   sind beide nur statische Einzelbild-Snapshots (die Schräge der PNG setzt
+   sich beim Aneinanderreihen NICHT nahtlos fort, und der Text bricht mitten
+   im Wort ab ("...Open" statt "Open to work")). Für eine wirklich sprungfreie
+   Endlos-Animation wird der graue Balken daher per CSS nachgebaut - Farbe
+   (#373737) und Neigung (-3°) 1:1 aus der PNG abgemessen, Design/Text/Schrift
+   unverändert (gleiche Phrasen, gleiche Fira-Code/Teal-Optik wie bisher). */
+.hero-marquee {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 15.56%;
+    /* 140 / 900 (Figma-Referenzmaß) */
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Rein dekorativ, FEST, niemals animiert - unverändert. */
+.hero-marquee-band {
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    top: 50%;
+    height: 44%;
+    /* 61 / 140 (Figma-Referenzmaß) */
+    background: #373737;
+    transform: translateY(-50%) rotate(-3deg);
+}
+
+/* WICHTIG (Ursache des Clipping-Bugs): overflow:hidden UND rotate() müssen
+   auf DEMSELBEN, angemessen schmalen Element stehen (hier: dieser Viewport,
+   Breite = Hero-Breite + Bleed, wie beim Band - NICHT die Breite des Tracks,
+   die mit dem Textinhalt unbegrenzt wächst). CSS clippt Kinder-Inhalte
+   IMMER in den LOKALEN, UNROTIERTEN Koordinaten dieses Elements, bevor die
+   eigene Rotation für die Anzeige angewendet wird. Dadurch bleibt JEDER
+   sichtbare Textpunkt garantiert innerhalb der lokalen 0-62px-Box, ganz
+   gleich wie weit der Track intern verschoben ist.
+   Vorher lag rotate() stattdessen auf ".marquee-track" - also auf dem
+   INHALT (2 Gruppen, ~2243px breit). Ein derart breites Element um seinen
+   eigenen Mittelpunkt zu drehen erzeugt an den Rändern einen Höhenversatz
+   von bis zu Breite/2 * sin(3°) ≈ 58px - weit über die 62px Bandhöhe hinaus.
+   Wörter fern der Trackmitte (z.B. "Based in Munich" in Gruppe 2) wurden
+   dadurch oben/unten abgeschnitten. */
+.marquee-viewport {
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    top: 28%;
+    height: 44%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    transform: rotate(-3deg);
+    transform-origin: center;
+}
+
+/* Reines Verschiebe-Element - KEINE eigene Rotation mehr (die erbt es
+   optisch korrekt vom unrotierten Klick-/Clip-Test des Viewports, s.o.;
+   sichtbar wird das Ergebnis erst durch die Rotation des Viewports selbst
+   angezeigt, exakt wie beim Band). */
+.marquee-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    white-space: nowrap;
+    line-height: 1;
+    animation-name: hero-marquee;
+    animation-duration: 22s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    /* Von Hero (ngAfterViewInit + ResizeObserver) live in px gesetzt =
+       tatsächliche, gemessene Breite EINER ".marquee-group". Der Fallback
+       (50%) greift nur für den allerersten Frame, bevor JS läuft. */
+    --marquee-group-width: 50%;
+
+    /* Typografie 1:1 aus Figma-Referenz ("Frame 26.png"): Karla, 400,
+       32px/120%, 0% letter-spacing, #3DCFB6 - keine Schätzung mehr. */
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: 0;
+    color: #3dcfb6;
+    padding: 0;
+}
+
+.marquee-group {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+    flex-shrink: 0;
+    padding-right: 56px;
+    /* gleicher Abstand zwischen den Gruppen wie zwischen den Phrasen selbst */
+}
+
+.marquee-group .dot {
+    color: #3dcfb6;
+}
+
+/* Bewegt sich exakt um die Breite EINER Gruppe (--marquee-group-width, live
+   per JS gemessen - siehe hero.ts) statt pauschal "-50%". Da Gruppe 2 direkt
+   nach Gruppe 1 folgt (kein Track-Gap, s.o.), landet Gruppe 2 dadurch immer
+   pixelgenau dort, wo Gruppe 1 gestartet ist - unabhängig von Textumbruch,
+   Zoomstufe oder responsiver Breitenänderung. */
+@keyframes hero-marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(-1 * var(--marquee-group-width)));
+    }
+}
+
+/* Mobile: Seitenspalte und Scroll-Indikator würden auf schmalen Screens
+   den Fließtext überlagern, daher werden sie ab 700px ausgeblendet. */
+@media (max-width: 700px) {
+    .hero-side {
+        display: none;
+    }
+
+    .hero-scroll {
+        display: none;
+    }
+}
