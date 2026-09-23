@@ -125,3 +125,13 @@
     width: 32px;
     height: 32px;
 }
+
+/* Hover: Text blendet von leicht grau zu weiß über, Icon bleibt unverändert */
+.about-me-highlights span {
+    color: #cccccc;
+    transition: color 300ms ease;
+}
+
+.about-me-highlights li:hover span {
+    color: #ffffff;
+}
