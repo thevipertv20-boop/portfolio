@@ -1,0 +1,129 @@
+/* Hintergrund wie About-me (#1c1c1c). Das Figma-Asset "19. Skill set
+   Background" liefert nur den türkisen Schein am linken Rand und wird
+   deshalb links angeheftet statt flächig gestreckt. */
+:host {
+    display: block;
+    background:
+        url('/assets/images/19. Skill set Background.png') left bottom / auto 100% no-repeat,
+        #1c1c1c;
+}
+
+/* Maße aus dem Figma-Desktop-Frame (1440px): links Technologies + Box
+   (520px), rechts Icon-Raster 4 x 104px, gleiche Außenkanten wie About-me. */
+.skills {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1224px;
+    margin-inline: auto;
+    padding: 80px 0 96px;
+    color: #ffffff;
+}
+
+.skills-content {
+    flex: 0 0 520px;
+}
+
+.skills-eyebrow {
+    display: block;
+    margin-bottom: 20px;
+    font-family: 'Karla', sans-serif;
+    font-size: 24px;
+    line-height: 1.2;
+    color: #3dcfb6;
+}
+
+/* Skill-Set-Box: Maße aus Figma-Asset "Frame 354" (520x503) */
+.skills-box {
+    padding: 24px 32px 32px;
+    border: 1px solid #3dcfb6;
+    border-radius: 24px;
+    background: rgba(61, 207, 182, 0.1);
+}
+
+.skills-box-title {
+    margin: 0 0 32px;
+    font-family: 'Fira Code', monospace;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 1.2;
+    color: #3dcfb6;
+}
+
+.skills-box-text {
+    margin: 0 0 32px;
+    font-family: 'Karla', sans-serif;
+    font-size: 18px;
+    line-height: 1.2;
+    text-align: justify;
+}
+
+.skills-box-subtitle {
+    margin: 0 0 16px;
+    font-family: 'Fira Code', monospace;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+.skills-box-subtitle span {
+    color: #3dcfb6;
+}
+
+.skills-box-note {
+    max-width: 300px;
+    margin: 0 0 40px;
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.skills-box-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 122px;
+    height: 48px;
+    border: 1px solid #ffffff;
+    border-radius: 24px;
+    color: #ffffff;
+    font-family: 'Karla', sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+/* Icon-Raster: 4 Spalten x 104px, Spaltenabstand 70px (Figma: 174px
+   Mittenabstand), oben bündig mit der Box */
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 104px);
+    column-gap: 70px;
+    row-gap: 40px;
+    margin: 49px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    min-height: 116px;
+    font-family: 'Fira Code', monospace;
+    font-size: 16px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.skill img {
+    display: block;
+    width: 64px;
+    height: 64px;
+}
+
+/* Asset mit eingebauter Beschriftung füllt die ganze Zelle (104x116) */
+.skill img.skill-full {
+    width: 104px;
+    height: 116px;
+}

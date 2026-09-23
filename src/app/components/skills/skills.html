@@ -1,0 +1,38 @@
+<section class="skills" id="skills">
+    <div class="skills-content">
+        <span class="skills-eyebrow">Technologies</span>
+
+        <div class="skills-box">
+            <h2 class="skills-box-title">Skill Set</h2>
+
+            <p class="skills-box-text">
+                A short introduction of your skills. Highlight your experience of using different front-end
+                technologies and emphasise your openness to learning and adapting to new technologies. Show how
+                important it is for you to keep up with the rapid changes in web development.
+            </p>
+
+            <h3 class="skills-box-subtitle">You need <span>another skill?</span></h3>
+
+            <p class="skills-box-note">
+                Feel free to contact me. I look forward to expanding on my previous knowledge.
+            </p>
+
+            <a href="#contact" class="skills-box-button">Let's Talk</a>
+        </div>
+    </div>
+
+    <ul class="skill-grid">
+        @for (skill of skills; track skill.name) {
+            @if (skill.labelInImage) {
+                <li class="skill">
+                    <img class="skill-full" [src]="skill.icon" [alt]="skill.name">
+                </li>
+            } @else {
+                <li class="skill">
+                    <img [src]="skill.icon" alt="">
+                    <span>{{ skill.name }}</span>
+                </li>
+            }
+        }
+    </ul>
+</section>
