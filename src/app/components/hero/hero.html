@@ -8,16 +8,16 @@
 
         <div class="hero-actions">
             <a href="#projects" class="btn">
-                <span class="btn-text">Check my work</span>
+                <span class="btn-text">{{ t().hero.checkMyWork }}</span>
             </a>
             <a href="#contact" class="btn">
-                <span class="btn-text">Contact me</span>
+                <span class="btn-text">{{ t().hero.contactMe }}</span>
             </a>
         </div>
     </div>
 
     <div class="hero-scroll-wrap">
-        <a href="#about" class="hero-scroll" aria-label="Nach unten scrollen">
+        <a href="#about" class="hero-scroll" [attr.aria-label]="t().hero.scrollDown">
             <img class="hero-scroll-default" src="assets/icons/Group 25.png" alt="">
             <img class="hero-scroll-hover" src="assets/icons/Group 26.png" alt="">
             <span class="hero-scroll-arrow" aria-hidden="true"></span>
@@ -41,19 +41,15 @@
 
 </section>
 
-<div class="hero-marquee" role="marquee" aria-label="Available for remote work · Frontend Developer · Based in Munich · Open to work">
+<div class="hero-marquee" role="marquee" [attr.aria-label]="t().hero.marquee.join(' · ')">
     <div class="marquee-viewport" #marqueeViewport>
         <div class="marquee-track" #marqueeTrack>
             @for (group of marqueeGroups(); track group) {
                 <div class="marquee-group" [attr.aria-hidden]="group === 0 ? null : true">
-                    <span>Available for remote work</span>
-                    <span class="dot">•</span>
-                    <span>Frontend Developer</span>
-                    <span class="dot">•</span>
-                    <span>Based in Munich</span>
-                    <span class="dot">•</span>
-                    <span>Open to work</span>
-                    <span class="dot">•</span>
+                    @for (item of t().hero.marquee; track $index) {
+                        <span>{{ item }}</span>
+                        <span class="dot">•</span>
+                    }
                 </div>
             }
         </div>

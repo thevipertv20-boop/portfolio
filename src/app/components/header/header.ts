@@ -1,4 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LanguageService } from '../../i18n/language.service';
+import { Language } from '../../i18n/translations';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,12 @@ import { Component, signal } from '@angular/core';
   styleUrl: './header.scss'
 })
 export class Header {
-  language = signal<'EN' | 'DE'>('EN');
+  private readonly languageService = inject(LanguageService);
 
-  setLanguage(language: 'EN' | 'DE'): void {
-    this.language.set(language);
+  language = this.languageService.language;
+  t = this.languageService.t;
+
+  setLanguage(language: Language): void {
+    this.languageService.setLanguage(language);
   }
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LanguageService } from '../../i18n/language.service';
 
 interface Skill {
   name: string;
@@ -14,6 +15,8 @@ interface Skill {
   templateUrl: './skills.html',
 })
 export class Skills {
+  protected readonly t = inject(LanguageService).t;
+
   /* Reihenfolge wie im Figma-Design-Frame: 4 Spalten x 3 Reihen */
   protected readonly skills: Skill[] = [
     { name: 'HTML', icon: 'assets/icons/HTML.png', labelInImage: true },

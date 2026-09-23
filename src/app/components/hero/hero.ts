@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, ViewChild, inject, signal } from '@angular/core';
+import { LanguageService } from '../../i18n/language.service';
 
 @Component({
   imports: [],
@@ -15,6 +16,8 @@ export class Hero implements AfterViewInit, OnDestroy {
   // Monitoren) immer mindestens eine volle Gruppenbreite über den sichtbaren
   // ".marquee-viewport" hinausragt - siehe updateMarquee() unten.
   protected readonly marqueeGroups = signal<number[]>([0, 1]);
+
+  protected readonly t = inject(LanguageService).t;
 
   private readonly ngZone = inject(NgZone);
   private resizeObserver?: ResizeObserver;
@@ -59,11 +62,17 @@ export class Hero implements AfterViewInit, OnDestroy {
     // Reagiert auf jede Änderung der sichtbaren Viewport-Breite (Fenster-
     // Resize, Zoom, anderer Monitor). Die Breite einer Gruppe selbst ändert
     // sich dabei nicht (fixe px-Schriftgröße), daher kein Beobachtungs-Loop.
+    // Zusätzlich wird die erste Gruppe beobachtet: beim Sprachwechsel ändert
+    // sich ihre Textbreite und die Animationsdistanz muss neu gemessen werden.
     // ResizeObserver-Callbacks laufen außerhalb der Angular-Zone - ohne
     // ngZone.run() würde die Signal-Änderung zwar berechnet, aber nie einen
     // Re-Render auslösen (kein "toter" Code, aber unsichtbar für den Nutzer).
     this.resizeObserver = new ResizeObserver(() => this.ngZone.run(updateMarquee));
     this.resizeObserver.observe(viewport);
+    const firstGroup = track.querySelector<HTMLElement>('.marquee-group');
+    if (firstGroup) {
+      this.resizeObserver.observe(firstGroup);
+    }
   }
 
   ngOnDestroy(): void {

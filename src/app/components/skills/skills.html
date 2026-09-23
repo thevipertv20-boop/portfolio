@@ -1,23 +1,19 @@
 <section class="skills" id="skills">
     <div class="skills-content">
-        <span class="skills-eyebrow">Technologies</span>
+        <span class="skills-eyebrow">{{ t().skills.eyebrow }}</span>
 
         <div class="skills-box">
-            <h2 class="skills-box-title">Skill Set</h2>
+            <h2 class="skills-box-title">{{ t().skills.title }}</h2>
 
-            <p class="skills-box-text">
-                A short introduction of your skills. Highlight your experience of using different front-end
-                technologies and emphasise your openness to learning and adapting to new technologies. Show how
-                important it is for you to keep up with the rapid changes in web development.
-            </p>
+            <p class="skills-box-text">{{ t().skills.text }}</p>
 
-            <h3 class="skills-box-subtitle">You need <span>another skill?</span></h3>
+            <h3 class="skills-box-subtitle">
+                {{ t().skills.subtitleStart }} <span>{{ t().skills.subtitleHighlight }}</span>
+            </h3>
 
-            <p class="skills-box-note">
-                Feel free to contact me. I look forward to expanding on my previous knowledge.
-            </p>
+            <p class="skills-box-note">{{ t().skills.note }}</p>
 
-            <a href="#contact" class="skills-box-button">Let's Talk</a>
+            <a href="#contact" class="skills-box-button">{{ t().skills.letsTalk }}</a>
         </div>
     </div>
 
