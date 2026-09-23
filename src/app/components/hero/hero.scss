@@ -288,6 +288,9 @@
 
 .social-hover {
     opacity: 0;
+    width: 137.5%;
+    /* 44 / 32 - Hover-PNG enthält rechts zusätzlich den grünen Punkt;
+       Icon bleibt links bündig in Originalgröße, Punkt ragt nach rechts raus */
 }
 
 .hero-social-link:hover .social-default {
