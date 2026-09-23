@@ -1,10 +1,49 @@
 
-.header {
-    width: 100%;
-    height: 90px;
+/* Header ist der obere 90/900-Streifen desselben 1440x900-Figma-Frames wie
+   der Hero (siehe --hero-frame-width in styles.scss und die Erklärung in
+   hero.scss) - Breite/Höhe leiten sich aus derselben Variable ab, damit
+   beide immer exakt zusammenpassen und der komplette Frame ohne vertikale
+   Scrollbar in den Viewport passt. margin-inline: auto zentriert den
+   Header, falls die Variable schmaler als der Viewport ausfällt.
+   Damit dabei keine schwarzen/leeren Seitenränder neben dem (ggf.
+   schmaleren) Header sichtbar werden, sitzt der Verlauf auf einem
+   :host::before-Pseudo-Element, das bewusst per "width:100vw" +
+   "left:50%/translateX(-50%)" aus der Header-Box ausbricht und immer die
+   komplette Fensterbreite füllt (gleiches Prinzip wie bei ".hero").
+   BUGFIX (EN/DE-Umschalter war unsichtbar): ".language-switch"/".language"
+   haben (anders als ".logo" und die "nav-links a", die beide selbst
+   position:relative besitzen) kein eigenes "position" - ohne z-index landet
+   das positionierte ::before-Pseudo-Element in der CSS-Stapelreihenfolge
+   NACH (also über) diesen unpositionierten Geschwistern und deckt sie ab.
+   Fix: :host bekommt einen eigenen Stacking-Context (position + z-index),
+   ::before darin explizit z-index:-1 - dadurch liegt es garantiert hinter
+   dem GESAMTEN Header-Inhalt, unabhängig davon ob einzelne Kind-Elemente
+   selbst "position" gesetzt haben oder nicht. */
+:host {
+    display: block;
+    position: relative;
+    z-index: 0;
+}
+
+:host::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    z-index: -1;
     background: linear-gradient(110deg,
             #1c1c1c 0%,
             #073f38 100%);
+}
+
+.header {
+    width: var(--hero-frame-width);
+    height: calc(var(--hero-frame-width) * 0.0625);
+    /* 90 / 1440 */
+    margin-inline: auto;
     color: #ffffff;
 }
 
@@ -27,9 +66,12 @@
 
 /* EN / DE */
 
+/* Figma-Messung (01_Hero.png): Switch bei x=96, Navbar-Zentrierung ergibt
+   rechnerisch x≈100 - 4px Korrektur, ohne Logo/Navbar anzufassen. */
 .language-switch {
     display: flex;
     align-items: center;
+    margin-left: -4px;
 
     border: 1px solid #35d6c0;
     border-radius: 20px;
@@ -62,10 +104,20 @@
 
 /* Navigation */
 
+/* Figma-Messung: "About me"->"Skills" 27px, "Skills"->"Projects" 28px -
+   unterschiedliche Werte, daher kein einheitliches "gap" mehr, sondern
+   gezielte margin-left je Link. */
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 28px;
+}
+
+.nav-links a:nth-child(2) {
+    margin-left: 27px;
+}
+
+.nav-links a.active-link {
+    margin-left: 28px;
 }
 
 .nav-links a {

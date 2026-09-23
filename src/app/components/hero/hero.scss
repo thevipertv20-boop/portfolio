@@ -1,17 +1,119 @@
 /* Frame "01_Hero" aus Figma: 1440 x 900, linearer Verlauf #1C1C1C -> #08463B.
-   Kein max-width mehr: der Hero füllt immer die volle Browserbreite (keine
-   weißen Seitenränder), das Figma-Seitenverhältnis (1440/900 = 8/5) bleibt
-   über aspect-ratio erhalten - auf breiteren Screens wird der Hero dadurch
-   proportional höher statt links/rechts leer zu bleiben. */
-.hero {
+   URSACHE der vertikalen Scrollbar (behoben): Vorherige Versionen haben die
+   Hero-Breite ausschließlich aus 100vw abgeleitet ("volle Browserbreite")
+   und die Höhe daraus per aspect-ratio berechnet. Das ignoriert die
+   VERFÜGBARE Höhe (100vh) komplett - bei jedem Fenster, das (bezogen auf
+   das 1440x900-Verhältnis von Header+Hero zusammen) relativ BREITER als
+   hoch ist, wurde der Hero dadurch zwangsläufig höher als der sichtbare
+   Viewport (klassisches Problem: reines "Breite -> Höhe"-Scaling kennt keine
+   Obergrenze durch die Fensterhöhe).
+   Fix: Header + Hero leiten Breite/Höhe beide aus einer gemeinsamen Variable
+   ab (--hero-frame-width, siehe styles.scss): "min(100vw, 100vh * 1.6)" -
+   die Breite wird also durch die KLEINERE der beiden Grenzen bestimmt (nie
+   breiter als der Viewport, aber auch nie so breit, dass Header+Hero (im
+   festen 1.6:1-Verhältnis) höher als der Viewport würden). Der Hero füllt
+   dadurch weiterhin die volle Browserbreite, SOLANGE der Viewport relativ
+   hoch/schmal genug ist (wie bisher); erst auf sehr breiten/flachen
+   Fenstern wird er schmaler (zentriert, margin-inline:auto) statt eine
+   Scrollbar zu erzwingen - ohne overflow-Hack und ohne die 1440x900-Relation
+   zu verlieren.
+   Der Hero selbst ist der untere 810/900-Anteil dieses Frames (900 - 90px
+   Header = 810, siehe header.scss), daher height: Breite * (810/1440).
+   Left/Right Lateral, Marquee und Scroll-Indikator sind alle % relativ zum
+   Hero und skalieren dadurch unverändert korrekt mit. */
+/* Der Hero selbst (Inhalt/Skalierung, s.o.) bleibt bei --hero-frame-width
+   und kann dadurch auf sehr breiten/flachen Fenstern schmaler als der
+   Viewport werden (Right Lateral/Left Indicator/Marquee bleiben davon
+   unberührt - alles weiterhin % relativ zu ".hero"). Damit dabei KEINE
+   schwarzen/leeren Seitenränder sichtbar werden, sitzt der Verlauf nicht
+   mehr direkt auf ".hero", sondern auf einem :host::before-Pseudo-Element:
+   Es bricht bewusst aus der (ggf. schmaleren) ".hero"-Box aus und füllt
+   per "width:100vw" + "left:50%/translateX(-50%)" IMMER die komplette
+   Fensterbreite - unabhängig von --hero-frame-width. Da es ein Kind von
+   :host ist (nicht von ".hero"), wird es auch nicht von dessen
+   "overflow:hidden" abgeschnitten.
+   :host bekommt einen eigenen Stacking-Context (position + z-index),
+   ::before darin explizit z-index:-1 - dadurch liegt es garantiert hinter
+   dem gesamten Hero-Inhalt, unabhängig davon ob dessen Kind-Elemente
+   selbst "position" gesetzt haben (siehe analoger EN/DE-Bugfix in
+   header.scss, wo das Fehlen von z-index den Header-Inhalt verdeckt hat). */
+/* Explizite Höhe (= dieselbe Formel wie ".hero") nötig, damit sich
+   Prozentwerte von ":host::after" (Marquee-Bande, s.u.) korrekt darauf
+   beziehen können - ohne das wäre die Höhe "auto" (nur durch Inhalt
+   bestimmt), und Prozent-Höhen von Kindern/Pseudo-Elementen lösen sich
+   gegen eine "auto"-Höhe nicht auf. */
+:host {
+    display: block;
     position: relative;
-    width: 100%;
-    aspect-ratio: 1440 / 900;
-    overflow: hidden;
+    z-index: 0;
+    height: calc(var(--hero-frame-width) * 0.5625);
+}
 
+:host::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    z-index: -2;
     background: linear-gradient(110deg,
             #1c1c1c 0%,
             #08463b 100%);
+}
+
+/* Marquee-Bande als :host-Pseudo-Element statt als Kind von ".hero":
+   ".hero" ist bewusst auf die (bei breiten/flachen Fenstern durch die
+   Fensterhöhe limitierte) Figma-Breite begrenzt ("overflow:hidden") - als
+   Kind von ".hero" konnte die Bande dadurch nie über dessen eigene Breite
+   hinausreichen, egal wie viel Bleed sie bekam. Als :host-Pseudo-Element
+   (Geschwister von ".hero", nicht dessen Nachfahre) ist sie von diesem
+   overflow:hidden nicht betroffen und kann per "width:100vw" +
+   "left:50%/translateX(-50%)" (gleiches Prinzip wie der Hintergrund oben)
+   IMMER die komplette Fensterbreite abdecken, unabhängig von der
+   Hero-Breite. Rotation (-3deg) und Höhe bleiben wie zuvor (Figma-Maß,
+   44% von 17.284% der Hero-Höhe = ca. 61,6px bei 1440px-Referenz).
+   "bottom" ist bewusst KEIN Prozentwert, sondern direkt aus der Geometrie
+   berechnet: Bei einer 3°-Rotation wandert die halbe Bandbreite um
+   (Breite/2)*sin(3°) nach unten - da die Breite jetzt "100vw" ist (nicht
+   mehr an die Hero-Höhe gekoppelt), muss der nötige Abstand zur Kante
+   ebenfalls in vw ausgedrückt werden (50vw * sin(3°) ≈ 2,6168vw), sonst
+   reicht der Abstand auf sehr breiten/flachen Fenstern nicht aus und
+   ".hero"s vertikale Kante (via "overflow:hidden" weiter oben in ".hero"
+   selbst nicht mehr relevant, aber die eigene Rotation würde sonst über
+   den Hero-Boden hinausragen) schneidet die Ecken sichtbar ab - plus 15px
+   Sicherheitsabstand. */
+:host::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%) rotate(-3deg);
+    bottom: calc(2.6168vw + 15px);
+    height: 7.605%;
+    /* 44% von 17.284% der Hero-Höhe (siehe .hero-marquee) */
+    background: #373737;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* overflow:hidden wieder aktiv (Ursache der vertikalen Scrollbar): die
+   3°-rotierte ".hero-marquee-band" ragt durch die Rotation minimal (< 1px
+   Layout-Box, aber sichtbar im Paint) über die Unterkante von ".hero"
+   hinaus - ohne Begrenzung wurde das über "body{overflow-y:auto}" zu einer
+   echten Scrollbar. ".hero-marquee-band" liegt seit der Größenkorrektur auf
+   Figma-Maß (siehe unten) mit deutlichem Abstand INNERHALB der linken/
+   rechten Kante von ".hero" - overflow:hidden schneidet hier also nichts
+   Horizontales ab, nur den minimalen vertikalen Rotations-Überstand. */
+.hero {
+    position: relative;
+    width: var(--hero-frame-width);
+    height: calc(var(--hero-frame-width) * 0.5625);
+    /* 810 / 1440 (900 - 90px Header, siehe header.scss) */
+    margin-inline: auto;
+    overflow: hidden;
+
     color: #ffffff;
 
     display: flex;
@@ -29,12 +131,18 @@
 }
 
 /* Eyebrow + Headline sind fertige Grafiken aus public/assets/icons
-   ("Frontend Developer.png" / "Lukas Müller.png") statt nachgebauter Texte. */
+   ("Frontend Developer.png" / "Lukas Müller.png") statt nachgebauter Texte.
+   Figma-Messung (01_Hero.png): beide Bilder erscheinen dort in nativer
+   Auflösung (424x39 / 741x92) - die alten vw-Werte (28vw/48vw) blieben bei
+   1440px Breite unter dem clamp-Maximum (403,2px/691,2px) und verkleinerten
+   die Bilder dadurch ungewollt. vw-Koeffizient erhöht, damit bei 1440px
+   zuverlässig das Maximum (=Zielgröße) erreicht wird; Abstand Eyebrow->Titel
+   ebenso von gemessenen 27px übernommen (max von 24 auf 27). */
 .hero-eyebrow {
     display: block;
-    width: clamp(220px, 28vw, 424px);
+    width: clamp(220px, 30vw, 424px);
     height: auto;
-    margin: 0 0 clamp(12px, 2vw, 24px);
+    margin: 0 0 clamp(12px, 2vw, 27px);
 }
 
 .hero-title {
@@ -43,7 +151,7 @@
 
 .hero-title img {
     display: block;
-    width: clamp(320px, 48vw, 742px);
+    width: clamp(320px, 52vw, 741px);
     height: auto;
 }
 
@@ -51,7 +159,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 16px;
+    gap: 48px;
+    /* Figma-Messung: 48px zwischen den Buttons (war 16px) */
 }
 
 /* Beide Buttons sind transparente Outline-Buttons (kein gefüllter Zustand):
@@ -77,76 +186,88 @@
     border-color: #35d6c0;
 }
 
-/* Text-Hover-Animation: Button-Größe/Border/Position/Border-Farbe bleiben
-   unverändert - nur der Text (eigener Wrapper ".btn-text") bewegt sich.
-   Ablauf (einmalig pro Hover, danach bleibt der Text stehen):
-   1. Text läuft nach links aus dem Button heraus (0.4s)
-   2. Button bleibt leer (Pause ca. 0.4s)
-   3. Text kommt von rechts wieder herein (0.8s), bleibt dann stehen. */
+/* Text-Hover-Animation: echter Durchlauf-/Marquee-Effekt (wie das große
+   Marquee unten, nur klein im Button) - Button-Größe/Border/Position/
+   Hover-Farben bleiben unverändert, ".btn" clippt den Text an seinen
+   Rändern (schon vorhandenes "overflow: hidden" oben in dieser Regel).
+   Läuft AUSSCHLIESSLICH während des Hovers, kein Zurückfahren zur Mitte:
+   - Ohne Hover: Text steht still an seiner normalen Ausgangsposition,
+     keine Animation.
+   - Hover: ".btn:hover .btn-text" aktiviert "btn-text-marquee" - der Text
+     fährt von rechts außerhalb des Buttons hinein, durchquert ihn nach
+     links und verlässt ihn komplett auf der linken Seite; da beide
+     Endpunkte (150% / -150%) bereits außerhalb des sichtbaren
+     (overflow:hidden) Bereichs liegen, ist der Sprung zurück auf den
+     Startpunkt beim Wiederholen unsichtbar - der Text kommt optisch immer
+     wieder neu von rechts, kein sichtbares Zurückspringen. "linear" (statt
+     ease-in-out) für eine gleichmäßige Durchlaufgeschwindigkeit wie bei
+     einem echten Laufband.
+   - Verlassen: Sobald ":hover" endet, entfällt "animation" sofort, die
+     Basis-Regel (translateX(0), kein "animation") gilt wieder - der Text
+     wird unmittelbar an seiner normalen Ausgangsposition angezeigt.
+   Da ".btn:hover .btn-text" pro Button einzeln greift (jeder Button hat
+   seinen eigenen ".btn-text"-Wrapper und eigenen :hover-Zustand),
+   funktionieren "Check my work" und "Contact me" komplett unabhängig
+   voneinander. */
 .btn-text {
     display: inline-block;
     white-space: nowrap;
+    transform: translateX(0);
 }
 
 .btn:hover .btn-text {
-    animation-name: btn-text-cycle;
-    animation-duration: 1.6s;
-    animation-iteration-count: 1;
-    animation-fill-mode: both;
+    animation: btn-text-marquee 2s linear infinite;
 }
 
-@keyframes btn-text-cycle {
+@keyframes btn-text-marquee {
     0% {
-        transform: translateX(0);
-        animation-timing-function: ease-in;
-    }
-
-    25% {
-        /* Text vollständig links herausgelaufen (0 -> 25% von 1.6s = 0.4s) */
-        transform: translateX(-130%);
-    }
-
-    50% {
-        /* Button bleibt leer (25% -> 50% von 1.6s = 0.4s Pause) */
-        transform: translateX(-130%);
-        animation-timing-function: ease-out;
-    }
-
-    50.01% {
-        /* unsichtbarer Sprung auf die rechte Seite, Button weiterhin leer */
-        transform: translateX(130%);
+        transform: translateX(150%);
     }
 
     100% {
-        /* Text läuft von rechts wieder rein (50.01% -> 100% von 1.6s = 0.8s) */
-        transform: translateX(0);
+        transform: translateX(-150%);
     }
 }
 
-/* Scroll-Indikator unten links: vertikale Linie + "Group 25.png" (Default,
-   Outline) / "Group 26.png" (Hover, gefüllt), wie beim Logo im Header per
-   Opacity-Wechsel getauscht. */
+/* Scroll-Indikator unten links: Button ("Group 25.png" Default/Outline,
+   "Group 26.png" Hover/gefüllt, wie beim Logo im Header per Opacity-Wechsel
+   getauscht) oben, darunter die vertikale Linie - 1:1 nach Figma-Inspect
+   ("Left Lateral"-Gruppe, bezogen auf den 1440x900 Hero-Frame):
+   links 96px, oben 588px, Gesamthöhe 312px, 24px Abstand Button->Linie,
+   Button/Linie mittig auf derselben X-Achse. 588 + 312 = 900, die Gruppe
+   endet also exakt am unteren Hero-Rand (bottom: 0 statt top-Wert).
+   Alle Maße als %-Werte relativ zum Hero (position:relative, feste
+   Seitenverhältnis-Höhe) - dadurch skaliert der komplette Indikator
+   proportional mit dem Hero-Frame statt sich an vw/Viewport zu orientieren. */
 .hero-scroll-wrap {
     position: absolute;
-    left: clamp(16px, 4vw, 56px);
-    bottom: clamp(40px, 8vw, 88px);
+    left: 6.6667%;
+    /* 96 / 1440 */
+    bottom: 0;
+    width: 2.0833%;
+    /* 30 / 1440 - Breite des Buttons, Linie zentriert sich darunter ein */
+    height: 38.5185%;
+    /* 312 / 810 - Basis korrigiert: ".hero" ist seit dem Scrollbar-Fix nur
+       noch 810px hoch (900 - 90px Header), nicht mehr 900px */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
-}
-
-.hero-scroll-line {
-    width: 1px;
-    height: clamp(32px, 6vw, 64px);
-    background: rgba(255, 255, 255, 0.4);
+    gap: 7.6923%;
+    /* 24 / 312 - Zeilen-Gap bezieht sich auf die eigene (Wrap-)Höhe */
 }
 
 .hero-scroll {
     position: relative;
     display: block;
-    width: clamp(28px, 3vw, 40px);
+    width: 100%;
     aspect-ratio: 30 / 48;
+}
+
+.hero-scroll-line {
+    width: 1px;
+    height: 76.9231%;
+    /* 240 / 312 - läuft deutlich unter dem Button weiter */
+    background: rgba(255, 255, 255, 0.4);
 }
 
 .hero-scroll-default,
@@ -159,8 +280,36 @@
     transition: opacity 150ms ease;
 }
 
+/* "Group 25.png" (30x48px) enthält Umrandung UND Pfeil in einem einzigen,
+   flachen Bild - ein CSS-Element kann davon nicht nur einen Teilbereich
+   bewegen. Per Pixelanalyse gemessen: der weiße Pfeil sitzt bei x11-18/
+   y17-30, die Umrandung ist links/rechts (x0-1/x28-29) durchgehend und in
+   der Mitte (x1-28) von y10-37 komplett hohl (Kreisbögen nur an den Enden,
+   y0-9 und y38-47). Lösung ohne neues Icon: ".hero-scroll-default" bekommt
+   per clip-path ein rechteckiges "Loch" genau an der Pfeil-Stelle (mit
+   Sicherheitsabstand x9-20/y15-32, bleibt innerhalb der hohlen Zone) - die
+   Umrandung bleibt dadurch vollständig sichtbar UND vollständig statisch,
+   nur der eingebettete Pfeil verschwindet aus diesem (jetzt eigenständig
+   animierten) Bild. ".hero-scroll-hover" bleibt unangetastet (volles Bild,
+   wie bisher nur beim Hover eingeblendet). */
+.hero-scroll-default {
+    clip-path: polygon(evenodd,
+            0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%,
+            30% 31.25%, 70% 31.25%, 70% 68.75%, 30% 68.75%, 30% 31.25%);
+}
+
+/* "Group 26.png" (Hover-Zustand) hat denselben Umrandungs-Umriss, aber
+   einen EIGENEN eingebetteten Pfeil an anderer Stelle (per Pixelanalyse:
+   x11-18/y25-38, Sicherheitsabstand x9-20/y23-40). Da der animierte Pfeil
+   (s.u.) jetzt bei :hover WEITERLÄUFT statt auszublenden, braucht auch
+   dieses Bild dasselbe Loch - sonst wäre bei Hover zusätzlich zum
+   animierten Pfeil noch ein zweiter, statischer Pfeil aus diesem Bild
+   sichtbar. */
 .hero-scroll-hover {
     opacity: 0;
+    clip-path: polygon(evenodd,
+            0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%,
+            30% 47.9167%, 70% 47.9167%, 70% 83.3333%, 30% 83.3333%, 30% 47.9167%);
 }
 
 .hero-scroll:hover .hero-scroll-default {
@@ -171,17 +320,79 @@
     opacity: 1;
 }
 
-/* Email + Social Icons rechts, vertikal zentriert */
+/* Der Pfeil selbst: ein aus DEMSELBEN Bild ausgeschnittener Ausschnitt
+   (per background-position/-size, Formel: position% = cropStart /
+   (Bildgröße - Ausschnittgröße); size% = Bildgröße / Ausschnittgröße),
+   positioniert exakt über dem oben ausgeschnittenen Loch (30%/31.25%,
+   40%x37.5% - identisch mit der clip-path-Lücke, daher keine sichtbare
+   Verschiebung im Ruhezustand). Nur DIESES kleine Element bewegt sich -
+   Umrandung und Linie bleiben komplett unberührt. Der sichtbare Ausschnitt
+   ist so klein/eng zugeschnitten, dass die Umrandung (die 8-9px weiter
+   außen liegt) dabei nie ins Bild geraten kann.
+   LÄUFT IMMER, auch bei :hover (kein "animation-play-state: paused" und
+   keine :hover-Opacity-Regel hier - beides würde die Animation anhalten
+   bzw. unsichtbar machen; es gibt keine solche Regel (mehr) für dieses
+   Element). */
+.hero-scroll-arrow {
+    position: absolute;
+    left: 30%;
+    top: 31.25%;
+    width: 40%;
+    height: 37.5%;
+    background-image: url('/assets/icons/Group 25.png');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 250% 266.6667%;
+    animation: hero-scroll-arrow-move 2.4s ease-in-out infinite;
+}
 
+/* Bewegungsablauf (per Vorgabe): oben -> langsam runter -> kurz halten ->
+   langsam hoch -> Wiederholung. ±27.778% der EIGENEN Höhe des Ausschnitts
+   entspricht ±5px im 48px-Referenzraster - der Pfeil bleibt damit exakt
+   zwischen y10 und y37 (der hohlen Zone der Umrandung), verlässt sie nie.
+   Rein vertikal (translateY), keine horizontale Bewegung. */
+@keyframes hero-scroll-arrow-move {
+    0% {
+        transform: translateY(-27.778%);
+    }
+
+    45%,
+    55% {
+        transform: translateY(27.778%);
+    }
+
+    100% {
+        transform: translateY(-27.778%);
+    }
+}
+
+/* Rechte Spalte ("Right Lateral"): E-Mail, GitHub-/LinkedIn-Icons und eine
+   vertikale Linie darunter. Höhe/Abstände (480px, 24px-Gap, bottom:0) sind
+   1:1 nach Figma-Inspect und stimmen mit der Pixelmessung von 01_Hero.png
+   exakt überein (E-Mail-Start y=422 gemessen vs. 420 berechnet).
+   HORIZONTAL korrigiert: Figma "left:1312px/width:96px" ist die
+   Auto-Layout-BOUNDING-BOX inkl. unsichtbarer Klick-/Hitbox-Fläche - die
+   tatsächlich SICHTBAREN Pixel (E-Mail/Icons/Linie) liegen in 01_Hero.png
+   bei x=1315-1340 (Zentrum ≈1327,5), NICHT bei dem aus right:32px+Breite 96
+   zentriert berechneten Zentrum (≈1360). "width:96px" bleibt daher wie in
+   Figma erhalten, nur "right" wurde so angepasst, dass der zentrierte
+   Inhalt am tatsächlich gemessenen Zentrum landet: right_edge = 1327,5 +
+   96/2 = 1375,5 -> right = 1440-1375,5 = 64,5px.
+   Alle Maße als %-Werte relativ zum Hero. */
 .hero-side {
     position: absolute;
-    right: clamp(16px, 3vw, 40px);
-    top: 50%;
-    transform: translateY(-50%);
+    right: 4.4792%;
+    /* 64,5 / 1440 - korrigiert auf gemessenes Zentrum x=1327,5 */
+    bottom: 0;
+    width: 6.6667%;
+    /* 96 / 1440 (Figma Auto-Layout-Breite, unverändert) */
+    height: 53.3333%;
+    /* 480 / 900 */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 5%;
+    /* 24 / 480 (Höhe von .hero-side) */
 }
 
 .hero-email {
@@ -195,20 +406,27 @@
     white-space: nowrap;
 }
 
-.hero-socials {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-/* Die Hover-Icons ("... Hover.png") sind breiter exportiert (44x32 statt
-   32x32) als die Default-Icons - beide werden daher in einer gemeinsamen,
-   auf die Hover-Größe bemessenen Box zentriert übereinandergelegt. */
+/* Icon-Box auf die in 01_Hero.png gemessene sichtbare Icon-Größe (26x25/26px,
+   entspricht dem nativen 32x32-Default-Icon-Canvas) korrigiert - vorher
+   44x32 (Hover-Asset-Canvas), was die Icons deutlich zu groß gerendert hat.
+   Die Hover-Grafik (44x32) wird dadurch beim Hover per object-fit:contain
+   etwas kleiner/mit Rand in diese Box eingepasst statt sie auszufüllen -
+   akzeptierter Kompromiss, da Figma nur die Default-Größe vorgibt. */
 .hero-social-link {
     position: relative;
     display: block;
-    width: 44px;
-    height: 32px;
+    width: 33.3333%;
+    /* 32 / 96 (Breite von .hero-side) */
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+}
+
+.hero-side-line {
+    width: 2px;
+    height: 38.9583%;
+    /* 187 / 480 (Höhe von .hero-side) */
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.5);
 }
 
 .social-default,
@@ -240,27 +458,35 @@
    Endlos-Animation wird der graue Balken daher per CSS nachgebaut - Farbe
    (#373737) und Neigung (-3°) 1:1 aus der PNG abgemessen, Design/Text/Schrift
    unverändert (gleiche Phrasen, gleiche Fira-Code/Teal-Optik wie bisher). */
+/* Enthält den Textloop (".marquee-viewport") - jetzt als Geschwister von
+   ".hero" (im Template direkt nach "</section>"), NICHT mehr dessen Kind,
+   aus demselben Grund wie beim Hintergrund/der Bande (":host::before"/
+   ":host::after"): ".hero" ist bewusst auf die (bei breiten/flachen
+   Fenstern durch die Fensterhöhe limitierte) Figma-Breite begrenzt
+   ("overflow:hidden") - als Kind von ".hero" hätte der Lauftext dadurch nie
+   über dessen eigene Breite hinaus laufen können, selbst wenn ".marquee-
+   viewport" selbst "100vw" breit wäre.
+   "left:50%/width:100vw/translateX(-50%)" (statt "left:0;right:0" relativ
+   zu ".hero") holt denselben "immer volle Fensterbreite"-Effekt wie bei
+   Hintergrund und Bande. "bottom"/"height" bleiben unverändert (jetzt
+   relativ zu ":host", das exakt dieselbe Höhe wie ".hero" hat - siehe
+   ":host { height: ... }" oben - daher identische Position wie zuvor).
+   ".marquee-viewport"/".marquee-track"/".marquee-group" und die komplette
+   Animation (hero.ts, ResizeObserver, Keyframes) bleiben unverändert - die
+   dort bereits vorhandene Logik misst live die tatsächliche Breite von
+   ".marquee-viewport" und legt automatisch genug Textgruppen nach, sobald
+   dieser Container (durch diesen Fix) tatsächlich 100vw breit ist. */
 .hero-marquee {
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
     bottom: 0;
-    height: 15.56%;
-    /* 140 / 900 (Figma-Referenzmaß) */
-    overflow: hidden;
+    height: 17.284%;
+    /* 140 / 810 - Basis korrigiert: ".hero" ist seit dem Scrollbar-Fix nur
+       noch 810px hoch (900 - 90px Header), nicht mehr 900px (derselbe
+       Basis-Fehler wie bei ".hero-scroll-wrap", siehe dort) */
     pointer-events: none;
-}
-
-/* Rein dekorativ, FEST, niemals animiert - unverändert. */
-.hero-marquee-band {
-    position: absolute;
-    left: -10%;
-    right: -10%;
-    top: 50%;
-    height: 44%;
-    /* 61 / 140 (Figma-Referenzmaß) */
-    background: #373737;
-    transform: translateY(-50%) rotate(-3deg);
 }
 
 /* WICHTIG (Ursache des Clipping-Bugs): overflow:hidden UND rotate() müssen
@@ -281,7 +507,27 @@
     position: absolute;
     left: -10%;
     right: -10%;
-    top: 28%;
+    top: calc(55.992% - 2.6168vw - 15px);
+    /* KORREKTUR: Die Bande (":host::after") positioniert sich über
+       "bottom: calc(2.6168vw + 15px)" (100vw-unabhängiger
+       Rotations-Clearance-Fix) - eine Mischung aus vw (Fensterbreite) und
+       px, NICHT proportional zur Hero-Höhe. Dieser Container (".hero-
+       marquee") und damit ein reiner %-Wert für "top" skalieren dagegen
+       ausschließlich mit der Hero-Höhe. Eine feste %-Zahl (vorher 18,3697%,
+       nur bei exakt 1440px Referenzbreite korrekt) kann die beiden
+       Bezugsgrößen daher nicht bei jeder Fenstergröße/jedem Seiten-
+       verhältnis exakt zur Deckung bringen (bei einem breiten/flachen
+       Testfenster z.B. 12px Versatz).
+       Exakt hergeleitet aus "gewünschte Position = Containerhöhe -
+       Bande-bottom - Bandendicke" (in px), umgestellt auf einen
+       CSS-Ausdruck relativ zu diesem Container (dessen Höhe = 17,284% der
+       Hero-Höhe): "top" muss "(Ch - Bh)/Ch" als Prozentsatz MINUS denselben
+       vw/px-Anteil wie bei der Bande sein - exakt (Ch-Bh)/Ch = 55,992%
+       (Ch = Containerhöhe, Bh = Bandendicke = eigene Höhe 44% = identisch
+       mit der Bandendicke). Dadurch bleibt der Text bei JEDER
+       Fenstergröße exakt auf derselben Mittelachse wie die Bande, ohne
+       dass Bande, deren Breite/Position/Rotation oder dieser Container
+       selbst verändert werden mussten. */
     height: 44%;
     overflow: hidden;
     display: flex;

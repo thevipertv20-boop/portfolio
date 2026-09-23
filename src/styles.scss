@@ -36,4 +36,22 @@ body {
 body {
     overflow-x: hidden;
     font-family: 'Karla', sans-serif;
+    /* Deckt evtl. Rand neben dem gebremsten Header/Hero (siehe --hero-frame-
+       width unten) mit der dunkelsten Verlaufsfarbe ab, statt weiß. */
+    background: #1c1c1c;
+}
+
+:root {
+    /* Header + Hero bilden zusammen EINEN Figma-Frame (1440x900, Verhältnis
+       1.6:1). Damit dieser Frame IMMER vollständig in den Viewport passt
+       (keine vertikale Scrollbar, kein overflow-Hack), wird seine Breite
+       durch die verfügbare Höhe UND die Fensterbreite begrenzt:
+       - min(100vw, ...): nie breiter als der Viewport (keine horizontale
+         Scrollbar)
+       - min(..., 100vh * 1.6): nie höher als der Viewport - bei 1.6:1
+         Verhältnis entspricht "Breite" genau "Höhe * 1.6"
+       Header (header.scss) und Hero (hero.scss) leiten Breite/Höhe beide
+       aus dieser einen Variable ab, damit sie synchron/proportional
+       bleiben (Header = obere 90/900 des Frames, Hero = restliche 810/900). */
+    --hero-frame-width: min(100vw, calc(100vh * 1.6));
 }
