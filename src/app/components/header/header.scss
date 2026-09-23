@@ -1,24 +1,5 @@
 
-/* Header ist der obere 90/900-Streifen desselben 1440x900-Figma-Frames wie
-   der Hero (siehe --hero-frame-width in styles.scss und die Erklärung in
-   hero.scss) - Breite/Höhe leiten sich aus derselben Variable ab, damit
-   beide immer exakt zusammenpassen und der komplette Frame ohne vertikale
-   Scrollbar in den Viewport passt. margin-inline: auto zentriert den
-   Header, falls die Variable schmaler als der Viewport ausfällt.
-   Damit dabei keine schwarzen/leeren Seitenränder neben dem (ggf.
-   schmaleren) Header sichtbar werden, sitzt der Verlauf auf einem
-   :host::before-Pseudo-Element, das bewusst per "width:100vw" +
-   "left:50%/translateX(-50%)" aus der Header-Box ausbricht und immer die
-   komplette Fensterbreite füllt (gleiches Prinzip wie bei ".hero").
-   BUGFIX (EN/DE-Umschalter war unsichtbar): ".language-switch"/".language"
-   haben (anders als ".logo" und die "nav-links a", die beide selbst
-   position:relative besitzen) kein eigenes "position" - ohne z-index landet
-   das positionierte ::before-Pseudo-Element in der CSS-Stapelreihenfolge
-   NACH (also über) diesen unpositionierten Geschwistern und deckt sie ab.
-   Fix: :host bekommt einen eigenen Stacking-Context (position + z-index),
-   ::before darin explizit z-index:-1 - dadurch liegt es garantiert hinter
-   dem GESAMTEN Header-Inhalt, unabhängig davon ob einzelne Kind-Elemente
-   selbst "position" gesetzt haben oder nicht. */
+
 :host {
     display: block;
     position: relative;
@@ -42,7 +23,6 @@
 .header {
     width: var(--hero-frame-width);
     height: calc(var(--hero-frame-width) * 0.0625);
-    /* 90 / 1440 */
     margin-inline: auto;
     color: #ffffff;
 }
@@ -56,18 +36,12 @@
     justify-content: space-between;
 }
 
-/* Linke Seite */
-
 .nav-left {
     display: flex;
     align-items: center;
     gap: 28px;
 }
 
-/* EN / DE */
-
-/* Figma-Messung (01_Hero.png): Switch bei x=96, Navbar-Zentrierung ergibt
-   rechnerisch x≈100 - 4px Korrektur, ohne Logo/Navbar anzufassen. */
 .language-switch {
     display: flex;
     align-items: center;
@@ -85,14 +59,10 @@
 .language {
     border: none;
     background: transparent;
-
     color: #35d6c0;
-
     font-family: monospace;
     font-size: 14px;
-
     padding: 5px 12px;
-
     cursor: pointer;
 }
 
@@ -102,11 +72,6 @@
     border-radius: 20px;
 }
 
-/* Navigation */
-
-/* Figma-Messung: "About me"->"Skills" 27px, "Skills"->"Projects" 28px -
-   unterschiedliche Werte, daher kein einheitliches "gap" mehr, sondern
-   gezielte margin-left je Link. */
 .nav-links {
     display: flex;
     align-items: center;
@@ -122,39 +87,28 @@
 
 .nav-links a {
     position: relative;
-
     color: #ffffff;
     text-decoration: none;
-
     font-family: monospace;
     font-size: 18px;
-
     transition:
         color 150ms ease,
         transform 150ms ease;
 }
 
 .nav-links a:hover {
-    color: #35d6c0;
     transform: translateY(-2px);
 }
-
-/* Aktiver Menüpunkt */
-
 
 .nav-links a::after {
     content: '';
     position: absolute;
-
     width: 6px;
     height: 6px;
-
     background: #35d6c0;
     border-radius: 50%;
-
     left: 50%;
     bottom: -12px;
-
     transform: translateX(-50%) scale(0);
     transition: transform 150ms ease;
 }
@@ -164,25 +118,16 @@
 }
 
 
-
-/* Logo */
-
-/* Maße 1:1 aus Figma ("4. Logo", Hug contents 132.14px, Abstand oben 25px) */
 .logo {
     position: relative;
     display: block;
     align-self: flex-start;
-    /* eigener Abstand oben, unabhängig von der Header-Höhe */
     margin-top: 25px;
     width: 133px;
     height: 50px;
     overflow: hidden;
 }
 
-/* "4. Logo.png" ist ein Sprite: oben das gefüllte Logo, unten die Outline-
-   Version, außenrum ein mitexportierter lila Rahmen. object-fit: none +
-   object-position (in px) blendet exakt nur den Logo-Inhalt ein – ohne den
-   Rahmen und ohne jede Skalierung, da das Bild nie vergrößert/verkleinert wird. */
 .logo-normal,
 .logo-hover {
     position: absolute;
@@ -208,8 +153,6 @@
 .logo:hover .logo-hover {
     opacity: 1;
 }
-
-/* Mobile */
 
 @media (max-width: 700px) {
     .navbar {
