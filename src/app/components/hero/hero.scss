@@ -116,18 +116,10 @@
     transform: translateX(0);
 }
 
+/* Keyframes "btn-text-marquee" liegen global in styles.scss, damit auch der
+   "Let's Talk"-Button (skills.scss) dieselbe Animation nutzt. */
 .btn:hover .btn-text {
     animation: btn-text-marquee 2s linear infinite;
-}
-
-@keyframes btn-text-marquee {
-    0% {
-        transform: translateX(150%);
-    }
-
-    100% {
-        transform: translateX(-150%);
-    }
 }
 
 

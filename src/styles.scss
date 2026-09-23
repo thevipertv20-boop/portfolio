@@ -55,3 +55,17 @@ body {
        bleiben (Header = obere 90/900 des Frames, Hero = restliche 810/900). */
     --hero-frame-width: min(100vw, calc(100vh * 1.6));
 }
+
+/* Button-Hover: Text läuft als Endlosschleife von rechts nach links durch
+   den Button (overflow: hidden am Button). Global, damit Hero-Buttons
+   (hero.scss) und der "Let's Talk"-Button (skills.scss) dieselbe
+   Animation verwenden. */
+@keyframes btn-text-marquee {
+    0% {
+        transform: translateX(150%);
+    }
+
+    100% {
+        transform: translateX(-150%);
+    }
+}

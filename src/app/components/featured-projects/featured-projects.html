@@ -1,0 +1,92 @@
+<section class="featured-projects" id="projects">
+    <img class="featured-projects-eyebrow" src="assets/icons/Frame 170.png" alt="Portfolio">
+
+    <h2 class="featured-projects-title">{{ t().featuredProjects.title }}</h2>
+
+    <p class="featured-projects-text">{{ t().featuredProjects.text }}</p>
+
+    <ul class="project-list">
+        @for (project of projects; track project.id) {
+            <li class="project" [class.project-has-preview]="project.image" [class.project-interactive]="project.details"
+                [attr.role]="project.details ? 'button' : null"
+                [attr.tabindex]="project.details ? 0 : null"
+                [attr.aria-haspopup]="project.details ? 'dialog' : null"
+                (click)="openProject(project, $event)"
+                (keydown.enter)="openProject(project, $event)"
+                (keydown.space)="$event.preventDefault(); openProject(project, $event)">
+                <h3 class="project-name">{{ project.name }}</h3>
+                <p class="project-technologies">
+                    @for (technology of project.technologies; track technology; let first = $first) {
+                        @if (!first) {
+                            <span class="project-separator" aria-hidden="true">|</span>
+                        }
+                        <span>{{ technology }}</span>
+                    }
+                </p>
+
+                @if (project.image) {
+                    <div class="project-preview" aria-hidden="true">
+                        <img [src]="project.image" alt="">
+                    </div>
+                }
+            </li>
+        }
+    </ul>
+</section>
+
+@if (selectedProject(); as project) {
+    @if (project.details; as details) {
+        <div class="project-modal-backdrop" (click)="closeOnBackdrop($event)">
+            <article class="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+                <button #closeButton type="button" class="project-modal-close"
+                    [attr.aria-label]="t().featuredProjects.close" (click)="closeProject()">
+                    <img class="icon-default" src="assets/icons/Property 7Default.png" alt="">
+                    <img class="icon-hover" src="assets/icons/Property 8=Hover.png" alt="">
+                </button>
+
+                <div class="project-modal-content">
+                    <span class="project-modal-number">{{ details.number }}</span>
+                    <h2 class="project-modal-title" id="project-modal-title">{{ project.name }}</h2>
+
+                    <h3 class="project-modal-question">{{ t().featuredProjects.aboutQuestion }}</h3>
+                    <p class="project-modal-description">{{ t().featuredProjects.descriptions[project.id] }}</p>
+
+                    <ul class="project-modal-technologies">
+                        @for (technology of details.technologies; track technology.name) {
+                            <li>
+                                @if (technology.icon) {
+                                    <img [src]="technology.icon" alt="">
+                                }
+                                <span>{{ technology.name }}</span>
+                            </li>
+                        }
+                    </ul>
+
+                    <div class="project-modal-buttons">
+                        @if (details.github) {
+                            <a class="project-modal-button" [href]="details.github" target="_blank" rel="noopener">
+                                GitHub <span aria-hidden="true">↗</span>
+                            </a>
+                        }
+                        @if (details.liveTest) {
+                            <a class="project-modal-button" [href]="details.liveTest" target="_blank" rel="noopener">
+                                {{ t().featuredProjects.liveTest }} <span aria-hidden="true">↗</span>
+                            </a>
+                        }
+                    </div>
+                </div>
+
+                @if (project.image) {
+                    <img class="project-modal-image" [src]="project.image" [alt]="project.name">
+                }
+
+                <!-- Weiterschalten folgt, sobald El Pollo Loco interaktiv ist -->
+                <button type="button" class="project-modal-next">
+                    <span>{{ t().featuredProjects.nextProject }}</span>
+                    <img class="icon-default" src="assets/icons/Property 1=right.png" alt="">
+                    <img class="icon-hover" src="assets/icons/Property 2=right Hover.png" alt="">
+                </button>
+            </article>
+        </div>
+    }
+}

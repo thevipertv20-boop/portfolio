@@ -4,8 +4,8 @@ import { LanguageService } from '../../i18n/language.service';
 interface Skill {
   name: string;
   icon: string;
-  /* Asset enthält Icon + Beschriftung (104x116), kein zusätzlicher Text */
-  labelInImage?: boolean;
+  /* Figma-Hover-Popup: Inhalt als vorhandenes Asset */
+  popup?: string;
 }
 
 @Component({
@@ -19,7 +19,7 @@ export class Skills {
 
   /* Reihenfolge wie im Figma-Design-Frame: 4 Spalten x 3 Reihen */
   protected readonly skills: Skill[] = [
-    { name: 'HTML', icon: 'assets/icons/HTML.png', labelInImage: true },
+    { name: 'HTML', icon: 'assets/icons/Frame 130.png' },
     { name: 'CSS', icon: 'assets/icons/Frame 100.png' },
     { name: 'JavaScript', icon: 'assets/icons/Frame 101.png' },
     { name: 'Material Design', icon: 'assets/icons/Frame 102.png' },
@@ -29,6 +29,6 @@ export class Skills {
     { name: 'Git', icon: 'assets/icons/Frame 106.png' },
     { name: 'REST-API', icon: 'assets/icons/Frame 107.png' },
     { name: 'Scrum', icon: 'assets/icons/Frame 108.png' },
-    { name: 'Growth mindset', icon: 'assets/icons/Frame 109.png' },
+    { name: 'Growth mindset', icon: 'assets/icons/Frame 109.png', popup: 'assets/icons/Frame 299.png' },
   ];
 }

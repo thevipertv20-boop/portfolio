@@ -90,6 +90,25 @@
     font-family: 'Karla', sans-serif;
     font-size: 18px;
     text-decoration: none;
+    overflow: hidden;
+    transition: border-color 200ms ease;
+}
+
+/* Hover-Border wie Hero-Buttons (.btn:hover in hero.scss) */
+.skills-box-button:hover {
+    border-color: #35d6c0;
+}
+
+/* Hover wie Hero-Buttons (.btn-text in hero.scss): Text läuft per globaler
+   Animation "btn-text-marquee" (styles.scss) durch den Button. */
+.skills-box-button-text {
+    display: inline-block;
+    white-space: nowrap;
+    transform: translateX(0);
+}
+
+.skills-box-button:hover .skills-box-button-text {
+    animation: btn-text-marquee 2s linear infinite;
 }
 
 /* Icon-Raster: 4 Spalten x 104px, Spaltenabstand 70px (Figma: 174px
@@ -105,6 +124,7 @@
 }
 
 .skill {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -120,10 +140,51 @@
     display: block;
     width: 64px;
     height: 64px;
+    transition: transform 200ms ease;
 }
 
-/* Asset mit eingebauter Beschriftung füllt die ganze Zelle (104x116) */
-.skill img.skill-full {
-    width: 104px;
-    height: 116px;
+/* Hover: nur das Icon wird minimal größer, Beschriftung bleibt unverändert.
+   transform beeinflusst das Grid nicht. */
+.skill > img:hover {
+    transform: scale(1.05);
+}
+
+/* Figma-Hover-Popup (z. B. Growth mindset): weiße Sprechblase über dem
+   Icon, Inhalt = vorhandenes Asset. Absolut positioniert, verschiebt das
+   Grid nicht; erscheint nur beim Hover über das Icon. */
+.skill-popup {
+    position: absolute;
+    bottom: calc(100% + 16px);
+    left: 50%;
+    z-index: 1;
+    padding: 12px 16px;
+    border-radius: 16px;
+    background: #ffffff;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 200ms ease, visibility 200ms ease;
+    pointer-events: none;
+}
+
+/* Pfeil nach unten, zeigt auf das Icon */
+.skill-popup::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border: 8px solid transparent;
+    border-top-color: #ffffff;
+    transform: translateX(-50%);
+}
+
+.skill-popup img {
+    display: block;
+    width: 167px;
+    height: 97px;
+}
+
+.skill > img:hover ~ .skill-popup {
+    opacity: 1;
+    visibility: visible;
 }

@@ -43,6 +43,22 @@ const EN = {
     subtitleHighlight: 'another skill?',
     note: 'Feel free to contact me. I look forward to expanding on my previous knowledge.',
     letsTalk: "Let's Talk",
+    growthPopupAlt: 'I have a special interest in learning: React, Vue.js',
+  },
+  featuredProjects: {
+    title: 'Featured Projects',
+    text: 'Explore a selection of my work here - Interact with projects to see my skills in action.',
+    aboutQuestion: 'What is this project about?',
+    descriptions: {
+      join:
+        'Task manager inspired by the Kanban System. Create and organize tasks using drag and drop ' +
+        'functions, assign users and categories.',
+      elPolloLoco: '',
+      daBubble: '',
+    },
+    liveTest: 'Live Test',
+    nextProject: 'Next project',
+    close: 'Close project',
   },
 };
 
@@ -89,6 +105,22 @@ const DE: Translation = {
     subtitleHighlight: 'ein Skill?',
     note: 'Kontaktiere mich gerne. Ich freue mich darauf, mein bisheriges Wissen zu erweitern.',
     letsTalk: 'Schreib mir',
+    growthPopupAlt: 'Ich habe ein besonderes Interesse am Lernen: React, Vue.js',
+  },
+  featuredProjects: {
+    title: 'Featured Projects',
+    text: 'Entdecke hier eine Auswahl meiner Arbeiten - Interagiere mit den Projekten, um meine Skills in Aktion zu sehen.',
+    aboutQuestion: 'Worum geht es in diesem Projekt?',
+    descriptions: {
+      join:
+        'Aufgabenmanager nach dem Vorbild des Kanban-Systems. Erstelle und organisiere Aufgaben per ' +
+        'Drag and Drop, weise Benutzer und Kategorien zu.',
+      elPolloLoco: '',
+      daBubble: '',
+    },
+    liveTest: 'Live Test',
+    nextProject: 'Nächstes Projekt',
+    close: 'Projekt schließen',
   },
 };
 

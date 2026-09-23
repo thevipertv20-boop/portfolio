@@ -1,0 +1,427 @@
+/* Maße aus dem Figma-Desktop-Frame (1440px, Asset "Portfolio"):
+   Inhalt beginnt bei x = 96px, Projektliste 880 x 327px. */
+:host {
+    display: block;
+    background: #1c1c1c;
+}
+
+.featured-projects {
+    max-width: 1248px;
+    margin-inline: auto;
+    padding: 96px 0;
+    color: #ffffff;
+}
+
+/* Figma-Asset "Frame 170" (Portfolio, 98 x 28) */
+.featured-projects-eyebrow {
+    display: block;
+    width: 98px;
+    height: 28px;
+}
+
+.featured-projects-title {
+    margin: 12px 0 0;
+    font-family: 'Fira Code', monospace;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: #3dcfb6;
+}
+
+.featured-projects-text {
+    width: 456px;
+    margin: 48px 0 0;
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.2;
+    text-align: justify;
+}
+
+/* Drei gleich hohe Zeilen, getrennt durch 1px türkise Linien
+   (Figma: Linien bei 0 / 108 / 217 / 326 → 327px Gesamthöhe) */
+.project-list {
+    width: 880px;
+    margin: 40px 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid #3dcfb6;
+}
+
+.project {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 108px;
+    padding: 0 32px;
+    border-bottom: 1px solid #3dcfb6;
+}
+
+.project-name {
+    margin: 0;
+    font-family: 'Fira Code', monospace;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+/* Technologien mit türkisem "|" dazwischen, Abstand = Leerzeichenbreite */
+.project-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0 0.25em;
+    margin: 0;
+    font-family: 'Karla', sans-serif;
+    font-size: 18px;
+    line-height: 1.2;
+    text-align: right;
+}
+
+.project-separator {
+    color: #3dcfb6;
+}
+
+/* Gemeinsamer Hover für alle Projekte mit Bild: türkiser Hintergrund und
+   Vorschau. Vorschau ist absolut positioniert → keine Layout-Verschiebung. */
+.project-has-preview {
+    position: relative;
+    transition: background-color 300ms ease;
+}
+
+/* Klickbar (Modal) nur mit Projektdetails - vorerst nur Join */
+.project-interactive {
+    cursor: pointer;
+}
+
+.project-has-preview:hover,
+.project-interactive:focus-visible {
+    background-color: rgba(61, 207, 182, 0.2);
+}
+
+.project-interactive:focus-visible {
+    outline: 2px solid #3dcfb6;
+    outline-offset: -2px;
+}
+
+/* Projektbild rechts neben der Liste, dahinter diagonale türkise Streifen
+   (gleiches Muster wie das About-me-Portrait) */
+.project-preview {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 48px);
+    width: 300px;
+    aspect-ratio: 16 / 10;
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: opacity 300ms ease;
+    pointer-events: none;
+}
+
+.project-preview::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg,
+            #3dcfb6 0 1px,
+            transparent 1px 16px);
+}
+
+.project-preview img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 300ms ease;
+}
+
+.project-has-preview:hover .project-preview {
+    opacity: 1;
+}
+
+.project-has-preview:hover .project-preview img {
+    transform: translate(16px, -16px);
+}
+
+/* ---------- Modal ---------- */
+
+/* Über dem Header (z-index 1000), unter dem globalen Cursor-Glow (2000) */
+.project-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    background: rgba(0, 0, 0, 0.8);
+    animation: modal-fade-in 200ms ease;
+}
+
+.project-modal {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    column-gap: 48px;
+    width: min(1100px, 100%);
+    max-height: 100%;
+    overflow-y: auto;
+    padding: 64px 64px 96px;
+    border: 1px solid #3dcfb6;
+    border-radius: 24px;
+    background: #1c1c1c;
+    color: #ffffff;
+}
+
+.project-modal-close,
+.project-modal-next {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.project-modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+}
+
+.project-modal-close img {
+    width: 48px;
+    height: 48px;
+}
+
+/* Icon-Tausch Default ↔ Hover (Figma-Varianten als Assets) */
+.icon-hover,
+.project-modal-close:hover .icon-default,
+.project-modal-close:focus-visible .icon-default,
+.project-modal-next:hover .icon-default,
+.project-modal-next:focus-visible .icon-default {
+    display: none;
+}
+
+.project-modal-close:hover .icon-hover,
+.project-modal-close:focus-visible .icon-hover,
+.project-modal-next:hover .icon-hover,
+.project-modal-next:focus-visible .icon-hover {
+    display: block;
+}
+
+.project-modal-number {
+    display: block;
+    font-family: 'Fira Code', monospace;
+    font-weight: 700;
+    font-size: 88px;
+    line-height: 1;
+    color: #3dcfb6;
+}
+
+.project-modal-title {
+    margin: 16px 0 0;
+    font-family: 'Fira Code', monospace;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.2;
+}
+
+.project-modal-question {
+    margin: 32px 0 0;
+    font-family: 'Karla', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.2;
+    color: #3dcfb6;
+}
+
+.project-modal-description {
+    margin: 16px 0 0;
+    font-family: 'Karla', sans-serif;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.project-modal-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    margin: 32px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.project-modal-technologies li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.project-modal-technologies img {
+    width: 24px;
+    height: 24px;
+}
+
+.project-modal-buttons {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+}
+
+/* Rahmen-Hover wie der Let's-Talk-Button (skills.scss) */
+.project-modal-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 48px;
+    padding: 0 24px;
+    border: 1px solid #ffffff;
+    border-radius: 24px;
+    color: #ffffff;
+    font-family: 'Karla', sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+    transition: border-color 200ms ease, color 200ms ease;
+}
+
+.project-modal-button:hover {
+    border-color: #3dcfb6;
+    color: #3dcfb6;
+}
+
+.project-modal-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+.project-modal-next {
+    position: absolute;
+    right: 64px;
+    bottom: 32px;
+    gap: 8px;
+    font-family: 'Fira Code', monospace;
+    font-size: 18px;
+    transition: color 200ms ease;
+}
+
+.project-modal-next:hover {
+    color: #3dcfb6;
+}
+
+.project-modal-next img {
+    width: 40px;
+    height: 40px;
+}
+
+@keyframes modal-fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+/* Kleinere Bildschirme: Breiten fließend, Technologien unter den Namen */
+@media (max-width: 1280px) {
+    .featured-projects {
+        padding-inline: 32px;
+    }
+
+    /* Rechts neben der Liste ist kein Platz mehr für die Vorschau */
+    .project-preview {
+        display: none;
+    }
+}
+
+@media (max-width: 960px) {
+    .featured-projects-text,
+    .project-list {
+        width: 100%;
+        max-width: 880px;
+    }
+
+    .project-modal {
+        grid-template-columns: 1fr;
+        row-gap: 32px;
+        padding: 64px 32px 96px;
+    }
+
+    .project-modal-image {
+        grid-row: 2;
+    }
+
+    .project-modal-next {
+        right: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .featured-projects {
+        padding: 64px 16px;
+    }
+
+    .featured-projects-title {
+        font-size: 40px;
+    }
+
+    .featured-projects-text {
+        margin-top: 24px;
+        font-size: 16px;
+        text-align: left;
+    }
+
+    .project {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 8px;
+        min-height: 96px;
+        padding: 16px;
+    }
+
+    .project-name {
+        font-size: 20px;
+    }
+
+    .project-technologies {
+        justify-content: flex-start;
+        font-size: 16px;
+        text-align: left;
+    }
+
+    .project-modal-backdrop {
+        padding: 16px;
+    }
+
+    .project-modal {
+        padding: 72px 16px 88px;
+    }
+
+    .project-modal-number {
+        font-size: 56px;
+    }
+
+    .project-modal-title {
+        font-size: 32px;
+    }
+
+    .project-modal-buttons {
+        flex-wrap: wrap;
+    }
+
+    .project-modal-next {
+        right: 16px;
+        bottom: 24px;
+    }
+}

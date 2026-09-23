@@ -13,22 +13,23 @@
 
             <p class="skills-box-note">{{ t().skills.note }}</p>
 
-            <a href="#contact" class="skills-box-button">{{ t().skills.letsTalk }}</a>
+            <a href="#contact" class="skills-box-button">
+                <span class="skills-box-button-text">{{ t().skills.letsTalk }}</span>
+            </a>
         </div>
     </div>
 
     <ul class="skill-grid">
         @for (skill of skills; track skill.name) {
-            @if (skill.labelInImage) {
-                <li class="skill">
-                    <img class="skill-full" [src]="skill.icon" [alt]="skill.name">
-                </li>
-            } @else {
-                <li class="skill">
-                    <img [src]="skill.icon" alt="">
-                    <span>{{ skill.name }}</span>
-                </li>
-            }
+            <li class="skill">
+                <img [src]="skill.icon" alt="">
+                <span>{{ skill.name }}</span>
+                @if (skill.popup) {
+                    <div class="skill-popup">
+                        <img [src]="skill.popup" [alt]="t().skills.growthPopupAlt">
+                    </div>
+                }
+            </li>
         }
     </ul>
 </section>
