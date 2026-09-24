@@ -3,13 +3,11 @@
         <div class="nav-left">
 
             <div class="language-switch">
-                <button class="language" [class.active]="language() === 'EN'" (click)="setLanguage('EN')">
-                    EN
-                </button>
-                <button class="language" [class.active]="language() === 'DE'" (click)="setLanguage('DE')">
-                    DE
-                </button>
-
+                @for (lang of languages; track lang) {
+                    <button class="language" [class.active]="language() === lang" (click)="setLanguage(lang)">
+                        {{ lang }}
+                    </button>
+                }
             </div>
             <div class="nav-links">
                 <a href="#about">{{ t().header.aboutMe }}</a>

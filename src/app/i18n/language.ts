@@ -1,3 +1,6 @@
+export type Language = 'EN' | 'DE';
+
+export const languages: Language[] = ['EN', 'DE'];
 
 export const translations = {
   EN: {

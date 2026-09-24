@@ -1,15 +1,15 @@
-import { Injectable, computed, signal } from '@angular/core';
-import { translations } from './translations';
-
-export type Language = 'EN' | 'DE';
+import { DOCUMENT, Injectable, computed, inject, signal } from '@angular/core';
+import { Language, translations } from './language';
 
 const STORAGE_KEY = 'portfolio-language';
 
 @Injectable({ providedIn: 'root' })
 export class LanguageService {
-  readonly language = signal<Language>(this.loadLanguage());
+  private document = inject(DOCUMENT);
 
-  readonly t = computed(() => translations[this.language()]);
+  language = signal<Language>(this.loadLanguage());
+
+  t = computed(() => translations[this.language()]);
 
   constructor() {
     this.updateHtmlLang();
@@ -22,7 +22,7 @@ export class LanguageService {
   }
 
   private updateHtmlLang(): void {
-    document.documentElement.lang = this.language().toLowerCase();
+    this.document.documentElement.lang = this.language().toLowerCase();
   }
 
   private loadLanguage(): Language {
@@ -37,7 +37,6 @@ export class LanguageService {
   private saveLanguage(language: Language): void {
     try {
       localStorage.setItem(STORAGE_KEY, language);
-    } catch {
-    }
+    } catch {}
   }
 }

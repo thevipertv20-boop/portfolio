@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { Language, LanguageService } from '../../i18n/language.service';
+import { Language, languages } from '../../i18n/language';
+import { LanguageService } from '../../i18n/language.service';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +8,9 @@ import { Language, LanguageService } from '../../i18n/language.service';
   styleUrl: './header.scss'
 })
 export class Header {
-  private readonly languageService = inject(LanguageService);
+  private languageService = inject(LanguageService);
 
+  languages = languages;
   language = this.languageService.language;
   t = this.languageService.t;
 
