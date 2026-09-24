@@ -1,7 +1,3 @@
-/* Figma-Pro-Tip: globaler, weicher türkiser Glow, der dem Cursor folgt
-   (Position via --glow-x/-y aus app.ts). Feste, klick-durchlässige
-   Lichtebene über der Seite; mix-blend-mode: screen hellt nur die dunklen
-   Hintergründe auf, weißer Text bleibt weiß. Kein Einfluss auf das Layout. */
 :host::after {
     content: '';
     position: fixed;

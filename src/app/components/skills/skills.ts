@@ -4,12 +4,10 @@ import { LanguageService } from '../../i18n/language.service';
 interface Skill {
   name: string;
   icon: string;
-  /* Figma-Hover-Popup: Inhalt als vorhandenes Asset */
   popup?: string;
 }
 
 @Component({
-  imports: [],
   selector: 'app-skills',
   styleUrl: './skills.scss',
   templateUrl: './skills.html',
@@ -17,7 +15,6 @@ interface Skill {
 export class Skills {
   protected readonly t = inject(LanguageService).t;
 
-  /* Reihenfolge wie im Figma-Design-Frame: 4 Spalten x 3 Reihen */
   protected readonly skills: Skill[] = [
     { name: 'HTML', icon: 'assets/icons/Frame 130.png' },
     { name: 'CSS', icon: 'assets/icons/Frame 100.png' },

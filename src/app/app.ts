@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, signal } from '@angular/core';
+import { Component, ElementRef, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './components/header/header';
 import { Hero } from './components/hero/hero';
@@ -17,12 +17,8 @@ import { FeaturedProjects } from './components/featured-projects/featured-projec
   },
 })
 export class App {
-  protected readonly title = signal('portfolio');
-
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
 
-  /* Figma-Pro-Tip: globaler Glow folgt dem Cursor über die ganze Seite.
-     Nur CSS-Variablen/Klasse setzen, damit kein Layout neu berechnet wird. */
   protected moveGlow(event: MouseEvent): void {
     const element = this.host.nativeElement;
     element.style.setProperty('--glow-x', `${event.clientX}px`);
@@ -30,7 +26,6 @@ export class App {
     element.classList.add('glow-visible');
   }
 
-  /* Maus verlässt das Fenster: Glow blendet an letzter Position aus */
   protected hideGlow(event: MouseEvent): void {
     if (!event.relatedTarget) {
       this.host.nativeElement.classList.remove('glow-visible');

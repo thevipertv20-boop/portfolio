@@ -6,6 +6,12 @@ describe('Hero', () => {
   let fixture: ComponentFixture<Hero>;
 
   beforeEach(async () => {
+    window.ResizeObserver = class {
+      observe() {}
+      unobserve() {}
+      disconnect() {}
+    };
+
     await TestBed.configureTestingModule({
       imports: [Hero],
     }).compileComponents();

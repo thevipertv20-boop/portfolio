@@ -1,5 +1,3 @@
-/* Maße aus dem Figma-Desktop-Frame (1440px, Asset "Portfolio"):
-   Inhalt beginnt bei x = 96px, Projektliste 880 x 327px. */
 :host {
     display: block;
     background: #1c1c1c;
@@ -12,7 +10,6 @@
     color: #ffffff;
 }
 
-/* Figma-Asset "Frame 170" (Portfolio, 98 x 28) */
 .featured-projects-eyebrow {
     display: block;
     width: 98px;
@@ -39,8 +36,6 @@
     text-align: justify;
 }
 
-/* Drei gleich hohe Zeilen, getrennt durch 1px türkise Linien
-   (Figma: Linien bei 0 / 108 / 217 / 326 → 327px Gesamthöhe) */
 .project-list {
     width: 880px;
     margin: 40px 0 0;
@@ -67,7 +62,6 @@
     line-height: 1.2;
 }
 
-/* Technologien mit türkisem "|" dazwischen, Abstand = Leerzeichenbreite */
 .project-technologies {
     display: flex;
     flex-wrap: wrap;
@@ -84,14 +78,11 @@
     color: #3dcfb6;
 }
 
-/* Gemeinsamer Hover für alle Projekte mit Bild: türkiser Hintergrund und
-   Vorschau. Vorschau ist absolut positioniert → keine Layout-Verschiebung. */
 .project-has-preview {
     position: relative;
     transition: background-color 300ms ease;
 }
 
-/* Klickbar (Modal) nur mit Projektdetails - vorerst nur Join */
 .project-interactive {
     cursor: pointer;
 }
@@ -106,8 +97,6 @@
     outline-offset: -2px;
 }
 
-/* Projektbild rechts neben der Liste, dahinter diagonale türkise Streifen
-   (gleiches Muster wie das About-me-Portrait) */
 .project-preview {
     position: absolute;
     top: 50%;
@@ -146,9 +135,6 @@
     transform: translate(16px, -16px);
 }
 
-/* ---------- Modal ---------- */
-
-/* Über dem Header (z-index 1000), unter dem globalen Cursor-Glow (2000) */
 .project-modal-backdrop {
     position: fixed;
     inset: 0;
@@ -168,6 +154,7 @@
     align-items: center;
     column-gap: 48px;
     width: min(1100px, 100%);
+    min-height: min(640px, 100%);
     max-height: 100%;
     overflow-y: auto;
     padding: 64px 64px 96px;
@@ -200,7 +187,6 @@
     height: 48px;
 }
 
-/* Icon-Tausch Default ↔ Hover (Figma-Varianten als Assets) */
 .icon-hover,
 .project-modal-close:hover .icon-default,
 .project-modal-close:focus-visible .icon-default,
@@ -278,7 +264,6 @@
     margin-top: 40px;
 }
 
-/* Rahmen-Hover wie der Let's-Talk-Button (skills.scss) */
 .project-modal-button {
     display: inline-flex;
     align-items: center;
@@ -332,13 +317,11 @@
     }
 }
 
-/* Kleinere Bildschirme: Breiten fließend, Technologien unter den Namen */
 @media (max-width: 1280px) {
     .featured-projects {
         padding-inline: 32px;
     }
 
-    /* Rechts neben der Liste ist kein Platz mehr für die Vorschau */
     .project-preview {
         display: none;
     }

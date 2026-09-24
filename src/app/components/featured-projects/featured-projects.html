@@ -49,7 +49,9 @@
                     <h2 class="project-modal-title" id="project-modal-title">{{ project.name }}</h2>
 
                     <h3 class="project-modal-question">{{ t().featuredProjects.aboutQuestion }}</h3>
-                    <p class="project-modal-description">{{ t().featuredProjects.descriptions[project.id] }}</p>
+                    @if (t().featuredProjects.descriptions[project.id]) {
+                        <p class="project-modal-description">{{ t().featuredProjects.descriptions[project.id] }}</p>
+                    }
 
                     <ul class="project-modal-technologies">
                         @for (technology of details.technologies; track technology.name) {
@@ -63,16 +65,14 @@
                     </ul>
 
                     <div class="project-modal-buttons">
-                        @if (details.github) {
-                            <a class="project-modal-button" [href]="details.github" target="_blank" rel="noopener">
-                                GitHub <span aria-hidden="true">↗</span>
-                            </a>
-                        }
-                        @if (details.liveTest) {
-                            <a class="project-modal-button" [href]="details.liveTest" target="_blank" rel="noopener">
-                                {{ t().featuredProjects.liveTest }} <span aria-hidden="true">↗</span>
-                            </a>
-                        }
+                        <a class="project-modal-button" [attr.href]="details.github ?? null"
+                            [attr.target]="details.github ? '_blank' : null" rel="noopener">
+                            GitHub <span aria-hidden="true">↗</span>
+                        </a>
+                        <a class="project-modal-button" [attr.href]="details.liveTest ?? null"
+                            [attr.target]="details.liveTest ? '_blank' : null" rel="noopener">
+                            {{ t().featuredProjects.liveTest }} <span aria-hidden="true">↗</span>
+                        </a>
                     </div>
                 </div>
 
@@ -80,7 +80,6 @@
                     <img class="project-modal-image" [src]="project.image" [alt]="project.name">
                 }
 
-                <!-- Weiterschalten folgt, sobald El Pollo Loco interaktiv ist -->
                 <button type="button" class="project-modal-next">
                     <span>{{ t().featuredProjects.nextProject }}</span>
                     <img class="icon-default" src="assets/icons/Property 1=right.png" alt="">

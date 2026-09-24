@@ -29,7 +29,6 @@
     transform: translateX(-50%) rotate(-3deg);
     bottom: calc(2.6168vw + 15px);
     height: 7.605%;
-    /* 44% von 17.284% der Hero-Höhe (siehe .hero-marquee) */
     background: #373737;
     z-index: -1;
     pointer-events: none;
@@ -40,7 +39,6 @@
     position: relative;
     width: var(--hero-frame-width);
     height: calc(var(--hero-frame-width) * 0.5625);
-    /* 810 / 1440 (900 - 90px Header, siehe header.scss) */
     margin-inline: auto;
     overflow: hidden;
 
@@ -83,11 +81,8 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 48px;
-    /* Figma-Messung: 48px zwischen den Buttons (war 16px) */
 }
 
-/* Beide Buttons sind transparente Outline-Buttons (kein gefüllter Zustand):
-   normal weiße Umrandung/Text, im Hover wechseln Rand + Text weich zu Teal. */
 .btn {
     position: relative;
     overflow: hidden;
@@ -116,8 +111,6 @@
     transform: translateX(0);
 }
 
-/* Keyframes "btn-text-marquee" liegen global in styles.scss, damit auch der
-   "Let's Talk"-Button (skills.scss) dieselbe Animation nutzt. */
 .btn:hover .btn-text {
     animation: btn-text-marquee 2s linear infinite;
 }
@@ -126,18 +119,13 @@
 .hero-scroll-wrap {
     position: absolute;
     left: 6.6667%;
-    /* 96 / 1440 */
     bottom: 0;
     width: 2.0833%;
-    /* 30 / 1440 - Breite des Buttons, Linie zentriert sich darunter ein */
     height: 38.5185%;
-    /* 312 / 810 - Basis korrigiert: ".hero" ist seit dem Scrollbar-Fix nur
-       noch 810px hoch (900 - 90px Header), nicht mehr 900px */
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 7.6923%;
-    /* 24 / 312 - Zeilen-Gap bezieht sich auf die eigene (Wrap-)Höhe */
 }
 
 .hero-scroll {
@@ -150,7 +138,6 @@
 .hero-scroll-line {
     width: 1px;
     height: 76.9231%;
-    /* 240 / 312 - läuft deutlich unter dem Button weiter */
     background: rgba(255, 255, 255, 0.4);
 }
 
@@ -221,17 +208,13 @@
 .hero-side {
     position: absolute;
     right: 4.4792%;
-    /* 64,5 / 1440 - korrigiert auf gemessenes Zentrum x=1327,5 */
     bottom: 0;
     width: 6.6667%;
-    /* 96 / 1440 (Figma Auto-Layout-Breite, unverändert) */
     height: 53.3333%;
-    /* 480 / 900 */
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5%;
-    /* 24 / 480 (Höhe von .hero-side) */
 }
 
 .hero-email {
@@ -255,7 +238,6 @@
     position: relative;
     display: block;
     width: 33.3333%;
-    /* 32 / 96 (Breite von .hero-side) */
     aspect-ratio: 1 / 1;
     flex-shrink: 0;
 }
@@ -263,7 +245,6 @@
 .hero-side-line {
     width: 2px;
     height: 38.9583%;
-    /* 187 / 480 (Höhe von .hero-side) */
     flex-shrink: 0;
     background: rgba(255, 255, 255, 0.5);
 }
@@ -281,8 +262,6 @@
 .social-hover {
     opacity: 0;
     width: 137.5%;
-    /* 44 / 32 - Hover-PNG enthält rechts zusätzlich den grünen Punkt;
-       Icon bleibt links bündig in Originalgröße, Punkt ragt nach rechts raus */
 }
 
 .hero-social-link:hover .social-default {
@@ -301,9 +280,6 @@
     transform: translateX(-50%);
     bottom: 0;
     height: 17.284%;
-    /* 140 / 810 - Basis korrigiert: ".hero" ist seit dem Scrollbar-Fix nur
-       noch 810px hoch (900 - 90px Header), nicht mehr 900px (derselbe
-       Basis-Fehler wie bei ".hero-scroll-wrap", siehe dort) */
     pointer-events: none;
 }
 
@@ -353,7 +329,6 @@
     gap: 56px;
     flex-shrink: 0;
     padding-right: 56px;
-    /* gleicher Abstand zwischen den Gruppen wie zwischen den Phrasen selbst */
 }
 
 .marquee-group .dot {

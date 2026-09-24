@@ -1,10 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { LanguageService } from '../../i18n/language.service';
-import { Language } from '../../i18n/translations';
+import { Language, LanguageService } from '../../i18n/language.service';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
   templateUrl: './header.html',
   styleUrl: './header.scss'
 })
