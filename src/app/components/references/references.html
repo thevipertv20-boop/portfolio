@@ -1,0 +1,42 @@
+<section class="references" id="references">
+    <h2 class="references-title">{{ t().references.title }}</h2>
+
+    <div class="references-slider">
+        @for (item of visibleReferences(); track item.position) {
+            <figure class="reference-card" [class.reference-card-active]="item.position === 'active'"
+                [attr.aria-hidden]="item.position === 'active' ? null : 'true'"
+                (click)="item.position === 'previous' ? previous() : item.position === 'next' ? next() : null">
+                @if (item.position === 'active') {
+                    <img class="reference-quote" src="assets/icons/quotes.png" alt="">
+                }
+                <blockquote class="reference-text">{{ t().references.items[item.reference.id].text }}</blockquote>
+                <figcaption class="reference-author">
+                    {{ item.reference.name }} - {{ t().references.items[item.reference.id].role }}
+                </figcaption>
+            </figure>
+        }
+
+        <img class="references-fade" src="assets/icons/Fade Shadow.png" alt="">
+    </div>
+
+    <div class="references-controls">
+        <button type="button" class="references-arrow" [attr.aria-label]="t().references.previous" (click)="previous()">
+            <img class="icon-default" src="assets/icons/Property 2=Left.png" alt="">
+            <img class="icon-hover" src="assets/icons/Property 1=Left hover.png" alt="">
+        </button>
+
+        <div class="references-dots">
+            @for (reference of references; track reference.id; let index = $index) {
+                <button type="button" class="reference-dot" [class.reference-dot-active]="index === activeIndex()"
+                    [attr.aria-label]="t().references.goTo + ' ' + (index + 1)"
+                    [attr.aria-current]="index === activeIndex() ? 'true' : null"
+                    (click)="goTo(index)"></button>
+            }
+        </div>
+
+        <button type="button" class="references-arrow" [attr.aria-label]="t().references.next" (click)="next()">
+            <img class="icon-default" src="assets/icons/Property 1=right.png" alt="">
+            <img class="icon-hover" src="assets/icons/Property 2=right Hover.png" alt="">
+        </button>
+    </div>
+</section>

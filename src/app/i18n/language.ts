@@ -60,6 +60,17 @@ export const translations = {
       nextProject: 'Next project',
       close: 'Close project',
     },
+    references: {
+      title: 'What my colleagues say about me',
+      previous: 'Previous reference',
+      next: 'Next reference',
+      goTo: 'Show reference',
+      items: {
+        reference1: { text: '[Placeholder: reference text 1]', role: '[Role 1]' },
+        reference2: { text: '[Placeholder: reference text 2]', role: '[Role 2]' },
+        reference3: { text: '[Placeholder: reference text 3]', role: '[Role 3]' },
+      },
+    },
   },
   DE: {
     header: {
@@ -118,6 +129,17 @@ export const translations = {
       liveTest: 'Live Test',
       nextProject: 'Nächstes Projekt',
       close: 'Projekt schließen',
+    },
+    references: {
+      title: 'Was meine Kollegen über mich sagen',
+      previous: 'Vorherige Referenz',
+      next: 'Nächste Referenz',
+      goTo: 'Referenz anzeigen',
+      items: {
+        reference1: { text: '[Platzhalter: Referenztext 1]', role: '[Rolle 1]' },
+        reference2: { text: '[Platzhalter: Referenztext 2]', role: '[Rolle 2]' },
+        reference3: { text: '[Platzhalter: Referenztext 3]', role: '[Rolle 3]' },
+      },
     },
   },
 };
