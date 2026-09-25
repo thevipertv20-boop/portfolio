@@ -1,9 +1,10 @@
 <section class="references" id="references">
     <h2 class="references-title">{{ t().references.title }}</h2>
 
-    <div class="references-slider">
+    <div class="references-slider" #slider>
         @for (item of visibleReferences(); track item.position) {
             <figure class="reference-card" [class.reference-card-active]="item.position === 'active'"
+                [class.reference-card-buffer]="item.position === 'farPrevious' || item.position === 'farNext'"
                 [attr.aria-hidden]="item.position === 'active' ? null : 'true'"
                 (click)="item.position === 'previous' ? previous() : item.position === 'next' ? next() : null">
                 @if (item.position === 'active') {

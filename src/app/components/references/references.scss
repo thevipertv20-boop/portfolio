@@ -49,6 +49,10 @@
     transition: background-color 300ms ease, color 300ms ease;
 }
 
+.reference-card-buffer {
+    visibility: hidden;
+}
+
 .reference-card:hover {
     color: #ffffff;
 }
