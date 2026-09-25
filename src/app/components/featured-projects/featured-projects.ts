@@ -51,11 +51,11 @@ export class FeaturedProjects {
       details: {
         number: '01',
         technologies: [
-          { name: 'CSS', icon: 'assets/icons/Frame 100.png' },
-          { name: 'HTML', icon: 'assets/icons/Frame 130.png' },
-          { name: 'Firebase' },
-          { name: 'Angular', icon: 'assets/icons/Frame 104.png' },
-          { name: 'TypeScript', icon: 'assets/icons/Frame 103.png' },
+          { name: 'CSS', icon: 'assets/icons/21. Icons - Overlay1.png' },
+          { name: 'HTML', icon: 'assets/icons/24. Icons - Overlay (3).png' },
+          { name: 'Firebase', icon: 'assets/icons/21. Icons - Overlay.png' },
+          { name: 'Angular', icon: 'assets/icons/23. Icons - Overlay (2).png' },
+          { name: 'TypeScript', icon: 'assets/icons/22. Icons - Overlay (1).png' },
         ],
         github: '#',
         liveTest: '#',
@@ -69,9 +69,9 @@ export class FeaturedProjects {
       details: {
         number: '02',
         technologies: [
-          { name: 'HTML', icon: 'assets/icons/Frame 130.png' },
-          { name: 'CSS', icon: 'assets/icons/Frame 100.png' },
-          { name: 'JavaScript', icon: 'assets/icons/Frame 101.png' },
+          { name: 'HTML', icon: 'assets/icons/24. Icons - Overlay (3).png' },
+          { name: 'CSS', icon: 'assets/icons/21. Icons - Overlay1.png' },
+          { name: 'JavaScript', icon: 'assets/icons/Property 11=Javascript.png' },
         ],
       },
     },
@@ -83,9 +83,9 @@ export class FeaturedProjects {
       details: {
         number: '03',
         technologies: [
-          { name: 'Angular', icon: 'assets/icons/Frame 104.png' },
-          { name: 'Firebase' },
-          { name: 'TypeScript', icon: 'assets/icons/Frame 103.png' },
+          { name: 'Angular', icon: 'assets/icons/23. Icons - Overlay (2).png' },
+          { name: 'Firebase', icon: 'assets/icons/21. Icons - Overlay.png' },
+          { name: 'TypeScript', icon: 'assets/icons/22. Icons - Overlay (1).png' },
         ],
       },
     },
