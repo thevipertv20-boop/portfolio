@@ -152,21 +152,3 @@
 .logo:hover .logo-hover {
     opacity: 1;
 }
-
-@media (max-width: 700px) {
-    .navbar {
-        width: calc(100% - 24px);
-    }
-
-    .nav-left {
-        gap: 14px;
-    }
-
-    .nav-links {
-        gap: 14px;
-    }
-
-    .nav-links a {
-        font-size: 14px;
-    }
-}
