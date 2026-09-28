@@ -371,14 +371,3 @@
         transform: translateX(calc(-1 * var(--marquee-group-width)));
     }
 }
-
-
-@media (max-width: 700px) {
-    .hero-side {
-        display: none;
-    }
-
-    .hero-scroll {
-        display: none;
-    }
-}
