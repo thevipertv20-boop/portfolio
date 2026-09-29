@@ -1,0 +1,71 @@
+<section class="contact" id="contact">
+    <div class="contact-info">
+        <span class="contact-eyebrow">{{ t().contact.eyebrow }}</span>
+        <h2 class="contact-title">{{ t().contact.title }}</h2>
+        <h3 class="contact-subtitle">{{ t().contact.subtitle }}</h3>
+        <p class="contact-text">{{ t().contact.text }}</p>
+        <p class="contact-cta">
+            {{ t().contact.ctaQuestion }}
+            <a href="#contact-name" class="contact-cta-link" (click)="focusName($event)">{{ t().contact.ctaLink }}</a>
+        </p>
+    </div>
+
+    <form class="contact-form" [formGroup]="form" (ngSubmit)="submit()" (input)="resetStatus()" novalidate>
+        <label class="contact-field" [class.contact-field-error]="errors().name">
+            <span class="contact-label">{{ t().contact.form.nameLabel }}</span>
+            <input #nameInput id="contact-name" class="contact-input" type="text" formControlName="name"
+                autocomplete="name"
+                [placeholder]="errors().name ? t().contact.errors.nameRequired : t().contact.form.namePlaceholder"
+                [attr.aria-invalid]="!!errors().name" (blur)="validateField('name')">
+        </label>
+
+        <label class="contact-field" [class.contact-field-error]="errors().email">
+            <span class="contact-label">{{ t().contact.form.emailLabel }}</span>
+            <input class="contact-input" type="email" formControlName="email" autocomplete="email"
+                [placeholder]="errors().email === 'required' ? t().contact.errors.emailRequired : t().contact.form.emailPlaceholder"
+                [attr.aria-invalid]="!!errors().email" (blur)="validateField('email')">
+            @if (errors().email === 'invalid') {
+                <span class="contact-error contact-field-message">{{ t().contact.errors.emailInvalid }}</span>
+            }
+        </label>
+
+        <label class="contact-field" [class.contact-field-error]="errors().message">
+            <span class="contact-label">{{ t().contact.form.messageLabel }}</span>
+            <textarea class="contact-input contact-textarea" formControlName="message" rows="1"
+                [placeholder]="errors().message ? t().contact.errors.messageRequired : t().contact.form.messagePlaceholder"
+                [attr.aria-invalid]="!!errors().message" (blur)="validateField('message')"></textarea>
+        </label>
+
+        <div class="contact-privacy">
+            <label class="contact-privacy-label">
+                <span class="contact-checkbox-box">
+                    <input class="contact-checkbox" type="checkbox" formControlName="privacy"
+                        [attr.aria-invalid]="privacyError()" (change)="validatePrivacy()" (blur)="validatePrivacy()">
+                    <span class="contact-checkmark"></span>
+                </span>
+                <span>
+                    {{ t().contact.form.privacyBefore }}
+                    <a class="contact-privacy-link" [routerLink]="privacyPolicyRoute">{{ t().contact.form.privacyLink }}</a>
+                    {{ t().contact.form.privacyAfter }}
+                </span>
+            </label>
+            @if (privacyError()) {
+                <span class="contact-error contact-privacy-message">{{ t().contact.errors.privacyRequired }}</span>
+            }
+        </div>
+
+        <button type="submit" class="contact-submit" [disabled]="form.invalid || status() === 'sending'">
+            <span class="contact-submit-text">{{ t().contact.form.submit }}</span>
+        </button>
+
+        <p class="contact-feedback" aria-live="polite"
+            [class.contact-feedback-success]="status() === 'success'"
+            [class.contact-feedback-error]="status() === 'error'">
+            @if (status() === 'success') {
+                {{ t().contact.feedback.success }}
+            } @else if (status() === 'error') {
+                {{ t().contact.feedback.error }}
+            }
+        </p>
+    </form>
+</section>

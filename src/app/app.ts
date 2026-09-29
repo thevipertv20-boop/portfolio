@@ -6,9 +6,10 @@ import { AboutMe } from './components/about-me/about-me';
 import { Skills } from './components/skills/skills';
 import { FeaturedProjects } from './components/featured-projects/featured-projects';
 import { References } from './components/references/references';
+import { Contact } from './components/contact/contact';
 
 @Component({
-  imports: [RouterOutlet, Header, Hero, AboutMe, Skills, FeaturedProjects, References],
+  imports: [RouterOutlet, Header, Hero, AboutMe, Skills, FeaturedProjects, References, Contact],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
