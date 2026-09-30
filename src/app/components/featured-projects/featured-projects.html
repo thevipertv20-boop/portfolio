@@ -67,11 +67,11 @@
                     <div class="project-modal-buttons">
                         <a class="project-modal-button" [attr.href]="details.github ?? null"
                             [attr.target]="details.github ? '_blank' : null" rel="noopener">
-                            GitHub <span aria-hidden="true">↗</span>
+                            GitHub <img src="assets/icons/arrow_outward.png" alt="">
                         </a>
                         <a class="project-modal-button" [attr.href]="details.liveTest ?? null"
                             [attr.target]="details.liveTest ? '_blank' : null" rel="noopener">
-                            {{ t().featuredProjects.liveTest }} <span aria-hidden="true">↗</span>
+                            {{ t().featuredProjects.liveTest }} <img src="assets/icons/arrow_outward.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                     <img class="project-modal-image" [src]="project.image" [alt]="project.name">
                 }
 
-                <button type="button" class="project-modal-next">
+                <button type="button" class="project-modal-next" (click)="showNextProject()">
                     <span>{{ t().featuredProjects.nextProject }}</span>
                     <img class="icon-default" src="assets/icons/Property 1=right.png" alt="">
                     <img class="icon-hover" src="assets/icons/Property 2=right Hover.png" alt="">

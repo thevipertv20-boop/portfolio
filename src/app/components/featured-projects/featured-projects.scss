@@ -288,11 +288,10 @@
     transition: border-color 200ms ease, color 200ms ease;
 }
 
-.project-modal-button span {
-    display: inline-block;
-    margin-bottom: 3px;
-    color: #3dcfb6;
-    animation: project-modal-arrow-move 2.4s ease-in-out infinite;
+.project-modal-button img {
+    display: block;
+    width: 20px;
+    height: 20px;
 }
 
 .project-modal-button:hover {
@@ -329,21 +328,6 @@
 
 .project-modal-next .icon-hover {
     display: block;
-}
-
-@keyframes project-modal-arrow-move {
-    0% {
-        transform: translate(-27.778%, 27.778%);
-    }
-
-    45%,
-    55% {
-        transform: translate(27.778%, -27.778%);
-    }
-
-    100% {
-        transform: translate(-27.778%, 27.778%);
-    }
 }
 
 @keyframes modal-fade-in {

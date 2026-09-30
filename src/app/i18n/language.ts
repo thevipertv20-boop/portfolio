@@ -53,8 +53,12 @@ export const translations = {
         join:
           'Task manager inspired by the Kanban System. Create and organize tasks using drag and drop ' +
           'functions, assign users and categories.',
-        elPolloLoco: '',
-        daBubble: '',
+        elPolloLoco:
+          'Jump, run and throw game based on object-oriented approach. Help Pepe to find coins and ' +
+          'tabasco salsa to fight against the crazy hen.',
+        daBubble:
+          'This App is a Slack Clone App. It revolutionizes team communication and collaboration with ' +
+          'its intuitive interface, real-time messaging, and robust channel organization.',
       },
       liveTest: 'Live Test',
       nextProject: 'Next project',
@@ -154,8 +158,12 @@ export const translations = {
         join:
           'Aufgabenmanager nach dem Vorbild des Kanban-Systems. Erstelle und organisiere Aufgaben per ' +
           'Drag and Drop, weise Benutzer und Kategorien zu.',
-        elPolloLoco: '',
-        daBubble: '',
+        elPolloLoco:
+          'Jump-and-Run-Spiel mit Wurf-Mechanik, basierend auf objektorientierter Programmierung. Hilf Pepe, ' +
+          'Münzen und Tabasco-Salsa zu finden, um gegen die verrückte Henne zu kämpfen.',
+        daBubble:
+          'Diese App ist ein Slack-Klon. Sie revolutioniert die Kommunikation und Zusammenarbeit im Team ' +
+          'mit einer intuitiven Oberfläche, Echtzeit-Nachrichten und einer übersichtlichen Kanalstruktur.',
       },
       liveTest: 'Live Test',
       nextProject: 'Nächstes Projekt',
