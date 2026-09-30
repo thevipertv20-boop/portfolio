@@ -57,8 +57,6 @@ export class FeaturedProjects {
           { name: 'Angular', icon: 'assets/icons/23. Icons - Overlay (2).png' },
           { name: 'TypeScript', icon: 'assets/icons/22. Icons - Overlay (1).png' },
         ],
-        github: '#',
-        liveTest: '#',
       },
     },
     {

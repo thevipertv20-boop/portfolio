@@ -70,9 +70,24 @@ export const translations = {
       next: 'Next reference',
       goTo: 'Show reference',
       items: {
-        reference1: { text: '[Placeholder: reference text 1]', role: '[Role 1]' },
-        reference2: { text: '[Placeholder: reference text 2]', role: '[Role 2]' },
-        reference3: { text: '[Placeholder: reference text 3]', role: '[Role 3]' },
+        reference1: {
+          text:
+            'Lukas has proven to be a reliable group partner. His technical skills and proactive approach ' +
+            'were crucial to the success of our project.',
+          role: 'Team Partner',
+        },
+        reference2: {
+          text:
+            'I had the good fortune of working with Lukas in a group project at the Developer Akademie that ' +
+            'involved a lot of effort. He always stayed calm, cool, and focused, and made sure our team was ' +
+            "set up for success. He's super knowledgeable, easy to work with, and I'd happily work with him " +
+            'again given the chance.',
+          role: 'Team Partner',
+        },
+        reference3: {
+          text: 'Our project benefited enormously from Simon efficient way of working.',
+          role: 'Frontend Developer',
+        },
       },
     },
     contact: {
@@ -175,9 +190,24 @@ export const translations = {
       next: 'Nächste Referenz',
       goTo: 'Referenz anzeigen',
       items: {
-        reference1: { text: '[Platzhalter: Referenztext 1]', role: '[Rolle 1]' },
-        reference2: { text: '[Platzhalter: Referenztext 2]', role: '[Rolle 2]' },
-        reference3: { text: '[Platzhalter: Referenztext 3]', role: '[Rolle 3]' },
+        reference1: {
+          text:
+            'Lukas hat sich als zuverlässiger Gruppenpartner erwiesen. Seine technischen Fähigkeiten und seine ' +
+            'proaktive Herangehensweise waren entscheidend für den Erfolg unseres Projekts.',
+          role: 'Teampartner',
+        },
+        reference2: {
+          text:
+            'Ich hatte das Glück, mit Lukas an einem aufwendigen Gruppenprojekt der Developer Akademie zu ' +
+            'arbeiten. Er blieb immer ruhig, gelassen und konzentriert und hat dafür gesorgt, dass unser Team ' +
+            'optimal aufgestellt war. Er hat enorm viel Wissen, die Zusammenarbeit ist unkompliziert, und ich ' +
+            'würde jederzeit gern wieder mit ihm arbeiten.',
+          role: 'Teampartner',
+        },
+        reference3: {
+          text: 'Unser Projekt hat enorm von Simons effizienter Arbeitsweise profitiert.',
+          role: 'Frontend-Entwickler',
+        },
       },
     },
     contact: {
