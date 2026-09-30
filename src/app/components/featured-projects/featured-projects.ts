@@ -113,6 +113,12 @@ export class FeaturedProjects {
     this.trigger = null;
   }
 
+  protected showNextProject(): void {
+    const currentIndex = this.projects.findIndex((project) => project.id === this.selectedProject()?.id);
+    const nextIndex = (currentIndex + 1) % this.projects.length;
+    this.selectedProject.set(this.projects[nextIndex]);
+  }
+
   protected closeOnBackdrop(event: MouseEvent): void {
     if (event.target === event.currentTarget) {
       this.closeProject();
