@@ -34,9 +34,9 @@ export class References {
   private runningAnimations: Animation[] = [];
 
   protected readonly references: Reference[] = [
-    { id: 'reference1', name: '[Name 1]' },
-    { id: 'reference2', name: '[Name 2]' },
-    { id: 'reference3', name: '[Name 3]' },
+    { id: 'reference1', name: 'H. Janisch' },
+    { id: 'reference2', name: 'A. Fischer' },
+    { id: 'reference3', name: 'T. Schulz' },
   ];
 
   protected readonly activeIndex = signal(0);
