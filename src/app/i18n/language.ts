@@ -34,10 +34,8 @@ export const translations = {
       eyebrow: 'Who I Am',
       title: 'About me',
       text:
-        "Hello, I'm Sebastian and I'm currently on my way to becoming an IT specialist for application " +
-        'development. I am especially passionate about developing modern and user-friendly web applications. ' +
-        'I enjoy working with TypeScript, Angular, HTML and SCSS, and I want to continuously improve my ' +
-        'skills every day.',
+        "Hello, I'm Sebastian. I'm currently on my way to becoming an IT specialist for application " +
+        "development. I'm especially interested in developing modern and user-friendly web applications.",
       highlights: [
         'I enjoy learning new technologies and trying them out directly in my own projects. It is important ' +
           'to me not only to use existing code, but to understand how it works.',
@@ -51,8 +49,9 @@ export const translations = {
       eyebrow: 'Technologies',
       title: 'Skill Set',
       text:
-        'I build modern web interfaces with Angular, TypeScript, HTML and SCSS. I work with Reactive Forms, ' +
-        'services, signals and translations, and continuously expand my skills through practical projects.',
+        'Want to know more about my skills? I build modern web interfaces with Angular, TypeScript, HTML ' +
+        'and SCSS. I work with Reactive Forms, services, signals and translations, and expand my skills ' +
+        'step by step through practical projects.',
       subtitleStart: 'You need',
       subtitleHighlight: 'another skill?',
       note: 'Feel free to contact me. I look forward to expanding on my previous knowledge.',
@@ -70,9 +69,9 @@ export const translations = {
         elPolloLoco:
           'Jump, run and throw game based on object-oriented approach. Help Pepe to find coins and ' +
           'tabasco salsa to fight against the crazy hen.',
-        daBubble:
-          'This App is a Slack Clone App. It revolutionizes team communication and collaboration with ' +
-          'its intuitive interface, real-time messaging, and robust channel organization.',
+        pokemonDex:
+          'A Pokédex to browse the world of Pokémon. Search for a Pokémon, load more entries and open a ' +
+          'detail view for each one.',
       },
       liveTest: 'Live Test',
       nextProject: 'Next project',
@@ -284,10 +283,9 @@ export const translations = {
       eyebrow: 'Wer ich bin',
       title: 'Über mich',
       text:
-        'Hallo, ich bin Sebastian und aktuell auf dem Weg zum Fachinformatiker für Anwendungsentwicklung. ' +
-        'Besonders begeistert mich die Entwicklung moderner und benutzerfreundlicher Webanwendungen. Ich ' +
-        'arbeite gerne mit TypeScript, Angular, HTML und SCSS und möchte meine Kenntnisse jeden Tag weiter ' +
-        'ausbauen.',
+        'Hallo, ich bin Sebastian. Ich bin aktuell auf dem Weg zum Fachinformatiker für ' +
+        'Anwendungsentwicklung. Besonders interessiert mich die Entwicklung moderner und ' +
+        'benutzerfreundlicher Webanwendungen.',
       highlights: [
         'Ich lerne gerne neue Technologien und probiere sie direkt in eigenen Projekten aus. Dabei ist mir ' +
           'wichtig, nicht nur fertigen Code zu verwenden, sondern zu verstehen, wie er funktioniert.',
@@ -301,9 +299,9 @@ export const translations = {
       eyebrow: 'Technologien',
       title: 'Skill Set',
       text:
-        'Ich entwickle moderne Weboberflächen mit Angular, TypeScript, HTML und SCSS. Dabei arbeite ich mit ' +
-        'Reactive Forms, Services, Signals und Übersetzungen und erweitere meine Kenntnisse Schritt für ' +
-        'Schritt durch eigene Projekte.',
+        'Du möchtest mehr über meine Skills erfahren? Ich entwickle moderne Weboberflächen mit Angular, ' +
+        'TypeScript, HTML und SCSS. Dabei arbeite ich mit Reactive Forms, Services, Signals und ' +
+        'Übersetzungen und erweitere meine Kenntnisse Schritt für Schritt durch praktische Projekte.',
       subtitleStart: 'Fehlt dir',
       subtitleHighlight: 'ein Skill?',
       note: 'Kontaktiere mich gerne. Ich freue mich darauf, mein bisheriges Wissen zu erweitern.',
@@ -321,9 +319,9 @@ export const translations = {
         elPolloLoco:
           'Jump-and-Run-Spiel mit Wurf-Mechanik, basierend auf objektorientierter Programmierung. Hilf Pepe, ' +
           'Münzen und Tabasco-Salsa zu finden, um gegen die verrückte Henne zu kämpfen.',
-        daBubble:
-          'Diese App ist ein Slack-Klon. Sie revolutioniert die Kommunikation und Zusammenarbeit im Team ' +
-          'mit einer intuitiven Oberfläche, Echtzeit-Nachrichten und einer übersichtlichen Kanalstruktur.',
+        pokemonDex:
+          'Ein Pokédex zum Entdecken der Pokémon-Welt. Suche nach einem Pokémon, lade weitere Einträge nach ' +
+          'und öffne zu jedem eine Detailansicht.',
       },
       liveTest: 'Live Test',
       nextProject: 'Nächstes Projekt',
@@ -412,8 +410,8 @@ export const translations = {
               plain('Durch den Zugriff auf und die Nutzung von '),
               mark('Portfolio'),
               plain(
-                ' (Produkt) erkennst du die folgenden Bedingungen sowie alle Richtlinien, Leitlinien oder ' +
-                  'Änderungen daran an, die dir von Zeit zu Zeit vorgelegt werden können, und stimmst ihnen zu. Wir, ' +
+                ' (Produkt) erkennen Sie die folgenden Bedingungen sowie alle Richtlinien, Leitlinien oder ' +
+                  'Änderungen daran an, die Ihnen von Zeit zu Zeit vorgelegt werden können, und stimmen ihnen zu. Wir, ' +
                   'die aufgeführten Studierenden, können die Bedingungen von Zeit zu Zeit ohne Ankündigung ' +
                   'aktualisieren oder ändern.',
               ),
@@ -474,7 +472,7 @@ export const translations = {
               mark('Portfolio'),
               plain(
                 ' für illegale Aktivitäten oder um eine andere Person zu belästigen, zu schädigen, zu bedrohen ' +
-                  'oder einzuschüchtern, ist streng untersagt. Du bist allein verantwortlich für deine ' +
+                  'oder einzuschüchtern, ist streng untersagt. Sie sind allein verantwortlich für Ihre ' +
                   'Interaktionen mit anderen Nutzern von ',
               ),
               mark('Portfolio.'),
@@ -510,19 +508,19 @@ export const translations = {
           paragraphs: [
             [
               plain(
-                'Du erklärst dich bereit, uns, die aufgeführten Studierenden, die ',
+                'Sie erklären sich bereit, uns, die aufgeführten Studierenden, die ',
               ),
               mark('Developer Akademie'),
               plain(
                 ' sowie unsere verbundenen Unternehmen, Partner, leitenden Angestellten, Direktoren, Vertreter ' +
                   'und Mitarbeiter von allen Ansprüchen, Forderungen, Verlusten, Schäden, Kosten oder ' +
                   'Verbindlichkeiten (einschließlich angemessener Anwaltskosten) freizustellen, zu verteidigen und ' +
-                  'schadlos zu halten, die sich aus oder im Zusammenhang mit deiner Nutzung von ',
+                  'schadlos zu halten, die sich aus oder im Zusammenhang mit Ihrer Nutzung von ',
               ),
               mark('Portfolio'),
-              plain(' und/oder deinem Verstoß gegen diese rechtlichen Hinweise ergeben.'),
+              plain(' und/oder Ihrem Verstoß gegen diese rechtlichen Hinweise ergeben.'),
             ],
-            [plain('Bei Fragen oder Mitteilungen kontaktiere uns bitte unter [Contact Email].')],
+            [plain('Bei Fragen oder Mitteilungen kontaktieren Sie uns bitte unter [Contact Email].')],
             [plain('Datum: 26. Juli 2025')],
           ],
         },

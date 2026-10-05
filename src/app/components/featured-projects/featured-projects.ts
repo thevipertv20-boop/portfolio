@@ -1,7 +1,7 @@
 import { Component, DOCUMENT, ElementRef, Injector, afterNextRender, inject, signal, viewChild } from '@angular/core';
 import { LanguageService } from '../../i18n/language.service';
 
-type ProjectId = 'join' | 'elPolloLoco' | 'daBubble';
+type ProjectId = 'join' | 'elPolloLoco' | 'pokemonDex';
 
 interface Technology {
   name: string;
@@ -76,17 +76,19 @@ export class FeaturedProjects {
       },
     },
     {
-      id: 'daBubble',
-      name: 'DA Bubble',
-      technologies: ['Angular', 'Firebase', 'TypeScript'],
-      image: 'assets/images/Frame 374.png',
+      id: 'pokemonDex',
+      name: 'Pokémon DEX',
+      technologies: ['HTML', 'CSS', 'JavaScript'],
+      image: 'assets/images/Pokémon-Dex im sonnigen Abenteuerland.png',
       details: {
         number: '03',
         technologies: [
-          { name: 'Angular', icon: 'assets/icons/23. Icons - Overlay (2).png' },
-          { name: 'Firebase', icon: 'assets/icons/21. Icons - Overlay.png' },
-          { name: 'TypeScript', icon: 'assets/icons/22. Icons - Overlay (1).png' },
+          { name: 'HTML', icon: 'assets/icons/24. Icons - Overlay (3).png' },
+          { name: 'CSS', icon: 'assets/icons/21. Icons - Overlay1.png' },
+          { name: 'JavaScript', icon: 'assets/icons/Property 11=Javascript.png' },
         ],
+        github: 'https://github.com/thevipertv20-boop/PokemondeX',
+        liveTest: 'https://sebastianmucha.developerakademie.net/PokemondeX/',
       },
     },
   ];
