@@ -10,16 +10,16 @@
                 }
             </div>
             <div class="nav-links">
-                <a href="#about">{{ t().header.aboutMe }}</a>
-                <a href="#skills">{{ t().header.skills }}</a>
-                <a href="#projects" class="active-link">
+                <a routerLink="/" fragment="about">{{ t().header.aboutMe }}</a>
+                <a routerLink="/" fragment="skills">{{ t().header.skills }}</a>
+                <a routerLink="/" fragment="projects" class="active-link">
                     {{ t().header.projects }}
                     <span class="active-dot"></span>
                 </a>
             </div>
         </div>
 
-        <a href="#" class="logo">
+        <a routerLink="/" class="logo">
             <img class="logo-normal" src="assets/icons/4. Logo.png" alt="Lukas Müller">
             <img class="logo-hover" src="assets/icons/4. Logo.png" alt="">
         </a>

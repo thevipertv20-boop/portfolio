@@ -1,9 +1,11 @@
 import { Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Language, languages } from '../../i18n/language';
 import { LanguageService } from '../../i18n/language.service';
 
 @Component({
   selector: 'app-header',
+  imports: [RouterLink],
   templateUrl: './header.html',
   styleUrl: './header.scss'
 })
