@@ -20,9 +20,16 @@
         </div>
 
         <a routerLink="/" class="logo">
-            <img class="logo-normal" src="assets/icons/4. Logo.png" alt="Sebastian Mucha">
-            <img class="logo-hover" src="assets/icons/4. Logo.png" alt="">
+            <img class="logo-normal" src="assets/icons/Sebastian Mucha Logo mit Monogramm.png" alt="Sebastian Mucha">
+            <img class="logo-hover" src="assets/icons/Sebastian Mucha Logo mit Monogramm.png" alt="">
         </a>
+
+        <svg class="logo-filter" aria-hidden="true">
+            <filter id="logo-outline">
+                <feMorphology in="SourceAlpha" operator="erode" radius="1" result="inside" />
+                <feComposite in="SourceGraphic" in2="inside" operator="out" />
+            </filter>
+        </svg>
 
     </nav>
 </header>

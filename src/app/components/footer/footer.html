@@ -2,9 +2,15 @@
     <div class="footer-content">
         <div class="footer-info">
             <a href="#" class="footer-logo">
-                <img class="footer-logo-normal" src="assets/icons/4. Logo.png" [alt]="t().footer.logoAlt">
-                <img class="footer-logo-hover" src="assets/icons/4. Logo.png" alt="">
+                <img class="footer-logo-normal" src="assets/icons/Sebastian Mucha Logo mit Monogramm.png" [alt]="t().footer.logoAlt">
+                <img class="footer-logo-hover" src="assets/icons/Sebastian Mucha Logo mit Monogramm.png" alt="">
             </a>
+            <svg class="footer-logo-filter" aria-hidden="true">
+                <filter id="footer-logo-outline">
+                    <feMorphology in="SourceAlpha" operator="erode" radius="1" result="inside" />
+                    <feComposite in="SourceGraphic" in2="inside" operator="out" />
+                </filter>
+            </svg>
             <span class="footer-text footer-role">{{ t().footer.role }}</span>
             <span class="footer-text">{{ t().footer.location }}</span>
         </div>

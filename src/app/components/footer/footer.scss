@@ -27,7 +27,7 @@
 .footer-logo {
     position: relative;
     display: block;
-    width: 133px;
+    width: 175px;
     height: 48px;
     overflow: hidden;
 }
@@ -35,19 +35,21 @@
 .footer-logo-normal,
 .footer-logo-hover {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: none;
-}
-
-.footer-logo-normal {
-    object-position: -20px -20px;
+    top: -19.8px;
+    left: -34.4px;
+    width: 242px;
+    height: auto;
 }
 
 .footer-logo-hover {
-    object-position: -20px -77px;
+    filter: url(#footer-logo-outline);
     opacity: 0;
+}
+
+.footer-logo-filter {
+    position: absolute;
+    width: 0;
+    height: 0;
 }
 
 .footer-logo:hover .footer-logo-normal {

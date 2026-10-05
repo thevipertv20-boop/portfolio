@@ -67,13 +67,16 @@
 }
 
 .hero-title {
+    position: relative;
+    top: 0.007em;
     margin: 0 0 clamp(24px, 4vw, 48px);
-}
-
-.hero-title img {
-    display: block;
-    width: clamp(320px, 52vw, 741px);
-    height: auto;
+    font-family: 'Karla', sans-serif;
+    font-weight: 700;
+    font-size: clamp(55.2px, 8.97vw, 128px);
+    line-height: 0.71875;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    color: #d9d9d9;
 }
 
 .hero-actions {

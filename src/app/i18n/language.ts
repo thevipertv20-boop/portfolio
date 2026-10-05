@@ -34,16 +34,17 @@ export const translations = {
       eyebrow: 'Who I Am',
       title: 'About me',
       text:
-        "Hey there, I'm Sebastian! Write some information about yourself that is IT related. " +
-        'Why are you passionate about coding? What is your source of inspiration for ' +
-        'improving your programming skills?',
+        "Hello, I'm Sebastian and I'm currently on my way to becoming an IT specialist for application " +
+        'development. I am especially passionate about developing modern and user-friendly web applications. ' +
+        'I enjoy working with TypeScript, Angular, HTML and SCSS, and I want to continuously improve my ' +
+        'skills every day.',
       highlights: [
-        'Where are you based? Would you be open to working remotely or potentially relocating?',
-        'Show that you are open-minded. Are you enthusiastic about learning new technologies ' +
-          'and continually improving your skills?',
-        'A brief description of your problem-solving approach. Do you learn from each challenge ' +
-          'as you search for the most efficient or elegant solution? You can include some keywords ' +
-          'like: analytical thinking, creativity, persistence and collaboration.',
+        'I enjoy learning new technologies and trying them out directly in my own projects. It is important ' +
+          'to me not only to use existing code, but to understand how it works.',
+        'When I face new challenges, I work through a problem step by step. I test different approaches, ' +
+          'learn from mistakes and look for a clean and understandable solution.',
+        'Good teamwork is just as important to me as good code. I enjoy exchanging ideas with others, ' +
+          'accepting feedback and supporting my team in achieving a good result together.',
       ],
     },
     skills: {
@@ -284,16 +285,17 @@ export const translations = {
       eyebrow: 'Wer ich bin',
       title: 'Über mich',
       text:
-        'Hallo, ich bin Sebastian! Schreibe hier etwas IT-Bezogenes über dich. ' +
-        'Warum programmierst du mit Leidenschaft? Was inspiriert dich, ' +
-        'deine Programmierkenntnisse zu verbessern?',
+        'Hallo, ich bin Sebastian und aktuell auf dem Weg zum Fachinformatiker für Anwendungsentwicklung. ' +
+        'Besonders begeistert mich die Entwicklung moderner und benutzerfreundlicher Webanwendungen. Ich ' +
+        'arbeite gerne mit TypeScript, Angular, HTML und SCSS und möchte meine Kenntnisse jeden Tag weiter ' +
+        'ausbauen.',
       highlights: [
-        'Wo wohnst du? Wärst du offen für Remote-Arbeit oder einen möglichen Umzug?',
-        'Zeige, dass du aufgeschlossen bist. Lernst du gerne neue Technologien ' +
-          'und verbesserst kontinuierlich deine Fähigkeiten?',
-        'Eine kurze Beschreibung deiner Herangehensweise an Probleme. Lernst du aus jeder ' +
-          'Herausforderung, während du nach der effizientesten oder elegantesten Lösung suchst? ' +
-          'Du kannst Stichworte nennen wie: analytisches Denken, Kreativität, Ausdauer und Teamarbeit.',
+        'Ich lerne gerne neue Technologien und probiere sie direkt in eigenen Projekten aus. Dabei ist mir ' +
+          'wichtig, nicht nur fertigen Code zu verwenden, sondern zu verstehen, wie er funktioniert.',
+        'Bei neuen Herausforderungen arbeite ich mich Schritt für Schritt in ein Problem ein. Ich teste ' +
+          'verschiedene Lösungswege, lerne aus Fehlern und suche nach einer sauberen und verständlichen Lösung.',
+        'Gute Zusammenarbeit ist für mich genauso wichtig wie guter Code. Ich tausche mich gerne mit anderen ' +
+          'aus, nehme Feedback an und unterstütze mein Team dabei, gemeinsam ein gutes Ergebnis zu erreichen.',
       ],
     },
     skills: {
