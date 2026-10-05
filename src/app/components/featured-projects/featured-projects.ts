@@ -71,7 +71,7 @@ export class FeaturedProjects {
           { name: 'CSS', icon: 'assets/icons/21. Icons - Overlay1.png' },
           { name: 'JavaScript', icon: 'assets/icons/Property 11=Javascript.png' },
         ],
-        github: 'https://github.com/thevipertv20-boop/El_Pollo_Loco_Game',
+        github: 'https://github.com/thevipertv20-boop/EL_POLLO_LOCO',
         liveTest: 'https://sebastianmucha.developerakademie.net/EL_Pollo_Loco/',
       },
     },

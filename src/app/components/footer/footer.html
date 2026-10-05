@@ -1,0 +1,23 @@
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-info">
+            <a href="#" class="footer-logo">
+                <img class="footer-logo-normal" src="assets/icons/4. Logo.png" [alt]="t().footer.logoAlt">
+                <img class="footer-logo-hover" src="assets/icons/4. Logo.png" alt="">
+            </a>
+            <span class="footer-text footer-role">{{ t().footer.role }}</span>
+            <span class="footer-text">{{ t().footer.location }}</span>
+        </div>
+
+        <span class="footer-copyright">© Sebastian Mucha 2025</span>
+
+        <nav class="footer-links">
+            @for (link of socialLinks; track link.url) {
+                <a class="footer-link" [href]="link.url" target="_blank" rel="noopener">{{ link.label }}</a>
+            }
+            <a class="footer-link" [href]="emailUrl">{{ t().footer.email }}</a>
+            <a class="footer-link" [routerLink]="legalNoticeRoute">{{ t().footer.legalNotice }}</a>
+            <a class="footer-link" [routerLink]="privacyPolicyRoute">{{ t().footer.privacyPolicy }}</a>
+        </nav>
+    </div>
+</footer>

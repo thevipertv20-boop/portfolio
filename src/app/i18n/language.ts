@@ -121,6 +121,14 @@ export const translations = {
         error: 'Something went wrong. Please try again later or write me an email directly.',
       },
     },
+    footer: {
+      logoAlt: 'Sebastian Mucha',
+      role: 'Web Developer',
+      location: 'Munich Germany',
+      email: 'Email',
+      legalNotice: 'Legal Notice',
+      privacyPolicy: 'Privacy Policy',
+    },
   },
   DE: {
     header: {
@@ -240,6 +248,14 @@ export const translations = {
         success: 'Danke! Deine Nachricht wurde gesendet. Ich melde mich so schnell wie möglich bei dir.',
         error: 'Da ist etwas schiefgelaufen. Bitte versuche es später erneut oder schreib mir direkt eine E-Mail.',
       },
+    },
+    footer: {
+      logoAlt: 'Sebastian Mucha',
+      role: 'Web Developer',
+      location: 'München Deutschland',
+      email: 'E-Mail',
+      legalNotice: 'Impressum',
+      privacyPolicy: 'Datenschutz',
     },
   },
 };
