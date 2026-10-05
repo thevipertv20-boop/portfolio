@@ -51,9 +51,8 @@ export const translations = {
       eyebrow: 'Technologies',
       title: 'Skill Set',
       text:
-        'A short introduction of your skills. Highlight your experience of using different front-end ' +
-        'technologies and emphasise your openness to learning and adapting to new technologies. Show how ' +
-        'important it is for you to keep up with the rapid changes in web development.',
+        'I build modern web interfaces with Angular, TypeScript, HTML and SCSS. I work with Reactive Forms, ' +
+        'services, signals and translations, and continuously expand my skills through practical projects.',
       subtitleStart: 'You need',
       subtitleHighlight: 'another skill?',
       note: 'Feel free to contact me. I look forward to expanding on my previous knowledge.',
@@ -302,10 +301,9 @@ export const translations = {
       eyebrow: 'Technologien',
       title: 'Skill Set',
       text:
-        'Eine kurze Einführung in deine Skills. Hebe deine Erfahrung mit verschiedenen ' +
-        'Frontend-Technologien hervor und betone deine Offenheit, Neues zu lernen und dich an neue ' +
-        'Technologien anzupassen. Zeige, wie wichtig es dir ist, mit den schnellen Veränderungen in der ' +
-        'Webentwicklung Schritt zu halten.',
+        'Ich entwickle moderne Weboberflächen mit Angular, TypeScript, HTML und SCSS. Dabei arbeite ich mit ' +
+        'Reactive Forms, Services, Signals und Übersetzungen und erweitere meine Kenntnisse Schritt für ' +
+        'Schritt durch eigene Projekte.',
       subtitleStart: 'Fehlt dir',
       subtitleHighlight: 'ein Skill?',
       note: 'Kontaktiere mich gerne. Ich freue mich darauf, mein bisheriges Wissen zu erweitern.',
