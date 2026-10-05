@@ -94,7 +94,7 @@ export const translations = {
       eyebrow: 'Contact me',
       title: "Let's work together",
       subtitle: 'Got a problem to solve?',
-      text: "I'm looking for new challenges as a frontend developer – whether it's a permanent position, a project or a team that needs support. Tell me about your idea or your open position, and let's find out together how I can contribute with clean, user-friendly web applications.",
+      text: "I'm looking for new challenges as a frontend developer whether it's a permanent position, a project or a team that needs support. Tell me about your idea or your open position, and let's find out together how I can contribute with clean, user-friendly web applications.",
       ctaQuestion: 'Need a Frontend developer?',
       ctaLink: "Let's talk!",
       form: {
@@ -222,7 +222,7 @@ export const translations = {
       eyebrow: 'Kontakt',
       title: 'Lass uns zusammenarbeiten',
       subtitle: 'Du hast eine Aufgabe für mich?',
-      text: 'Ich suche neue Herausforderungen als Frontend-Entwickler – ob in einer Festanstellung, bei einem Projekt oder in einem Team, das Unterstützung braucht. Erzähl mir von deiner Idee oder deiner offenen Stelle, und wir finden gemeinsam heraus, wie ich mit sauberen, benutzerfreundlichen Webanwendungen beitragen kann.',
+      text: 'Ich suche neue Herausforderungen als Frontend-Entwickler ob in einer Festanstellung, bei einem Projekt oder in einem Team, das Unterstützung braucht. Erzähl mir von deiner Idee oder deiner offenen Stelle, und wir finden gemeinsam heraus, wie ich mit sauberen, benutzerfreundlichen Webanwendungen beitragen kann.',
       ctaQuestion: 'Du suchst einen Frontend-Entwickler?',
       ctaLink: 'Lass uns sprechen!',
       form: {

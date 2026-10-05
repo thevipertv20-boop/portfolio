@@ -1,16 +1,10 @@
 import { Component, ElementRef, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './components/header/header';
-import { Hero } from './components/hero/hero';
-import { AboutMe } from './components/about-me/about-me';
-import { Skills } from './components/skills/skills';
-import { FeaturedProjects } from './components/featured-projects/featured-projects';
-import { References } from './components/references/references';
-import { Contact } from './components/contact/contact';
 import { Footer } from './components/footer/footer';
 
 @Component({
-  imports: [RouterOutlet, Header, Hero, AboutMe, Skills, FeaturedProjects, References, Contact, Footer],
+  imports: [RouterOutlet, Header, Footer],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',

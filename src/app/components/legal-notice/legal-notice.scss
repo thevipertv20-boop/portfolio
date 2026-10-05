@@ -1,0 +1,66 @@
+:host {
+    display: block;
+    background: #1c1c1c;
+}
+
+.legal {
+    max-width: 1248px;
+    margin-inline: auto;
+    padding: 64px 0 60px;
+}
+
+.legal-title {
+    margin: 0;
+    font-family: 'Fira Code', monospace;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 1.2;
+    text-align: center;
+    color: #3dcfb6;
+}
+
+.legal-content {
+    max-width: 966px;
+    margin: 65px 0 0 118px;
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    line-height: 19px;
+    color: #3dcfb6;
+}
+
+.legal-heading {
+    margin: 26px 0 0;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #ffffff;
+}
+
+.legal-list {
+    margin: 17px 0 -4px;
+    padding: 0;
+    list-style: none;
+}
+
+.legal-list li {
+    position: relative;
+    padding-left: 24px;
+}
+
+.legal-list li::before {
+    content: '•';
+    position: absolute;
+    left: 9px;
+}
+
+.legal-text {
+    margin: 0;
+}
+
+.legal-text + .legal-text {
+    margin-top: 19px;
+}
+
+.legal-highlight {
+    color: #ffffff;
+}
