@@ -33,6 +33,10 @@ body {
     width: 100%;
 }
 
+html {
+    overflow-x: clip;
+}
+
 body {
     overflow-x: clip;
     font-family: 'Karla', sans-serif;

@@ -2,6 +2,20 @@ export type Language = 'EN' | 'DE';
 
 export const languages: Language[] = ['EN', 'DE'];
 
+// One piece of a legal notice paragraph. Highlighted pieces are shown in white.
+type LegalPart = {
+  text: string;
+  highlight: boolean;
+};
+
+function plain(text: string): LegalPart {
+  return { text: text, highlight: false };
+}
+
+function mark(text: string): LegalPart {
+  return { text: text, highlight: true };
+}
+
 export const translations = {
   EN: {
     header: {
@@ -20,7 +34,7 @@ export const translations = {
       eyebrow: 'Who I Am',
       title: 'About me',
       text:
-        "Hey there, I'm Lukas! Write some information about yourself that is IT related. " +
+        "Hey there, I'm Sebastian! Write some information about yourself that is IT related. " +
         'Why are you passionate about coding? What is your source of inspiration for ' +
         'improving your programming skills?',
       highlights: [
@@ -72,13 +86,13 @@ export const translations = {
       items: {
         reference1: {
           text:
-            'Lukas has proven to be a reliable group partner. His technical skills and proactive approach ' +
+            'Sebastian has proven to be a reliable group partner. His technical skills and proactive approach ' +
             'were crucial to the success of our project.',
           role: 'Team Partner',
         },
         reference2: {
           text:
-            'I had the good fortune of working with Lukas in a group project at the Developer Akademie that ' +
+            'I had the good fortune of working with Sebastian in a group project at the Developer Akademie that ' +
             'involved a lot of effort. He always stayed calm, cool, and focused, and made sure our team was ' +
             "set up for success. He's super knowledgeable, easy to work with, and I'd happily work with him " +
             'again given the chance.',
@@ -129,6 +143,129 @@ export const translations = {
       legalNotice: 'Legal Notice',
       privacyPolicy: 'Privacy Policy',
     },
+    legalNotice: {
+      title: 'Legal Notice',
+      imprintTitle: 'Imprint',
+      imprintItems: [
+        '[Student Names List]',
+        '[Address of the JOIN operator - e.g. one of the students]',
+        '[Postcode and city]',
+      ],
+      contactTitle: 'Exploring the Board',
+      contactText: 'Email: [Email]',
+      sections: [
+        {
+          title: 'Acceptance of terms',
+          paragraphs: [
+            [
+              plain('By accessing and using '),
+              mark('Portfolio'),
+              plain(
+                ' (Product), you acknowledge and agree to the following terms and conditions, and any policies, ' +
+                  'guidelines, or amendments thereto that may be presented to you from time to time. We, the listed ' +
+                  'students, may update or change the terms and conditions from time to time without notice.',
+              ),
+            ],
+          ],
+        },
+        {
+          title: 'Scope and ownership of the product',
+          paragraphs: [
+            [
+              mark('Portfolio'),
+              plain(' has been developed as part of a student group project in a web development bootcamp at the '),
+              mark('Developer Akademie GmbH.'),
+              plain(
+                ' It has an educational purpose and is not intended for extensive personal & business usage. As ' +
+                  'such, we cannot guarantee consistent availability, reliability, accuracy, or any other aspect of ' +
+                  'quality regarding this Product.',
+              ),
+            ],
+            [
+              plain('The design of '),
+              mark('Portfolio'),
+              plain(' is owned by the '),
+              mark('Developer Akademie GmbH.'),
+              plain(
+                ' Unauthorized use, reproduction, modification, distribution, or replication of the design is ' +
+                  'strictly prohibited.',
+              ),
+            ],
+          ],
+        },
+        {
+          title: 'Proprietary rights',
+          paragraphs: [
+            [
+              plain('Aside from the design owned by '),
+              mark('Developer Akademie GmbH'),
+              plain(', we, the listed students, retain all proprietary rights in '),
+              mark('Portfolio,'),
+              plain(
+                ' including any associated copyrighted material, trademarks, and other proprietary information.',
+              ),
+            ],
+          ],
+        },
+        {
+          title: 'Use of the product',
+          paragraphs: [
+            [
+              mark('Portfolio'),
+              plain(
+                ' is intended to be used for lawful purposes only, in accordance with all applicable laws and ' +
+                  'regulations. Any use of ',
+              ),
+              mark('Portfolio'),
+              plain(
+                ' for illegal activities, or to harass, harm, threaten, or intimidate another person, is strictly ' +
+                  'prohibited. You are solely responsible for your interactions with other users of ',
+              ),
+              mark('Portfolio.'),
+            ],
+          ],
+        },
+        {
+          title: 'Disclaimer of warranties and limitation of liability',
+          paragraphs: [
+            [
+              mark('Portfolio'),
+              plain(
+                ' is provided "as is" without warranty of any kind, whether express or implied, including but not ' +
+                  'limited to the implied warranties of merchantability, fitness for a particular purpose, and ' +
+                  'non-infringement. In no event will we, the listed students, or the ',
+              ),
+              mark('Developer Akademie,'),
+              plain(
+                ' be liable for any direct, indirect, incidental, special, consequential or exemplary damages, ' +
+                  'including but not limited to, damages for loss of profits, goodwill, use, data, or other ' +
+                  'intangible losses, even if we have been advised of the possibility of such damages, arising out ' +
+                  'of or in connection with the use or performance of ',
+              ),
+              mark('Portfolio.'),
+            ],
+          ],
+        },
+        {
+          title: 'Indemnity',
+          paragraphs: [
+            [
+              plain('You agree to indemnify, defend and hold harmless us, the listed students, the '),
+              mark('Developer Akademie,'),
+              plain(
+                ' and our affiliates, partners, officers, directors, agents, and employees, from and against any ' +
+                  'claim, demand, loss, damage, cost, or liability (including reasonable legal fees) arising out ' +
+                  'of or relating to your use of ',
+              ),
+              mark('Portfolio'),
+              plain(' and/or your breach of this Legal Notice.'),
+            ],
+            [plain('For any questions or notices, please contact us at [Contact Email].')],
+            [plain('Date: July 26, 2025')],
+          ],
+        },
+      ],
+    },
   },
   DE: {
     header: {
@@ -147,7 +284,7 @@ export const translations = {
       eyebrow: 'Wer ich bin',
       title: 'Über mich',
       text:
-        'Hallo, ich bin Lukas! Schreibe hier etwas IT-Bezogenes über dich. ' +
+        'Hallo, ich bin Sebastian! Schreibe hier etwas IT-Bezogenes über dich. ' +
         'Warum programmierst du mit Leidenschaft? Was inspiriert dich, ' +
         'deine Programmierkenntnisse zu verbessern?',
       highlights: [
@@ -200,13 +337,13 @@ export const translations = {
       items: {
         reference1: {
           text:
-            'Lukas hat sich als zuverlässiger Gruppenpartner erwiesen. Seine technischen Fähigkeiten und seine ' +
+            'Sebastian hat sich als zuverlässiger Gruppenpartner erwiesen. Seine technischen Fähigkeiten und seine ' +
             'proaktive Herangehensweise waren entscheidend für den Erfolg unseres Projekts.',
           role: 'Teampartner',
         },
         reference2: {
           text:
-            'Ich hatte das Glück, mit Lukas an einem aufwendigen Gruppenprojekt der Developer Akademie zu ' +
+            'Ich hatte das Glück, mit Sebastian an einem aufwendigen Gruppenprojekt der Developer Akademie zu ' +
             'arbeiten. Er blieb immer ruhig, gelassen und konzentriert und hat dafür gesorgt, dass unser Team ' +
             'optimal aufgestellt war. Er hat enorm viel Wissen, die Zusammenarbeit ist unkompliziert, und ich ' +
             'würde jederzeit gern wieder mit ihm arbeiten.',
@@ -256,6 +393,140 @@ export const translations = {
       email: 'E-Mail',
       legalNotice: 'Impressum',
       privacyPolicy: 'Datenschutz',
+    },
+    legalNotice: {
+      title: 'Rechtliche Hinweise',
+      imprintTitle: 'Impressum',
+      imprintItems: [
+        '[Student Names List]',
+        '[Address of the JOIN operator - e.g. one of the students]',
+        '[Postcode and city]',
+      ],
+      contactTitle: 'Das Board erkunden',
+      contactText: 'E-Mail: [Email]',
+      sections: [
+        {
+          title: 'Annahme der Bedingungen',
+          paragraphs: [
+            [
+              plain('Durch den Zugriff auf und die Nutzung von '),
+              mark('Portfolio'),
+              plain(
+                ' (Produkt) erkennst du die folgenden Bedingungen sowie alle Richtlinien, Leitlinien oder ' +
+                  'Änderungen daran an, die dir von Zeit zu Zeit vorgelegt werden können, und stimmst ihnen zu. Wir, ' +
+                  'die aufgeführten Studierenden, können die Bedingungen von Zeit zu Zeit ohne Ankündigung ' +
+                  'aktualisieren oder ändern.',
+              ),
+            ],
+          ],
+        },
+        {
+          title: 'Umfang und Eigentum des Produkts',
+          paragraphs: [
+            [
+              mark('Portfolio'),
+              plain(
+                ' wurde im Rahmen eines studentischen Gruppenprojekts in einem Webentwicklungs-Bootcamp an der ',
+              ),
+              mark('Developer Akademie GmbH'),
+              plain(
+                ' entwickelt. Es dient Bildungszwecken und ist nicht für eine umfangreiche private und ' +
+                  'geschäftliche Nutzung vorgesehen. Daher können wir keine durchgängige Verfügbarkeit, ' +
+                  'Zuverlässigkeit, Genauigkeit oder andere Qualitätsmerkmale dieses Produkts garantieren.',
+              ),
+            ],
+            [
+              plain('Das Design von '),
+              mark('Portfolio'),
+              plain(' ist Eigentum der '),
+              mark('Developer Akademie GmbH.'),
+              plain(
+                ' Unbefugte Nutzung, Vervielfältigung, Veränderung, Verbreitung oder Nachbildung des Designs ist ' +
+                  'streng untersagt.',
+              ),
+            ],
+          ],
+        },
+        {
+          title: 'Eigentumsrechte',
+          paragraphs: [
+            [
+              plain('Abgesehen von dem Design, das der '),
+              mark('Developer Akademie GmbH'),
+              plain(' gehört, behalten wir, die aufgeführten Studierenden, alle Eigentumsrechte an '),
+              mark('Portfolio,'),
+              plain(
+                ' einschließlich aller zugehörigen urheberrechtlich geschützten Materialien, Marken und sonstigen ' +
+                  'geschützten Informationen.',
+              ),
+            ],
+          ],
+        },
+        {
+          title: 'Nutzung des Produkts',
+          paragraphs: [
+            [
+              mark('Portfolio'),
+              plain(
+                ' ist ausschließlich für rechtmäßige Zwecke im Einklang mit allen geltenden Gesetzen und ' +
+                  'Vorschriften bestimmt. Jede Nutzung von ',
+              ),
+              mark('Portfolio'),
+              plain(
+                ' für illegale Aktivitäten oder um eine andere Person zu belästigen, zu schädigen, zu bedrohen ' +
+                  'oder einzuschüchtern, ist streng untersagt. Du bist allein verantwortlich für deine ' +
+                  'Interaktionen mit anderen Nutzern von ',
+              ),
+              mark('Portfolio.'),
+            ],
+          ],
+        },
+        {
+          title: 'Gewährleistungsausschluss und Haftungsbeschränkung',
+          paragraphs: [
+            [
+              mark('Portfolio'),
+              plain(
+                ' wird „wie besehen“ ohne jegliche ausdrückliche oder stillschweigende Gewährleistung ' +
+                  'bereitgestellt, einschließlich, aber nicht beschränkt auf die stillschweigenden ' +
+                  'Gewährleistungen der Marktgängigkeit, der Eignung für einen bestimmten Zweck und der ' +
+                  'Nichtverletzung von Rechten. In keinem Fall haften wir, die aufgeführten Studierenden, oder die ',
+              ),
+              mark('Developer Akademie'),
+              plain(
+                ' für direkte, indirekte, zufällige, besondere, Folge- oder exemplarische Schäden, ' +
+                  'einschließlich, aber nicht beschränkt auf Schäden durch entgangenen Gewinn, Verlust von ' +
+                  'Firmenwert, Nutzung, Daten oder andere immaterielle Verluste, selbst wenn wir auf die ' +
+                  'Möglichkeit solcher Schäden hingewiesen wurden, die sich aus oder im Zusammenhang mit der ' +
+                  'Nutzung oder Leistung von ',
+              ),
+              mark('Portfolio'),
+              plain(' ergeben.'),
+            ],
+          ],
+        },
+        {
+          title: 'Freistellung',
+          paragraphs: [
+            [
+              plain(
+                'Du erklärst dich bereit, uns, die aufgeführten Studierenden, die ',
+              ),
+              mark('Developer Akademie'),
+              plain(
+                ' sowie unsere verbundenen Unternehmen, Partner, leitenden Angestellten, Direktoren, Vertreter ' +
+                  'und Mitarbeiter von allen Ansprüchen, Forderungen, Verlusten, Schäden, Kosten oder ' +
+                  'Verbindlichkeiten (einschließlich angemessener Anwaltskosten) freizustellen, zu verteidigen und ' +
+                  'schadlos zu halten, die sich aus oder im Zusammenhang mit deiner Nutzung von ',
+              ),
+              mark('Portfolio'),
+              plain(' und/oder deinem Verstoß gegen diese rechtlichen Hinweise ergeben.'),
+            ],
+            [plain('Bei Fragen oder Mitteilungen kontaktiere uns bitte unter [Contact Email].')],
+            [plain('Datum: 26. Juli 2025')],
+          ],
+        },
+      ],
     },
   },
 };
