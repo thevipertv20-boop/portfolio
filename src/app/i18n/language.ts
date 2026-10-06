@@ -143,6 +143,176 @@ export const translations = {
       legalNotice: 'Legal Notice',
       privacyPolicy: 'Privacy Policy',
     },
+    privacyPolicy: {
+      title: 'Privacy Policy',
+      sections: [
+        {
+          title: '1. Controller',
+          paragraphs: [
+            [plain('The controller responsible for data processing on this website is:')],
+            [plain('Sebastian Mucha, '), mark('[Street and house number]'), plain(', '), mark('[Postcode and city]')],
+            [plain('Email: thevipertv20@gmail.com')],
+          ],
+        },
+        {
+          title: '2. General information on data processing',
+          paragraphs: [
+            [
+              plain(
+                'Personal data is only processed to the extent necessary to provide this website and its content ' +
+                  'and to respond to enquiries. The legal bases are the General Data Protection Regulation (GDPR) ' +
+                  'and the German Federal Data Protection Act (BDSG).',
+              ),
+            ],
+          ],
+        },
+        {
+          title: '3. Hosting',
+          paragraphs: [
+            [
+              plain('This website is hosted by '),
+              mark('[Hosting provider, address/country]'),
+              plain(
+                '. The provider processes data that arises when the website is accessed on behalf of the ' +
+                  'controller. The legal basis is Art. 6(1)(f) GDPR (legitimate interest in providing the website ' +
+                  'securely and efficiently). ',
+              ),
+              mark('[Check the data processing agreement with the provider]'),
+            ],
+          ],
+        },
+        {
+          title: '4. Server log files',
+          paragraphs: [
+            [
+              plain(
+                'When the website is accessed, information transmitted by the browser is recorded automatically: ' +
+                  'IP address, date and time of the request, page accessed, browser type and version, operating ' +
+                  'system and referrer URL. This data serves the secure operation of the website and is not ' +
+                  'combined with other data sources. The legal basis is Art. 6(1)(f) GDPR.',
+              ),
+            ],
+            [plain('Storage period: '), mark('[Period according to the hosting provider]'), plain('.')],
+          ],
+        },
+        {
+          title: '5. Contact by email',
+          paragraphs: [
+            [
+              plain(
+                'If you get in touch by email, your details (email address, content of the message) are stored ' +
+                  'in order to process the enquiry and for follow-up questions. The legal basis is Art. 6(1)(b) ' +
+                  'GDPR (pre-contractual measures) or Art. 6(1)(f) GDPR (legitimate interest in responding). The ' +
+                  'data is deleted as soon as it is no longer required for this purpose and no statutory ' +
+                  'retention obligations prevent deletion.',
+              ),
+            ],
+          ],
+        },
+        {
+          title: '6. Contact form',
+          paragraphs: [
+            [
+              plain(
+                'Enquiries can be sent via the contact form on this website. The following details are ' +
+                  'processed: name, email address and message. Before sending, agreement to this privacy policy ' +
+                  'has to be confirmed with a checkbox.',
+              ),
+            ],
+            [
+              plain(
+                'When the form is submitted, these details are transmitted to a server-side script ' +
+                  '(sendMail.php) on the web space of this website. The script checks the details and forwards ' +
+                  'them by email to the controller’s email address stated above. The details are not stored in a ' +
+                  'database.',
+              ),
+            ],
+            [
+              plain(
+                'The message is used solely to process the enquiry and for follow-up questions. The data is ' +
+                  'deleted as soon as it is no longer required for this purpose and no statutory retention ' +
+                  'obligations prevent deletion.',
+              ),
+            ],
+            [plain('Legal basis: '), mark('[Legal basis for the contact form]'), plain('.')],
+            [mark('[Details on the email provider of the recipient mailbox and any third-country transfer]')],
+          ],
+        },
+        {
+          title: '7. External services, cookies and tracking',
+          paragraphs: [
+            [plain('This website does not use cookies, analytics services or tracking services.')],
+            [
+              plain(
+                'Fonts are loaded locally from the website’s own server. No connection to third-party servers ' +
+                  'is established for this purpose.',
+              ),
+            ],
+            [
+              plain(
+                'When the language is switched, the selected language (German or English) is saved in the ' +
+                  'browser’s local storage (localStorage) under the entry “portfolio-language”, so that the ' +
+                  'selection is kept for the next visit. This entry only contains the language code, is not ' +
+                  'transmitted to the server and can be deleted in the browser settings.',
+              ),
+            ],
+            [
+              plain(
+                'The website contains links to GitHub, LinkedIn and the projects presented. No content from ' +
+                  'these providers is embedded. Data is only transmitted to the respective provider once a link ' +
+                  'is clicked; the privacy policies of those providers apply there.',
+              ),
+            ],
+          ],
+        },
+        {
+          title: '8. Your rights',
+          paragraphs: [
+            [
+              plain(
+                'You have the following rights towards the controller with regard to your personal data: access ' +
+                  '(Art. 15 GDPR), rectification (Art. 16), erasure (Art. 17), restriction of processing (Art. ' +
+                  '18), data portability (Art. 20) and objection to processing (Art. 21). Consent that has been ' +
+                  'given can be withdrawn at any time with effect for the future. To exercise your rights, an ' +
+                  'informal message to the email address stated above is sufficient.',
+              ),
+            ],
+          ],
+        },
+        {
+          title: '9. Right to lodge a complaint with a supervisory authority',
+          paragraphs: [
+            [
+              plain('You have the right to lodge a complaint with a data protection supervisory authority. ' +
+                'The competent authority is: '),
+              mark('[State data protection authority, name and address]'),
+            ],
+          ],
+        },
+        {
+          title: '10. SSL/TLS encryption',
+          paragraphs: [
+            [
+              plain(
+                'For security reasons, this website uses SSL/TLS encryption. An encrypted connection can be ' +
+                  'recognised by “https://” in the address bar of the browser.',
+              ),
+            ],
+          ],
+        },
+        {
+          title: '11. Currency and changes',
+          paragraphs: [
+            [
+              plain(
+                'Last updated: 6 October 2026. This policy will be adapted if the website or the legal ' +
+                  'requirements change.',
+              ),
+            ],
+          ],
+        },
+      ],
+    },
     legalNotice: {
       title: 'Legal Notice',
       imprintTitle: 'Imprint',
@@ -393,6 +563,179 @@ export const translations = {
       email: 'E-Mail',
       legalNotice: 'Impressum',
       privacyPolicy: 'Datenschutz',
+    },
+    privacyPolicy: {
+      title: 'Datenschutz',
+      sections: [
+        {
+          title: '1. Verantwortlicher',
+          paragraphs: [
+            [plain('Verantwortlich für die Datenverarbeitung auf dieser Website ist:')],
+            [plain('Sebastian Mucha, '), mark('[Straße und Hausnummer]'), plain(', '), mark('[PLZ Ort]')],
+            [plain('E-Mail: thevipertv20@gmail.com')],
+          ],
+        },
+        {
+          title: '2. Allgemeines zur Datenverarbeitung',
+          paragraphs: [
+            [
+              plain(
+                'Personenbezogene Daten werden nur verarbeitet, soweit dies zur Bereitstellung dieser Website, ' +
+                  'ihrer Inhalte und zur Beantwortung von Anfragen erforderlich ist. Rechtsgrundlagen sind die ' +
+                  'Datenschutz-Grundverordnung (DSGVO) und das Bundesdatenschutzgesetz (BDSG).',
+              ),
+            ],
+          ],
+        },
+        {
+          title: '3. Hosting',
+          paragraphs: [
+            [
+              plain('Diese Website wird bei '),
+              mark('[Hosting-Anbieter, Anschrift/Land]'),
+              plain(
+                ' gehostet. Der Anbieter verarbeitet dabei Daten, die beim Aufruf der Website anfallen, im ' +
+                  'Auftrag des Verantwortlichen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes ' +
+                  'Interesse an einer sicheren und effizienten Bereitstellung der Website). ',
+              ),
+              mark('[Auftragsverarbeitungsvertrag mit dem Anbieter prüfen]'),
+            ],
+          ],
+        },
+        {
+          title: '4. Server-Logfiles',
+          paragraphs: [
+            [
+              plain(
+                'Beim Aufruf der Website werden automatisch Informationen erfasst, die der Browser übermittelt: ' +
+                  'IP-Adresse, Datum und Uhrzeit der Anfrage, aufgerufene Seite, Browsertyp und -version, ' +
+                  'Betriebssystem und Referrer-URL. Diese Daten dienen dem sicheren Betrieb der Website und ' +
+                  'werden nicht mit anderen Datenquellen zusammengeführt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f ' +
+                  'DSGVO.',
+              ),
+            ],
+            [plain('Speicherdauer: '), mark('[Dauer laut Hosting-Anbieter]'), plain('.')],
+          ],
+        },
+        {
+          title: '5. Kontaktaufnahme per E-Mail',
+          paragraphs: [
+            [
+              plain(
+                'Bei einer Kontaktaufnahme per E-Mail werden Ihre Angaben (E-Mail-Adresse, Inhalt der Nachricht) ' +
+                  'zur Bearbeitung der Anfrage und für Anschlussfragen gespeichert. Rechtsgrundlage ist Art. 6 ' +
+                  'Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen) oder Art. 6 Abs. 1 lit. f DSGVO (berechtigtes ' +
+                  'Interesse an der Beantwortung). Die Daten werden gelöscht, sobald sie für den Zweck nicht mehr ' +
+                  'erforderlich sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.',
+              ),
+            ],
+          ],
+        },
+        {
+          title: '6. Kontaktformular',
+          paragraphs: [
+            [
+              plain(
+                'Über das Kontaktformular dieser Website können Anfragen gesendet werden. Dabei werden folgende ' +
+                  'Angaben verarbeitet: Name, E-Mail-Adresse und Nachricht. Vor dem Absenden ist die Zustimmung ' +
+                  'zu dieser Datenschutzerklärung per Checkbox zu bestätigen.',
+              ),
+            ],
+            [
+              plain(
+                'Beim Absenden werden diese Angaben an ein serverseitiges Skript (sendMail.php) auf dem Webspace ' +
+                  'dieser Website übertragen. Das Skript prüft die Angaben und leitet sie per E-Mail an die oben ' +
+                  'genannte E-Mail-Adresse des Verantwortlichen weiter. Eine Speicherung in einer Datenbank ' +
+                  'findet nicht statt.',
+              ),
+            ],
+            [
+              plain(
+                'Die Nachricht wird ausschließlich zur Bearbeitung der Anfrage und für Anschlussfragen ' +
+                  'verwendet. Die Daten werden gelöscht, sobald sie für den Zweck nicht mehr erforderlich sind ' +
+                  'und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.',
+              ),
+            ],
+            [plain('Rechtsgrundlage: '), mark('[Rechtsgrundlage für das Kontaktformular]'), plain('.')],
+            [mark('[Angaben zum E-Mail-Anbieter des Empfängerpostfachs und ggf. zur Drittlandübermittlung]')],
+          ],
+        },
+        {
+          title: '7. Externe Dienste, Cookies und Tracking',
+          paragraphs: [
+            [plain('Diese Website verwendet keine Cookies, keine Analyse- und keine Tracking-Dienste.')],
+            [
+              plain(
+                'Schriftarten werden lokal vom eigenen Server geladen. Dabei findet keine Verbindung zu Servern ' +
+                  'Dritter statt.',
+              ),
+            ],
+            [
+              plain(
+                'Bei einem Wechsel der Sprache wird die gewählte Sprache (Deutsch oder Englisch) im lokalen ' +
+                  'Speicher des Browsers (localStorage) unter dem Eintrag „portfolio-language“ abgelegt, damit ' +
+                  'die Auswahl beim nächsten Besuch erhalten bleibt. Dieser Eintrag enthält nur das ' +
+                  'Sprachkürzel, wird nicht an den Server übertragen und kann über die Browsereinstellungen ' +
+                  'gelöscht werden.',
+              ),
+            ],
+            [
+              plain(
+                'Die Website enthält Links zu GitHub, LinkedIn und den vorgestellten Projekten. Inhalte dieser ' +
+                  'Anbieter sind nicht eingebunden. Daten werden erst beim Anklicken eines Links an den ' +
+                  'jeweiligen Anbieter übertragen; dort gelten dessen Datenschutzbestimmungen.',
+              ),
+            ],
+          ],
+        },
+        {
+          title: '8. Ihre Rechte',
+          paragraphs: [
+            [
+              plain(
+                'Sie haben gegenüber dem Verantwortlichen folgende Rechte hinsichtlich Ihrer personenbezogenen ' +
+                  'Daten: Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der ' +
+                  'Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch gegen die Verarbeitung ' +
+                  '(Art. 21). Eine erteilte Einwilligung können Sie jederzeit mit Wirkung für die Zukunft ' +
+                  'widerrufen. Zur Ausübung Ihrer Rechte genügt eine formlose Nachricht an die oben genannte ' +
+                  'E-Mail-Adresse.',
+              ),
+            ],
+          ],
+        },
+        {
+          title: '9. Beschwerderecht bei einer Aufsichtsbehörde',
+          paragraphs: [
+            [
+              plain('Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Zuständig ' +
+                'ist: '),
+              mark('[Landesdatenschutzbehörde des eigenen Bundeslandes, Name und Anschrift]'),
+            ],
+          ],
+        },
+        {
+          title: '10. SSL-/TLS-Verschlüsselung',
+          paragraphs: [
+            [
+              plain(
+                'Diese Website nutzt aus Sicherheitsgründen eine SSL- bzw. TLS-Verschlüsselung. Eine ' +
+                  'verschlüsselte Verbindung ist an „https://“ in der Adresszeile des Browsers zu erkennen.',
+              ),
+            ],
+          ],
+        },
+        {
+          title: '11. Aktualität und Änderung',
+          paragraphs: [
+            [
+              plain(
+                'Stand: 6. Oktober 2026. Diese Erklärung wird angepasst, wenn sich die Website oder die ' +
+                  'rechtlichen Anforderungen ändern.',
+              ),
+            ],
+          ],
+        },
+      ],
     },
     legalNotice: {
       title: 'Rechtliche Hinweise',

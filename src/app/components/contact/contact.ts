@@ -9,6 +9,8 @@ type SendStatus = 'idle' | 'sending' | 'success' | 'error';
 
 const NOT_BLANK = /\S/;
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+// Relative to <base href>, so it resolves to the same domain the site is uploaded to.
+const MAIL_ENDPOINT = 'sendMail.php';
 
 @Component({
   selector: 'app-contact',
@@ -80,8 +82,20 @@ export class Contact {
     }
   }
 
-  // Sending gets connected in a separate step once the server setup is decided.
-  private send(): Promise<void> {
-    return Promise.reject(new Error('Contact form sending is not implemented yet.'));
+  private async send(): Promise<void> {
+    const data = {
+      name: this.form.controls.name.value,
+      email: this.form.controls.email.value,
+      message: this.form.controls.message.value,
+    };
+    const response = await fetch(MAIL_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    const result = await response.json();
+    if (!response.ok || result.success !== true) {
+      throw new Error('Contact form message could not be sent.');
+    }
   }
 }

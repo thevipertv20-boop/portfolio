@@ -1,0 +1,20 @@
+<section class="legal">
+    <h1 class="legal-title">{{ t().privacyPolicy.title }}</h1>
+
+    <div class="legal-content">
+        @for (section of t().privacyPolicy.sections; track $index) {
+            <h2 class="legal-heading">{{ section.title }}</h2>
+            @for (paragraph of section.paragraphs; track $index) {
+                <p class="legal-text">
+                    @for (part of paragraph; track $index) {
+                        @if (part.highlight) {
+                            <span class="legal-highlight">{{ part.text }}</span>
+                        } @else {
+                            <ng-container>{{ part.text }}</ng-container>
+                        }
+                    }
+                </p>
+            }
+        }
+    </div>
+</section>
