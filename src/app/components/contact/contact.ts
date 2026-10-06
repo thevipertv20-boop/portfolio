@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { LanguageService } from '../../i18n/language.service';
 
 type TextField = 'name' | 'email' | 'message';
-type FieldError = 'required' | 'invalid' | null;
+type FieldError = 'required' | 'minLength' | 'invalid' | null;
 type SendStatus = 'idle' | 'sending' | 'success' | 'error';
 
 const NOT_BLANK = /\S/;
@@ -24,11 +24,13 @@ export class Contact {
   protected readonly form = new FormGroup({
     name: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.pattern(NOT_BLANK)] }),
     email: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.pattern(EMAIL)] }),
-    message: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.pattern(NOT_BLANK)] }),
+    message: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.pattern(NOT_BLANK), Validators.minLength(3)],
+    }),
     privacy: new FormControl(false, { nonNullable: true, validators: [Validators.requiredTrue] }),
   });
 
-  protected readonly errors = signal<Record<TextField, FieldError>>({ name: null, email: null, message: null });
   protected readonly privacyError = signal(false);
   protected readonly status = signal<SendStatus>('idle');
 
@@ -39,8 +41,18 @@ export class Contact {
     this.nameInput().nativeElement.focus();
   }
 
-  protected validateField(field: TextField): void {
-    this.errors.update((errors) => ({ ...errors, [field]: this.fieldError(field) }));
+  protected fieldError(field: TextField): FieldError {
+    const control = this.form.controls[field];
+    if (!control.touched || control.valid) {
+      return null;
+    }
+    if (control.hasError('required') || !NOT_BLANK.test(control.value)) {
+      return 'required';
+    }
+    if (control.hasError('minlength')) {
+      return 'minLength';
+    }
+    return 'invalid';
   }
 
   protected validatePrivacy(): void {
@@ -61,20 +73,11 @@ export class Contact {
     try {
       await this.send();
       this.form.reset();
-      this.errors.set({ name: null, email: null, message: null });
       this.privacyError.set(false);
       this.status.set('success');
     } catch {
       this.status.set('error');
     }
-  }
-
-  private fieldError(field: TextField): FieldError {
-    const control = this.form.controls[field];
-    if (control.hasError('required') || !NOT_BLANK.test(control.value)) {
-      return 'required';
-    }
-    return control.invalid ? 'invalid' : null;
   }
 
   // Sending gets connected in a separate step once the server setup is decided.

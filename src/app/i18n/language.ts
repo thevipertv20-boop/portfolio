@@ -127,6 +127,7 @@ export const translations = {
         emailRequired: 'Oops! Your email is required',
         emailInvalid: 'Please enter a valid email address',
         messageRequired: 'What do you need to develop?',
+        messageMinLength: 'Please enter at least 3 characters',
         privacyRequired: 'Please accept the privacy policy.',
       },
       feedback: {
@@ -377,6 +378,7 @@ export const translations = {
         emailRequired: 'Hoppla! Deine E-Mail-Adresse fehlt noch',
         emailInvalid: 'Bitte gib eine gültige E-Mail-Adresse ein',
         messageRequired: 'Was soll ich für dich entwickeln?',
+        messageMinLength: 'Bitte gib mindestens 3 Zeichen ein',
         privacyRequired: 'Bitte akzeptiere die Datenschutzerklärung.',
       },
       feedback: {

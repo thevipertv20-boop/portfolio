@@ -5,12 +5,9 @@
 
     <div class="about-me-content">
         <span class="about-me-eyebrow">{{ t().aboutMe.eyebrow }}</span>
-
         <div class="about-me-box">
             <h2 class="about-me-title">{{ t().aboutMe.title }}</h2>
-
             <p class="about-me-text">{{ t().aboutMe.text }}</p>
-
             <ul class="about-me-highlights">
                 @for (highlight of t().aboutMe.highlights; track $index) {
                     <li>

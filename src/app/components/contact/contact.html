@@ -11,29 +11,32 @@
     </div>
 
     <form class="contact-form" [formGroup]="form" (ngSubmit)="submit()" (input)="resetStatus()" novalidate>
-        <label class="contact-field" [class.contact-field-error]="errors().name">
+        <label class="contact-field" [class.contact-field-error]="fieldError('name')">
             <span class="contact-label">{{ t().contact.form.nameLabel }}</span>
             <input #nameInput id="contact-name" class="contact-input" type="text" formControlName="name"
                 autocomplete="name"
-                [placeholder]="errors().name ? t().contact.errors.nameRequired : t().contact.form.namePlaceholder"
-                [attr.aria-invalid]="!!errors().name" (blur)="validateField('name')">
+                [placeholder]="fieldError('name') ? t().contact.errors.nameRequired : t().contact.form.namePlaceholder"
+                [attr.aria-invalid]="!!fieldError('name')">
         </label>
 
-        <label class="contact-field" [class.contact-field-error]="errors().email">
+        <label class="contact-field" [class.contact-field-error]="fieldError('email')">
             <span class="contact-label">{{ t().contact.form.emailLabel }}</span>
             <input class="contact-input" type="email" formControlName="email" autocomplete="email"
-                [placeholder]="errors().email === 'required' ? t().contact.errors.emailRequired : t().contact.form.emailPlaceholder"
-                [attr.aria-invalid]="!!errors().email" (blur)="validateField('email')">
-            @if (errors().email === 'invalid') {
+                [placeholder]="fieldError('email') === 'required' ? t().contact.errors.emailRequired : t().contact.form.emailPlaceholder"
+                [attr.aria-invalid]="!!fieldError('email')">
+            @if (fieldError('email') === 'invalid') {
                 <span class="contact-error contact-field-message">{{ t().contact.errors.emailInvalid }}</span>
             }
         </label>
 
-        <label class="contact-field" [class.contact-field-error]="errors().message">
+        <label class="contact-field" [class.contact-field-error]="fieldError('message')">
             <span class="contact-label">{{ t().contact.form.messageLabel }}</span>
             <textarea class="contact-input contact-textarea" formControlName="message" rows="1"
-                [placeholder]="errors().message ? t().contact.errors.messageRequired : t().contact.form.messagePlaceholder"
-                [attr.aria-invalid]="!!errors().message" (blur)="validateField('message')"></textarea>
+                [placeholder]="fieldError('message') === 'required' ? t().contact.errors.messageRequired : t().contact.form.messagePlaceholder"
+                [attr.aria-invalid]="!!fieldError('message')"></textarea>
+            @if (fieldError('message') === 'minLength') {
+                <span class="contact-error contact-field-message">{{ t().contact.errors.messageMinLength }}</span>
+            }
         </label>
 
         <div class="contact-privacy">
