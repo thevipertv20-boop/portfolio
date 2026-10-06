@@ -27,7 +27,7 @@ export const translations = {
       checkMyWork: 'Check my work',
       contactMe: 'Contact me',
       scrollDown: 'Scroll down',
-      marquee: ['Available for remote work', 'Frontend Developer', 'Based in Munich', 'Open to work'],
+      marquee: ['Available for remote work', 'Frontend Developer', 'Based in Gelsenkirchen', 'Open to work'],
     },
     aboutMe: {
       portraitAlt: 'Portrait of Sebastian Mucha',
@@ -138,7 +138,7 @@ export const translations = {
     footer: {
       logoAlt: 'Sebastian Mucha',
       role: 'Web Developer',
-      location: 'Munich Germany',
+      location: 'Gelsenkirchen Germany',
       email: 'Email',
       legalNotice: 'Legal Notice',
       privacyPolicy: 'Privacy Policy',
@@ -150,7 +150,7 @@ export const translations = {
           title: '1. Controller',
           paragraphs: [
             [plain('The controller responsible for data processing on this website is:')],
-            [plain('Sebastian Mucha, '), mark('[Street and house number]'), plain(', '), mark('[Postcode and city]')],
+            [plain('Sebastian Mucha, Horstmarer Weg 4, 45892 Gelsenkirchen, Germany')],
             [plain('Email: thevipertv20@gmail.com')],
           ],
         },
@@ -317,12 +317,13 @@ export const translations = {
       title: 'Legal Notice',
       imprintTitle: 'Imprint',
       imprintItems: [
-        '[Student Names List]',
-        '[Address of the JOIN operator - e.g. one of the students]',
-        '[Postcode and city]',
+        'Sebastian Mucha',
+        'Horstmarer Weg 4',
+        '45892 Gelsenkirchen',
+        'Germany',
       ],
-      contactTitle: 'Exploring the Board',
-      contactText: 'Email: [Email]',
+      contactTitle: 'Contact',
+      contactText: 'Email: thevipertv20@gmail.com',
       sections: [
         {
           title: 'Acceptance of terms',
@@ -332,8 +333,8 @@ export const translations = {
               mark('Portfolio'),
               plain(
                 ' (Product), you acknowledge and agree to the following terms and conditions, and any policies, ' +
-                  'guidelines, or amendments thereto that may be presented to you from time to time. We, the listed ' +
-                  'students, may update or change the terms and conditions from time to time without notice.',
+                  'guidelines, or amendments thereto that may be presented to you from time to time. I, Sebastian ' +
+                  'Mucha, may update or change the terms and conditions from time to time without notice.',
               ),
             ],
           ],
@@ -343,11 +344,11 @@ export const translations = {
           paragraphs: [
             [
               mark('Portfolio'),
-              plain(' has been developed as part of a student group project in a web development bootcamp at the '),
+              plain(' has been developed as a student project in a web development bootcamp at the '),
               mark('Developer Akademie GmbH.'),
               plain(
                 ' It has an educational purpose and is not intended for extensive personal & business usage. As ' +
-                  'such, we cannot guarantee consistent availability, reliability, accuracy, or any other aspect of ' +
+                  'such, I cannot guarantee consistent availability, reliability, accuracy, or any other aspect of ' +
                   'quality regarding this Product.',
               ),
             ],
@@ -369,7 +370,7 @@ export const translations = {
             [
               plain('Aside from the design owned by '),
               mark('Developer Akademie GmbH'),
-              plain(', we, the listed students, retain all proprietary rights in '),
+              plain(', I, Sebastian Mucha, retain all proprietary rights in '),
               mark('Portfolio,'),
               plain(
                 ' including any associated copyrighted material, trademarks, and other proprietary information.',
@@ -403,7 +404,7 @@ export const translations = {
               plain(
                 ' is provided "as is" without warranty of any kind, whether express or implied, including but not ' +
                   'limited to the implied warranties of merchantability, fitness for a particular purpose, and ' +
-                  'non-infringement. In no event will we, the listed students, or the ',
+                  'non-infringement. In no event will I, Sebastian Mucha, or the ',
               ),
               mark('Developer Akademie,'),
               plain(
@@ -420,7 +421,7 @@ export const translations = {
           title: 'Indemnity',
           paragraphs: [
             [
-              plain('You agree to indemnify, defend and hold harmless us, the listed students, the '),
+              plain('You agree to indemnify, defend and hold harmless me, Sebastian Mucha, the '),
               mark('Developer Akademie,'),
               plain(
                 ' and our affiliates, partners, officers, directors, agents, and employees, from and against any ' +
@@ -430,8 +431,8 @@ export const translations = {
               mark('Portfolio'),
               plain(' and/or your breach of this Legal Notice.'),
             ],
-            [plain('For any questions or notices, please contact us at [Contact Email].')],
-            [plain('Date: July 26, 2025')],
+            [plain('For any questions or notices, please contact me at thevipertv20@gmail.com.')],
+            [plain('Date: October 6, 2026')],
           ],
         },
       ],
@@ -447,7 +448,7 @@ export const translations = {
       checkMyWork: 'Meine Arbeiten',
       contactMe: 'Kontakt',
       scrollDown: 'Nach unten scrollen',
-      marquee: ['Verfügbar für Remote-Arbeit', 'Frontend Developer', 'Wohnhaft in München', 'Offen für neue Jobs'],
+      marquee: ['Verfügbar für Remote-Arbeit', 'Frontend Developer', 'Wohnhaft in Gelsenkirchen', 'Offen für neue Jobs'],
     },
     aboutMe: {
       portraitAlt: 'Portrait von Sebastian Mucha',
@@ -559,7 +560,7 @@ export const translations = {
     footer: {
       logoAlt: 'Sebastian Mucha',
       role: 'Web Developer',
-      location: 'München Deutschland',
+      location: 'Gelsenkirchen Deutschland',
       email: 'E-Mail',
       legalNotice: 'Impressum',
       privacyPolicy: 'Datenschutz',
@@ -571,7 +572,7 @@ export const translations = {
           title: '1. Verantwortlicher',
           paragraphs: [
             [plain('Verantwortlich für die Datenverarbeitung auf dieser Website ist:')],
-            [plain('Sebastian Mucha, '), mark('[Straße und Hausnummer]'), plain(', '), mark('[PLZ Ort]')],
+            [plain('Sebastian Mucha, Horstmarer Weg 4, 45892 Gelsenkirchen, Deutschland')],
             [plain('E-Mail: thevipertv20@gmail.com')],
           ],
         },
@@ -741,12 +742,13 @@ export const translations = {
       title: 'Rechtliche Hinweise',
       imprintTitle: 'Impressum',
       imprintItems: [
-        '[Student Names List]',
-        '[Address of the JOIN operator - e.g. one of the students]',
-        '[Postcode and city]',
+        'Sebastian Mucha',
+        'Horstmarer Weg 4',
+        '45892 Gelsenkirchen',
+        'Deutschland',
       ],
-      contactTitle: 'Das Board erkunden',
-      contactText: 'E-Mail: [Email]',
+      contactTitle: 'Kontakt',
+      contactText: 'E-Mail: thevipertv20@gmail.com',
       sections: [
         {
           title: 'Annahme der Bedingungen',
@@ -756,8 +758,8 @@ export const translations = {
               mark('Portfolio'),
               plain(
                 ' (Produkt) erkennen Sie die folgenden Bedingungen sowie alle Richtlinien, Leitlinien oder ' +
-                  'Änderungen daran an, die Ihnen von Zeit zu Zeit vorgelegt werden können, und stimmen ihnen zu. Wir, ' +
-                  'die aufgeführten Studierenden, können die Bedingungen von Zeit zu Zeit ohne Ankündigung ' +
+                  'Änderungen daran an, die Ihnen von Zeit zu Zeit vorgelegt werden können, und stimmen ihnen zu. Ich, ' +
+                  'Sebastian Mucha, kann die Bedingungen von Zeit zu Zeit ohne Ankündigung ' +
                   'aktualisieren oder ändern.',
               ),
             ],
@@ -769,12 +771,12 @@ export const translations = {
             [
               mark('Portfolio'),
               plain(
-                ' wurde im Rahmen eines studentischen Gruppenprojekts in einem Webentwicklungs-Bootcamp an der ',
+                ' wurde als studentisches Projekt in einem Webentwicklungs-Bootcamp an der ',
               ),
               mark('Developer Akademie GmbH'),
               plain(
                 ' entwickelt. Es dient Bildungszwecken und ist nicht für eine umfangreiche private und ' +
-                  'geschäftliche Nutzung vorgesehen. Daher können wir keine durchgängige Verfügbarkeit, ' +
+                  'geschäftliche Nutzung vorgesehen. Daher kann ich keine durchgängige Verfügbarkeit, ' +
                   'Zuverlässigkeit, Genauigkeit oder andere Qualitätsmerkmale dieses Produkts garantieren.',
               ),
             ],
@@ -796,7 +798,7 @@ export const translations = {
             [
               plain('Abgesehen von dem Design, das der '),
               mark('Developer Akademie GmbH'),
-              plain(' gehört, behalten wir, die aufgeführten Studierenden, alle Eigentumsrechte an '),
+              plain(' gehört, behalte ich, Sebastian Mucha, alle Eigentumsrechte an '),
               mark('Portfolio,'),
               plain(
                 ' einschließlich aller zugehörigen urheberrechtlich geschützten Materialien, Marken und sonstigen ' +
@@ -833,7 +835,7 @@ export const translations = {
                 ' wird „wie besehen“ ohne jegliche ausdrückliche oder stillschweigende Gewährleistung ' +
                   'bereitgestellt, einschließlich, aber nicht beschränkt auf die stillschweigenden ' +
                   'Gewährleistungen der Marktgängigkeit, der Eignung für einen bestimmten Zweck und der ' +
-                  'Nichtverletzung von Rechten. In keinem Fall haften wir, die aufgeführten Studierenden, oder die ',
+                  'Nichtverletzung von Rechten. In keinem Fall hafte ich, Sebastian Mucha, oder die ',
               ),
               mark('Developer Akademie'),
               plain(
@@ -853,7 +855,7 @@ export const translations = {
           paragraphs: [
             [
               plain(
-                'Sie erklären sich bereit, uns, die aufgeführten Studierenden, die ',
+                'Sie erklären sich bereit, mich, Sebastian Mucha, die ',
               ),
               mark('Developer Akademie'),
               plain(
@@ -865,8 +867,8 @@ export const translations = {
               mark('Portfolio'),
               plain(' und/oder Ihrem Verstoß gegen diese rechtlichen Hinweise ergeben.'),
             ],
-            [plain('Bei Fragen oder Mitteilungen kontaktieren Sie uns bitte unter [Contact Email].')],
-            [plain('Datum: 26. Juli 2025')],
+            [plain('Bei Fragen oder Mitteilungen kontaktieren Sie mich bitte unter thevipertv20@gmail.com.')],
+            [plain('Datum: 6. Oktober 2026')],
           ],
         },
       ],
