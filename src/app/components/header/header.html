@@ -1,6 +1,6 @@
 <header class="header">
     <nav class="navbar">
-        <div class="nav-left">
+        <div class="nav-left" id="main-menu" [class.open]="menuOpen">
 
             <div class="language-switch">
                 @for (lang of languages; track lang) {
@@ -9,7 +9,7 @@
                     </button>
                 }
             </div>
-            <div class="nav-links">
+            <div class="nav-links" (click)="closeMenu()">
                 <a routerLink="/" fragment="about">{{ t().header.aboutMe }}</a>
                 <a routerLink="/" fragment="skills">{{ t().header.skills }}</a>
                 <a routerLink="/" fragment="projects" class="active-link">
@@ -19,10 +19,17 @@
             </div>
         </div>
 
-        <a routerLink="/" class="logo">
+        <a routerLink="/" class="logo" (click)="closeMenu()">
             <img class="logo-normal" src="assets/icons/Sebastian Mucha Logo mit Monogramm.png" alt="Sebastian Mucha">
             <img class="logo-hover" src="assets/icons/Sebastian Mucha Logo mit Monogramm.png" alt="">
         </a>
+
+        <button class="burger" type="button" [class.open]="menuOpen" [attr.aria-label]="t().header.menu"
+            [attr.aria-expanded]="menuOpen" aria-controls="main-menu" (click)="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
         <svg class="logo-filter" aria-hidden="true">
             <filter id="logo-outline">

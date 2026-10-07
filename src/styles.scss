@@ -47,6 +47,21 @@ body {
     --hero-frame-width: min(100vw, calc(100vh * 1.6));
 }
 
+/* Tablet and mobile: the header gets a fixed height, the hero fills the rest of the screen */
+@media (max-width: 1024px) {
+    :root {
+        --header-height: 82px;
+        --page-padding: 24px;
+    }
+}
+
+/* Mobile (Figma 390px): 16px space left and right */
+@media (max-width: 768px) {
+    :root {
+        --page-padding: 16px;
+    }
+}
+
 @keyframes btn-text-marquee {
     0% {
         transform: translateX(150%);

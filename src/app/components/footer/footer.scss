@@ -100,3 +100,33 @@
 .footer-link:focus-visible {
     color: #3dcfb6;
 }
+
+/* Small desktop: keep a space at the sides */
+@media (max-width: 1279px) {
+    .footer-content {
+        padding-inline: 32px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .footer-content {
+        padding-inline: var(--page-padding);
+    }
+}
+
+/* Mobile (Figma 390px, 358 x 220px): logo left, links right, copyright centered below */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .footer-copyright {
+        position: static;
+        order: 1;
+        width: 100%;
+        margin-top: 70px;
+        transform: none;
+        text-align: center;
+    }
+}

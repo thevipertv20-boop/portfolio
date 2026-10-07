@@ -171,3 +171,83 @@
     opacity: 1;
     visibility: visible;
 }
+
+/* Small desktop: text box shrinks, the icon columns move closer together */
+@media (max-width: 1279px) {
+    .skills {
+        gap: 48px;
+        padding-inline: 32px;
+    }
+
+    .skills-content {
+        flex: 0 1 520px;
+        min-width: 0;
+    }
+
+    .skill-grid {
+        flex-shrink: 0;
+        column-gap: clamp(24px, calc((100vw - 1025px) * 0.18 + 24px), 70px);
+    }
+}
+
+/* Tablet and mobile: text box and icons below each other */
+@media (max-width: 1024px) {
+    :host {
+        background:
+            url('/assets/images/19. Skill set Background.png') left top / auto 736px no-repeat,
+            #1c1c1c;
+    }
+
+    .skills {
+        flex-direction: column;
+        align-items: center;
+        gap: 56px;
+        padding: 64px var(--page-padding) 80px;
+    }
+
+    .skills-content {
+        flex: none;
+        width: 100%;
+        max-width: 626px;
+    }
+
+    .skill-grid {
+        column-gap: 70px;
+        margin-top: 0;
+    }
+}
+
+/* Mobile (Figma 390px): content 358px wide, three icons per row */
+@media (max-width: 768px) {
+    .skills {
+        gap: 48px;
+        padding-block: 48px 64px;
+    }
+
+    .skills-box {
+        padding: 24px 16px 32px;
+    }
+
+    .skills-box-title {
+        margin-bottom: 24px;
+        font-size: 48px;
+    }
+
+    .skills-box-text {
+        font-size: 16px;
+    }
+
+    /* German words are longer: justified text leaves big gaps on a narrow screen */
+    :host-context(html[lang='de']) .skills-box-text {
+        text-align: left;
+    }
+
+    .skill-grid {
+        grid-template-columns: repeat(3, 104px);
+        justify-content: space-between;
+        column-gap: 0;
+        row-gap: 32px;
+        width: 100%;
+        max-width: 420px;
+    }
+}

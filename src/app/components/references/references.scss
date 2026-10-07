@@ -161,3 +161,51 @@
 .reference-dot-active {
     background: #3dcfb6;
 }
+
+/* Mobile (Figma 390px): one card, 358px wide, inside the 16px page padding */
+@media (max-width: 768px) {
+    .references {
+        padding: 64px 0;
+    }
+
+    .references-title {
+        padding-inline: var(--page-padding);
+        font-size: 24px;
+    }
+
+    .references-slider {
+        gap: 80px;
+        height: 326px;
+        margin-top: 48px;
+    }
+
+    .reference-card {
+        flex-basis: min(632px, calc(100vw - 2 * var(--page-padding)));
+        height: 300px;
+        padding: 40px 24px 24px;
+    }
+
+    .reference-card-active {
+        height: 326px;
+        padding-bottom: 48px;
+    }
+
+    .reference-quote {
+        top: -16px;
+        left: -8px;
+        width: 62px;
+        height: 44px;
+    }
+
+    .reference-text {
+        font-size: 16px;
+    }
+
+    .references-fade {
+        display: none;
+    }
+
+    .references-controls {
+        margin-top: 32px;
+    }
+}

@@ -291,3 +291,74 @@
 .contact-feedback-error {
     color: #c56a6a;
 }
+
+/* Small desktop: two equal columns, fields grow when a label needs two lines */
+@media (max-width: 1279px) {
+    .contact {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        column-gap: 48px;
+        padding-inline: 32px;
+    }
+
+    .contact-field {
+        height: auto;
+        min-height: 131px;
+        padding-bottom: 32px;
+    }
+}
+
+/* Tablet and mobile: text and form below each other */
+@media (max-width: 1024px) {
+    .contact {
+        grid-template-columns: minmax(0, 632px);
+        justify-content: center;
+        row-gap: 48px;
+        padding: 48px var(--page-padding) 96px;
+    }
+
+    .contact-info {
+        max-width: none;
+    }
+}
+
+/* Mobile (Figma 390px): content 358px wide */
+@media (max-width: 768px) {
+    .contact {
+        row-gap: 40px;
+    }
+
+    /* Scales with the width so the longest word ("zusammenarbeiten") still fits */
+    .contact-title {
+        font-size: clamp(32px, 10.2vw, 48px);
+        line-height: 1;
+    }
+
+    .contact-subtitle {
+        margin-top: 32px;
+        font-size: 20px;
+    }
+
+    .contact-field {
+        padding-inline: 16px;
+    }
+
+    .contact-label {
+        font-size: 20px;
+    }
+
+    .contact-input {
+        font-size: 16px;
+    }
+
+    .contact-field-message {
+        left: 16px;
+    }
+
+    .contact-privacy {
+        margin-top: 32px;
+    }
+
+    .contact-submit {
+        margin-top: 40px;
+    }
+}

@@ -335,3 +335,143 @@
         opacity: 0;
     }
 }
+
+/* Small desktop: the list leaves room for the hover preview, the modal uses two equal columns */
+@media (max-width: 1279px) {
+    .featured-projects {
+        padding-inline: 32px;
+    }
+
+    .project-list {
+        width: min(880px, calc(100% - 384px));
+    }
+
+    .project-modal {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        column-gap: 48px;
+        padding-inline: 48px;
+    }
+
+    .project-modal-close {
+        right: 46px;
+    }
+
+    .project-modal-next {
+        right: 53px;
+    }
+}
+
+/* Tablet and mobile: full-width list without hover preview, modal in one column */
+@media (max-width: 1024px) {
+    .featured-projects {
+        padding: 80px var(--page-padding);
+    }
+
+    .project-list {
+        width: 100%;
+    }
+
+    .project-preview {
+        display: none;
+    }
+
+    .project-modal-backdrop {
+        padding: var(--page-padding);
+    }
+
+    .project-modal {
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+        min-height: 0;
+    }
+
+    .project-modal-content {
+        top: 0;
+    }
+
+    .project-modal-image {
+        max-width: 520px;
+        justify-self: center;
+    }
+
+    /* In one column the modal can scroll, so the button follows the content */
+    .project-modal {
+        padding-bottom: 48px;
+    }
+
+    .project-modal-next {
+        position: static;
+        justify-self: end;
+        margin-top: 24px;
+    }
+}
+
+/* Mobile (Figma 390px): content 358px wide */
+@media (max-width: 768px) {
+    .featured-projects {
+        padding-block: 64px;
+    }
+
+    .featured-projects-title {
+        font-size: 48px;
+    }
+
+    .featured-projects-text {
+        width: 100%;
+        max-width: 456px;
+        margin-top: 32px;
+        font-size: 16px;
+    }
+
+    .project {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 8px;
+        padding: 20px 16px;
+    }
+
+    .project-technologies {
+        justify-content: flex-start;
+        font-size: 16px;
+        text-align: left;
+    }
+
+    .project-modal {
+        padding: 80px 16px 32px;
+        border-radius: 24px;
+    }
+
+    .project-modal-close {
+        top: 16px;
+        right: 16px;
+    }
+
+    .project-modal-number {
+        font-size: 96px;
+    }
+
+    .project-modal-title {
+        font-size: 40px;
+    }
+
+    .project-modal-question {
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    .project-modal-description {
+        margin-top: 16px;
+        font-size: 16px;
+    }
+
+    .project-modal-technologies {
+        margin-top: 24px;
+    }
+
+    .project-modal-buttons {
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 32px;
+    }
+}

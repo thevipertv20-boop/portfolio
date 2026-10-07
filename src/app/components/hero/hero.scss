@@ -374,3 +374,125 @@
         transform: translateX(calc(-1 * var(--marquee-group-width)));
     }
 }
+
+/* Tablet and mobile: the hero fills the screen below the fixed header */
+@media (max-width: 1024px) {
+    :host {
+        height: calc(100svh - var(--header-height));
+        min-height: 520px;
+    }
+
+    .hero {
+        height: 100%;
+    }
+
+    /* Keep the icons at their Figma size instead of shrinking with the width */
+    .hero-scroll-wrap {
+        width: 30px;
+    }
+
+    .hero-side {
+        width: 96px;
+    }
+}
+
+/* Mobile (Figma 390px) */
+@media (max-width: 768px) {
+    :host {
+        --band-height: 48px;
+        --band-bottom: 24px;
+        min-height: 560px;
+    }
+
+    :host::after {
+        bottom: var(--band-bottom);
+        height: var(--band-height);
+    }
+
+    .hero {
+        width: 100%;
+        padding-bottom: 96px;
+    }
+
+    .hero-content {
+        padding: 0 56px;
+    }
+
+    .hero-eyebrow {
+        width: clamp(200px, 60vw, 280px);
+        margin-bottom: 20px;
+    }
+
+    .hero-title {
+        width: min-content;
+        white-space: normal;
+        font-size: clamp(48px, 15.4vw, 72px);
+        line-height: 0.9;
+        margin-bottom: 32px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .hero-scroll-wrap {
+        left: var(--page-padding);
+        width: 30px;
+        height: 220px;
+        gap: 16px;
+    }
+
+    .hero-scroll {
+        flex-shrink: 0;
+    }
+
+    .hero-scroll-line {
+        flex: 1;
+        height: auto;
+    }
+
+    .hero-scroll-wrap::after,
+    .hero-side::after {
+        bottom: calc(var(--band-bottom) - 10px);
+        height: calc(var(--band-height) + 20px);
+    }
+
+    .hero-side {
+        right: var(--page-padding);
+        width: 32px;
+        height: 400px;
+        gap: 16px;
+    }
+
+    .hero-social-link {
+        width: 32px;
+        margin-block: 0;
+    }
+
+    .hero-side-line {
+        flex: 1;
+        height: auto;
+        margin-top: 0;
+    }
+
+    .hero-marquee {
+        bottom: var(--band-bottom);
+        height: var(--band-height);
+    }
+
+    .marquee-viewport {
+        top: 0;
+        height: 100%;
+    }
+
+    .marquee-track {
+        font-size: 20px;
+    }
+
+    .marquee-group {
+        gap: 32px;
+        padding-right: 32px;
+    }
+}

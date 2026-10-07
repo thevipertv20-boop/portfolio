@@ -22,6 +22,7 @@ export const translations = {
       aboutMe: 'About me',
       skills: 'Skills',
       projects: 'Projects',
+      menu: 'Menu',
     },
     hero: {
       checkMyWork: 'Check my work',
@@ -98,7 +99,7 @@ export const translations = {
           role: 'Team Partner',
         },
         reference3: {
-          text: 'Our project benefited enormously from Simon efficient way of working.',
+          text: "Our project benefited enormously from Sebastian's efficient way of working.",
           role: 'Frontend Developer',
         },
       },
@@ -443,6 +444,7 @@ export const translations = {
       aboutMe: 'Über mich',
       skills: 'Skills',
       projects: 'Projekte',
+      menu: 'Menü',
     },
     hero: {
       checkMyWork: 'Meine Arbeiten',
@@ -520,7 +522,7 @@ export const translations = {
           role: 'Teampartner',
         },
         reference3: {
-          text: 'Unser Projekt hat enorm von Simons effizienter Arbeitsweise profitiert.',
+          text: 'Unser Projekt hat enorm von Sebastians effizienter Arbeitsweise profitiert.',
           role: 'Frontend-Entwickler',
         },
       },

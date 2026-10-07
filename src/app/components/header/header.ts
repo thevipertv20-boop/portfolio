@@ -16,6 +16,17 @@ export class Header {
   language = this.languageService.language;
   t = this.languageService.t;
 
+  // Only used on mobile: true while the burger menu is open.
+  menuOpen = false;
+
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  closeMenu(): void {
+    this.menuOpen = false;
+  }
+
   setLanguage(language: Language): void {
     this.languageService.setLanguage(language);
   }
