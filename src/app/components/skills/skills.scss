@@ -1,7 +1,7 @@
 :host {
     display: block;
     background:
-        url('/assets/images/19. Skill set Background.png') left bottom / auto 100% no-repeat,
+        url('../../../../public/assets/images/19. Skill set Background.png') left bottom / auto 100% no-repeat,
         #1c1c1c;
 }
 
@@ -194,7 +194,7 @@
 @media (max-width: 1024px) {
     :host {
         background:
-            url('/assets/images/19. Skill set Background.png') left top / auto 736px no-repeat,
+            url('../../../../public/assets/images/19. Skill set Background.png') left top / auto 736px no-repeat,
             #1c1c1c;
     }
 
