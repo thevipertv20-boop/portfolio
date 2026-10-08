@@ -209,3 +209,11 @@
         margin-top: 32px;
     }
 }
+
+/* Very small phones: a long name may wrap, so it can not make the card wider than the screen */
+@media (max-width: 360px) {
+    .reference-author {
+        white-space: normal;
+        text-align: right;
+    }
+}

@@ -86,21 +86,21 @@ export const translations = {
       items: {
         reference1: {
           text:
-            'Sebastian has proven to be a reliable group partner. His technical skills and proactive approach ' +
-            'were crucial to the success of our project.',
+            'The collaboration with Sebastian was very pleasant. He worked reliably on his tasks, actively ' +
+            'contributed to the team and always looked for solutions when problems came up.',
           role: 'Team Partner',
         },
         reference2: {
           text:
-            'I had the good fortune of working with Sebastian in a group project at the Developer Akademie that ' +
-            'involved a lot of effort. He always stayed calm, cool, and focused, and made sure our team was ' +
-            "set up for success. He's super knowledgeable, easy to work with, and I'd happily work with him " +
-            'again given the chance.',
+            'Sebastian was a reliable and committed team member. Working together was straightforward, and he ' +
+            'always tried to complete his tasks carefully and support the team.',
           role: 'Team Partner',
         },
         reference3: {
-          text: "Our project benefited enormously from Sebastian's efficient way of working.",
-          role: 'Frontend Developer',
+          text:
+            'Working with Sebastian went very well. I especially appreciated his reliable way of working and ' +
+            'his continuous development and willingness to explore new topics.',
+          role: 'Team Partner',
         },
       },
     },
@@ -509,21 +509,22 @@ export const translations = {
       items: {
         reference1: {
           text:
-            'Sebastian hat sich als zuverlässiger Gruppenpartner erwiesen. Seine technischen Fähigkeiten und seine ' +
-            'proaktive Herangehensweise waren entscheidend für den Erfolg unseres Projekts.',
-          role: 'Teampartner',
+            'Die Zusammenarbeit mit Sebastian war sehr angenehm. Er hat zuverlässig an den Aufgaben gearbeitet, ' +
+            'sich aktiv ins Team eingebracht und auch bei Problemen nach Lösungen gesucht.',
+          role: 'Team Partner',
         },
         reference2: {
           text:
-            'Ich hatte das Glück, mit Sebastian an einem aufwendigen Gruppenprojekt der Developer Akademie zu ' +
-            'arbeiten. Er blieb immer ruhig, gelassen und konzentriert und hat dafür gesorgt, dass unser Team ' +
-            'optimal aufgestellt war. Er hat enorm viel Wissen, die Zusammenarbeit ist unkompliziert, und ich ' +
-            'würde jederzeit gern wieder mit ihm arbeiten.',
-          role: 'Teampartner',
+            'Sebastian war ein zuverlässiger und engagierter Teamkollege. Die Zusammenarbeit war unkompliziert, ' +
+            'und er hat sich immer bemüht, seine Aufgaben sauber umzusetzen und das Team zu unterstützen.',
+          role: 'Team Partner',
         },
         reference3: {
-          text: 'Unser Projekt hat enorm von Sebastians effizienter Arbeitsweise profitiert.',
-          role: 'Frontend-Entwickler',
+          text:
+            'Die Zusammenarbeit mit Sebastian hat gut funktioniert. Besonders positiv fand ich seine ' +
+            'zuverlässige Arbeitsweise und dass er sich kontinuierlich weiterentwickelt und neue Themen ' +
+            'ausprobiert.',
+          role: 'Team Partner',
         },
       },
     },
