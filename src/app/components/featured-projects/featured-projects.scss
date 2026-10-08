@@ -299,6 +299,15 @@
     color: #3dcfb6;
 }
 
+/* Project without a link yet: the button is shown, but can not be used */
+.project-modal-button-disabled,
+.project-modal-button-disabled:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
 .project-modal-image {
     display: block;
     width: 100%;

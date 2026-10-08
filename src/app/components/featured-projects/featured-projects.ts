@@ -1,4 +1,4 @@
-import { Component, DOCUMENT, ElementRef, Injector, afterNextRender, inject, signal, viewChild } from '@angular/core';
+import { Component, DOCUMENT, ElementRef, Injector, OnDestroy, afterNextRender, inject, signal, viewChild } from '@angular/core';
 import { LanguageService } from '../../i18n/language.service';
 
 type ProjectId = 'join' | 'elPolloLoco' | 'pokemonDex';
@@ -31,7 +31,7 @@ interface Project {
     '(document:keydown.escape)': 'closeProject()',
   },
 })
-export class FeaturedProjects {
+export class FeaturedProjects implements OnDestroy {
   protected readonly t = inject(LanguageService).t;
 
   private readonly document = inject(DOCUMENT);
@@ -79,7 +79,7 @@ export class FeaturedProjects {
       id: 'pokemonDex',
       name: 'Pokémon DEX',
       technologies: ['HTML', 'CSS', 'JavaScript'],
-      image: 'assets/images/Pokémon-Dex im sonnigen Abenteuerland.png',
+      image: 'assets/images/Pokémon-Dex im sonnigen Abenteuerland.webp',
       details: {
         number: '03',
         technologies: [
@@ -99,7 +99,7 @@ export class FeaturedProjects {
     }
     this.trigger = event.currentTarget as HTMLElement;
     this.selectedProject.set(project);
-    this.document.body.style.overflow = 'hidden';
+    this.lockPageScroll();
     afterNextRender(() => this.closeButton()?.nativeElement.focus(), { injector: this.injector });
   }
 
@@ -108,9 +108,27 @@ export class FeaturedProjects {
       return;
     }
     this.selectedProject.set(null);
-    this.document.body.style.overflow = '';
+    this.unlockPageScroll();
     this.trigger?.focus();
     this.trigger = null;
+  }
+
+  ngOnDestroy(): void {
+    this.unlockPageScroll();
+  }
+
+  // The page scrolls on <html> (styles.scss), so the lock has to be set there, not on <body>.
+  private lockPageScroll(): void {
+    const html = this.document.documentElement;
+    const scrollbarWidth = window.innerWidth - html.clientWidth;
+    html.style.overflow = 'hidden';
+    // Keeps the page from jumping sideways while the scrollbar is gone.
+    this.document.body.style.paddingRight = scrollbarWidth + 'px';
+  }
+
+  private unlockPageScroll(): void {
+    this.document.documentElement.style.overflow = '';
+    this.document.body.style.paddingRight = '';
   }
 
   protected showNextProject(): void {

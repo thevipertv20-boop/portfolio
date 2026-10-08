@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './components/header/header';
@@ -15,6 +16,20 @@ import { Footer } from './components/footer/footer';
 })
 export class App {
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  constructor() {
+    // Router links with a fragment ignore scroll-margin-top, so they get the same offset here.
+    inject(ViewportScroller).setOffset(() => [0, this.getHeaderOffset()]);
+  }
+
+  // Same value as --header-height in styles.scss, measured on the header itself.
+  private getHeaderOffset(): number {
+    const header = document.querySelector<HTMLElement>('app-header');
+    if (header) {
+      return header.offsetHeight;
+    }
+    return 0;
+  }
 
   protected moveGlow(event: MouseEvent): void {
     const element = this.host.nativeElement;

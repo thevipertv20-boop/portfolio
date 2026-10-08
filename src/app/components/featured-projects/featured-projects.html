@@ -65,11 +65,13 @@
                     </ul>
 
                     <div class="project-modal-buttons">
-                        <a class="project-modal-button" [attr.href]="details.github ?? null"
+                        <a class="project-modal-button" [class.project-modal-button-disabled]="!details.github"
+                            [attr.aria-disabled]="details.github ? null : true" [attr.href]="details.github ?? null"
                             [attr.target]="details.github ? '_blank' : null" rel="noopener">
                             GitHub <img src="assets/icons/arrow_outward.png" alt="">
                         </a>
-                        <a class="project-modal-button" [attr.href]="details.liveTest ?? null"
+                        <a class="project-modal-button" [class.project-modal-button-disabled]="!details.liveTest"
+                            [attr.aria-disabled]="details.liveTest ? null : true" [attr.href]="details.liveTest ?? null"
                             [attr.target]="details.liveTest ? '_blank' : null" rel="noopener">
                             {{ t().featuredProjects.liveTest }} <img src="assets/icons/arrow_outward.png" alt="">
                         </a>
